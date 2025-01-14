@@ -394,15 +394,48 @@
             opacity: 0;
         }
 
-        /* Skill percentages */
-        .skill-per.frontend { width: 90%; animation-delay: 0.1s; }
-        .skill-per.backend { width: 85%; animation-delay: 0.2s; }
-        .skill-per.mobile { width: 75%; animation-delay: 0.3s; }
-        .skill-per.uiux { width: 80%; animation-delay: 0.4s; }
-        .skill-per.databases { width: 85%; animation-delay: 0.5s; }
-        .skill-per.devops { width: 70%; animation-delay: 0.6s; }
-        .skill-per.cloud { width: 75%; animation-delay: 0.7s; }
-        .skill-per.testing { width: 80%; animation-delay: 0.8s; }
+        /* Frontend */
+.skill-per[class*="frontend"] { width: 90%; animation-delay: 0.1s; } /* HTML */
+.skill-per[class*="backend"] { width: 65%; animation-delay: 0.2s; } /* CSS */
+.skill-per[class*="mobile"] { width: 75%; animation-delay: 0.3s; } /* JavaScript */
+.skill-per[class*="mobile"] + .skill-per { width: 65%; animation-delay: 0.3s; } /* jQuery */
+.skill-per[class*="uiux"]:nth-of-type(1) { width: 80%; animation-delay: 0.4s; } /* React */
+.skill-per[class*="uiux"]:nth-of-type(2) { width: 75%; animation-delay: 0.4s; } /* Astro */
+
+/* Backend */
+.skill-per[class*="frontend"] { width: 90%; animation-delay: 0.1s; } /* Python */
+.skill-per[class*="backend"] { width: 85%; animation-delay: 0.2s; } /* Golang */
+.skill-per[class*="mobile"] { width: 80%; animation-delay: 0.3s; } /* PHP */
+.skill-per[class*="uiux"]:nth-of-type(1) { width: 70%; animation-delay: 0.4s; } /* Java */
+.skill-per[class*="uiux"]:nth-of-type(2) { width: 75%; animation-delay: 0.4s; } /* C */
+
+/* Databases */
+.skill-per[class*="databases"]:nth-of-type(1) { width: 90%; animation-delay: 0.5s; } /* MySQL */
+.skill-per[class*="devops"]:nth-of-type(1) { width: 85%; animation-delay: 0.6s; } /* MongoDB */
+.skill-per[class*="cloud"] { width: 90%; animation-delay: 0.7s; } /* SQLite */
+.skill-per[class*="testing"] { width: 80%; animation-delay: 0.8s; } /* PostgreSQL */
+
+/* DevOps */
+.skill-per[class*="databases"] { width: 80%; animation-delay: 0.5s; } /* Git */
+.skill-per[class*="devops"] { width: 75%; animation-delay: 0.6s; } /* Docker */
+.skill-per[class*="devops"] + .skill-per { width: 70%; animation-delay: 0.6s; } /* CI/CD */
+
+/* App Development */
+.skill-per[class*="databases"] { width: 70%; animation-delay: 0.5s; } /* Flutter */
+.skill-per[class*="devops"] { width: 75%; animation-delay: 0.6s; } /* Dart */
+
+/* Tools */
+.skill-per[class*="databases"] { width: 85%; animation-delay: 0.5s; } /* Postman */
+.skill-per[class*="devops"] { width: 95%; animation-delay: 0.6s; } /* VS Code */
+
+/* Frameworks */
+.skill-per[class*="databases"] { width: 75%; animation-delay: 0.5s; } /* Django */
+.skill-per[class*="devops"]:nth-of-type(1) { width: 85%; animation-delay: 0.6s; } /* Flask */
+.skill-per[class*="devops"]:nth-of-type(2) { width: 85%; animation-delay: 0.6s; } /* FastAPI */
+.skill-per[class*="devops"]:nth-of-type(3) { width: 85%; animation-delay: 0.6s; } /* Echo */
+.skill-per[class*="devops"]:nth-of-type(4) { width: 80%; animation-delay: 0.6s; } /* Bootstrap */
+.skill-per[class*="devops"]:nth-of-type(5) { width: 75%; animation-delay: 0.6s; } /* Tailwind */
+.skill-per[class*="devops"]:nth-of-type(6) { width: 70%; animation-delay: 0.6s; } /* Laravel */
 
         @keyframes progress {
             0% {
