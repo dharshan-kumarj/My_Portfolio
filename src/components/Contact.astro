@@ -36,28 +36,49 @@
                     </div>
                 </div>
 
-                <div class="form-container">
-                    <form class="form">
+               <div class="form-container">
+                    <form class="form" id="contactForm">
+                        <!-- API Key (Hidden) -->
+                        <input
+                            type="text"
+                            id="api_key"
+                            name="api_key"
+                            value="5c9ded41b7e024534054f166902dedc9"
+                            style="display: none;"
+                        />
+
+                        <!-- Full Name -->
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input required="" name="name" id="name" type="text" placeholder="John Doe">
+                            <input required="" name="name" id="name" type="text" placeholder="dharshan-kumarj">
                         </div>
+
+                        <!-- Email Address -->
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input required="" name="email" id="email" type="email" placeholder="john@example.com">
+                            <input required="" name="email" id="email" type="email" placeholder="contact@dharshankumar.com">
                         </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input required="" name="subject" id="subject" type="text" placeholder="Project Inquiry">
-                        </div>
+
+                        <!-- Message -->
                         <div class="form-group">
                             <label for="message">Your Message</label>
                             <textarea required="" id="message" name="message" placeholder="Tell me about your project..."></textarea>
                         </div>
-                        <button type="submit" class="form-submit-btn">
-                            Send Message
+
+                        <!-- Phone Number -->
+                        <div class="form-group">
+                            <label for="phone_no">Phone Number</label>
+                            <input required="" name="phone_no" id="phone_no" type="text" placeholder="Your Phone Number">
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="form-submit-btn" id="submitButton">
+                            <span>Send Message</span>
                             <i class="fas fa-paper-plane"></i>
                         </button>
+
+                        <!-- Form Status Message -->
+                        <div id="formStatus" class="form-status"></div>
                     </form>
                 </div>
             </div>
@@ -280,6 +301,48 @@
             transform: translateY(0);
         }
 
+        .form-submit-btn.loading {
+            background: #666;
+            cursor: not-allowed;
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .form-status.success {
+            display: block;
+            background: rgba(39, 174, 96, 0.2);
+            border: 1px solid #27ae60;
+            color: #2ecc71;
+        }
+
+        .form-status.error {
+            display: block;
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         @media (max-width: 968px) {
             .contact-container {
                 grid-template-columns: 1fr;
@@ -317,10 +380,73 @@
         }
     </style>
     <script>
-        document.querySelector('.form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('🚧 This service is currently under construction. Please check back later! 🚧');
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const submitButton = document.getElementById('submitButton');
+            const formStatus = document.getElementById('formStatus');
+            
+            form.addEventListener('submit', function(e) {
+                // Prevent form from submitting normally
+                e.preventDefault();
+                
+                // Show loading state
+                setLoadingState(true);
+                
+                // Get form data
+                const formData = new FormData(form);
+                
+                // Send form data using fetch with form-urlencoded data
+                fetch('https://hlomail-backend.onrender.com/v1/contact-mail', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        showMessage('Your message has been sent successfully!', 'success');
+                        form.reset();
+                    } else {
+                        throw new Error('Server error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Show success message anyway as per your request
+                    showMessage('Your message has been sent successfully!', 'success');
+                    form.reset();
+                })
+                .finally(() => {
+                    setLoadingState(false);
+                });
+            });
+            
+            // Helper function to set loading state
+            function setLoadingState(isLoading) {
+                if (isLoading) {
+                    submitButton.classList.add('loading');
+                    submitButton.innerHTML = '<div class="spinner"></div> Sending...';
+                    submitButton.disabled = true;
+                } else {
+                    submitButton.classList.remove('loading');
+                    submitButton.innerHTML = '<span>Send Message</span> <i class="fas fa-paper-plane"></i>';
+                    submitButton.disabled = false;
+                }
+            }
+            
+            // Helper function to show status messages
+            function showMessage(message, type) {
+                formStatus.textContent = message;
+                formStatus.className = 'form-status';
+                formStatus.classList.add(type);
+                formStatus.style.display = 'block';
+                
+                // Auto-hide success messages after 5 seconds
+                if (type === 'success') {
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 5000);
+                }
+            }
         });
-        </script>
+    </script>
 </body>
 </html>
