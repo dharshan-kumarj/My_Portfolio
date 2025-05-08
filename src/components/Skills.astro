@@ -3,275 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills Section</title>
+    <title>Technical Proficiency</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="container">
         <div id="background-gradient"></div>
-        <section class="skills-progress">
+        <section class="skills-section">
             <h2>Technical Proficiency</h2>
-            <div class="skills-grid">
-                <!-- Left Column -->
-                <div class="container">
-                    <h3>Frontend</h3>
-                    <div class="skill-box">
-                        <span class="title">Html</span>
-                        <div class="skill-bar">
-                            <span class="skill-per frontend">
-                                <span class="tooltip">80%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">CSS</span>
-                        <div class="skill-bar">
-                            <span class="skill-per backend">
-                                <span class="tooltip">65%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">JavaScript</span>
-                        <div class="skill-bar">
-                            <span class="skill-per mobile">
-                                <span class="tooltip">75%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">Jquery</span>
-                        <div class="skill-bar">
-                            <span class="skill-per mobile">
-                                <span class="tooltip">65%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">React Js</span>
-                        <div class="skill-bar">
-                            <span class="skill-per uiux">
-                                <span class="tooltip">75%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">Astro</span>
-                        <div class="skill-bar">
-                            <span class="skill-per uiux">
-                                <span class="tooltip">75%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="frontend">Frontend</button>
+                <button class="category-tab" data-category="backend">Backend</button>
+                <button class="category-tab" data-category="Database">Database</button>
+                <button class="category-tab" data-category="tools">Tools</button>
+                <button class="category-tab" data-category="devops">DevOps</button>
+                <button class="category-tab" data-category="appdev">App Development</button>
+                <button class="category-tab" data-category="cloud">Cloud</button>
 
-                <div class="container">
-                    <h3>Backend</h3>
-                    <div class="skill-box">
-                        <span class="title">Python</span>
-                        <div class="skill-bar">
-                            <span class="skill-per frontend">
-                                <span class="tooltip">80%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">Golang</span>
-                        <div class="skill-bar">
-                            <span class="skill-per backend">
-                                <span class="tooltip">75%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">Php</span>
-                        <div class="skill-bar">
-                            <span class="skill-per mobile">
-                                <span class="tooltip">70%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">Java</span>
-                        <div class="skill-bar">
-                            <span class="skill-per uiux">
-                                <span class="tooltip">65%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">C</span>
-                        <div class="skill-bar">
-                            <span class="skill-per uiux">
-                                <span class="tooltip">75%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            
+            <div class="skills-container active" id="frontend-skills">
+                <span class="skill-label">HTML</span>
+                <span class="skill-label">CSS</span>
+                <span class="skill-label">React</span>
+                <span class="skill-label">TypeScript</span>
+                <span class="skill-label">JavaScript</span>
+                <span class="skill-label">Astro.js</span>
+                <span class="skill-label">jQuery</span>
+                <span class="skill-label">Bootstrap</span>
+                <span class="skill-label">Tailwind</span>
+                <span class="skill-label">ShadCN</span>
+            </div>
+            
+            <div class="skills-container" id="backend-skills">
+                <span class="skill-label">Python</span>
+                <span class="skill-label">PHP</span>
+                <span class="skill-label">Golang</span>
+                <span class="skill-label">Java</span>
+                <span class="skill-label">C</span>
+                <span class="skill-label">Node JS</span>
+                <span class="skill-label">Django</span>
+                <span class="skill-label">Flask</span>
+                <span class="skill-label">FastAPI</span>
+                <span class="skill-label">Echo(Go)</span>
+                <span class="skill-label">Nest JS</span>
+                <span class="skill-label">Express Js</span>
+                <span class="skill-label">npm</span>
+                <span class="skill-label">npx</span>
+                <span class="skill-label">Laravel</span>
+            </div>
+            
+            <div class="skills-container" id="Database-skills">
+                <span class="skill-label">MySQL</span>
+                <span class="skill-label">PostgreSQL</span>
+                <span class="skill-label">SQLite</span>
+                <span class="skill-label">MongoDB</span>
+                <span class="skill-label">Redis</span>
 
-                <div class="container">
-                    <h3>Databases</h3>
-                    <div class="skill-box">
-                        <span class="title">MySQL</span>
-                        <div class="skill-bar">
-                            <span class="skill-per databases">
-                                <span class="tooltip">80%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">MongoDB</span>
-                        <div class="skill-bar">
-                            <span class="skill-per devops">
-                                <span class="tooltip">75%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">SQLite</span>
-                        <div class="skill-bar">
-                            <span class="skill-per cloud">
-                                <span class="tooltip">80%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">PostgreSQL</span>
-                        <div class="skill-bar">
-                            <span class="skill-per testing">
-                                <span class="tooltip">85%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+            </div>
 
-                <div class="container">
-                    <h3>DevOps</h3>
-                    <div class="skill-box">
-                        <span class="title">Git</span>
-                        <div class="skill-bar">
-                            <span class="skill-per databases">
-                                <span class="tooltip">80%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">Docker</span>
-                        <div class="skill-bar">
-                            <span class="skill-per devops">
-                                <span class="tooltip">75%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">CI and CD</span>
-                        <div class="skill-bar">
-                            <span class="skill-per devops">
-                                <span class="tooltip">60%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+            <div class="skills-container" id="tools-skills">
+                <span class="skill-label">VS Code</span>
+                <span class="skill-label">Postman</span>
+                <span class="skill-label">Adminer</span>
+            </div>
+            
+            <div class="skills-container" id="devops-skills">
+                <span class="skill-label">Git</span>
+                <span class="skill-label">GitHub</span>
+                <span class="skill-label">Docker</span>
+                <span class="skill-label">Docker-Compose</span>
+                <span class="skill-label">CI/CD</span>
+            </div>
+            
+            <div class="skills-container" id="appdev-skills">
+                <span class="skill-label">Flutter</span>
+                <span class="skill-label">Dart</span>
+            </div>
 
-                <div class="container">
-                    <h3>App Development</h3>
-                    <div class="skill-box">
-                        <span class="title">Flutter</span>
-                        <div class="skill-bar">
-                            <span class="skill-per databases">
-                                <span class="tooltip">60%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">Dart</span>
-                        <div class="skill-bar">
-                            <span class="skill-per devops">
-                                <span class="tooltip">75%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container">
-                    <h3>Tools</h3>
-                    <div class="skill-box">
-                        <span class="title">Postman</span>
-                        <div class="skill-bar">
-                            <span class="skill-per databases">
-                                <span class="tooltip">80%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">VS Code</span>
-                        <div class="skill-bar">
-                            <span class="skill-per devops">
-                                <span class="tooltip">95%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container">
-                    <h3>Frameworks</h3>
-                    <div class="skill-box">
-                        <span class="title">Django</span>
-                        <div class="skill-bar">
-                            <span class="skill-per databases">
-                                <span class="tooltip">70%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">Flask</span>
-                        <div class="skill-bar">
-                            <span class="skill-per devops">
-                                <span class="tooltip">75%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">FastAPI</span>
-                        <div class="skill-bar">
-                            <span class="skill-per devops">
-                                <span class="tooltip">75%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">Echo in Golang</span>
-                        <div class="skill-bar">
-                            <span class="skill-per devops">
-                                <span class="tooltip">75%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">Bootstrap</span>
-                        <div class="skill-bar">
-                            <span class="skill-per devops">
-                                <span class="tooltip">70%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">Tailwind</span>
-                        <div class="skill-bar">
-                            <span class="skill-per devops">
-                                <span class="tooltip">70%</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <span class="title">Laravel</span>
-                        <div class="skill-bar">
-                            <span class="skill-per devops">
-                                <span class="tooltip">70%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+             <div class="skills-container" id="cloud-skills">
+                <span class="skill-label">Render</span>
+                <span class="skill-label">Vercel</span>
             </div>
         </section>
     </div>
@@ -311,176 +124,138 @@
             padding: 2rem;
         }
 
-        .skills-progress {
-            padding: 4rem 2rem;
+        .skills-section {
+            padding: 3rem 2rem;
             background: rgba(138, 43, 226, 0.05);
             border-radius: 16px;
             margin: 2rem 0;
             backdrop-filter: blur(10px);
         }
 
-        .skills-progress h2 {
-            text-align: center;
+        .skills-section h2 {
             color: #8A2BE2;
             font-size: 2.5rem;
             margin-bottom: 3rem;
+            text-align: center;
             background: linear-gradient(90deg, #fff, #8A2BE2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .skills-progress h3 {
-            color: #8A2BE2;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .container {
-            position: relative;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 25px 30px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.1);
-        }
-
-        .skill-box {
-            width: 100%;
-            margin: 25px 0;
-        }
-
-        .skill-box .title {
-            display: block;
+        .category-tab {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid rgba(138, 43, 226, 0.5);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
             font-size: 1rem;
             font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-tab:hover {
+            background: rgba(138, 43, 226, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .category-tab.active {
+            background: rgba(138, 43, 226, 0.4);
+            border-color: #8A2BE2;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .skills-container {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .skills-container.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .skill-label {
+            background: rgba(138, 43, 226, 0.2);
+            border: 1px solid #8A2BE2;
             color: #ffffff;
-            margin-bottom: 10px;
-        }
-
-        .skill-box .skill-bar {
-            height: 8px;
-            width: 100%;
-            border-radius: 6px;
-            margin-top: 6px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .skill-bar .skill-per {
-            position: relative;
-            display: block;
-            height: 100%;
-            border-radius: 6px;
-            background: #8A2BE2;
-            animation: progress 1s ease-in-out forwards;
-            opacity: 0;
-        }
-
-        /* Frontend */
-        .skill-per[class*="frontend"] { width: 80%; animation-delay: 0.1s; }
-        .skill-per[class*="backend"] { width: 65%; animation-delay: 0.2s; }
-        .skill-per[class*="mobile"] { width: 75%; animation-delay: 0.3s; }
-        .skill-per[class*="uiux"] { width: 75%; animation-delay: 0.4s; }
-
-        /* Backend */
-        .skill-per[class*="frontend"] { width: 80%; animation-delay: 0.1s; }
-        .skill-per[class*="backend"] { width: 75%; animation-delay: 0.2s; }
-        .skill-per[class*="mobile"] { width: 70%; animation-delay: 0.3s; }
-        .skill-per[class*="uiux"]:nth-of-type(1) { width: 65%; animation-delay: 0.4s; }
-        .skill-per[class*="uiux"]:nth-of-type(2) { width: 75%; animation-delay: 0.4s; }
-
-        /* Databases */
-        .skill-per[class*="databases"] { width: 80%; animation-delay: 0.5s; }
-        .skill-per[class*="devops"] { width: 75%; animation-delay: 0.6s; }
-        .skill-per[class*="cloud"] { width: 80%; animation-delay: 0.7s; }
-        .skill-per[class*="testing"] { width: 85%; animation-delay: 0.8s; }
-
-       /* DevOps */
-       .skill-per[class*="databases"] { width: 80%; animation-delay: 0.5s; }
-        .skill-per[class*="devops"] { width: 75%; animation-delay: 0.6s; }
-        .skill-per[class*="devops"] + .skill-per { width: 60%; animation-delay: 0.6s; }
-
-        /* App Development */
-        .skill-per[class*="databases"] { width: 60%; animation-delay: 0.5s; }
-        .skill-per[class*="devops"] { width: 75%; animation-delay: 0.6s; }
-
-        /* Tools */
-        .skill-per[class*="databases"] { width: 80%; animation-delay: 0.5s; }
-        .skill-per[class*="devops"] { width: 95%; animation-delay: 0.6s; }
-
-        /* Frameworks */
-        .skill-per[class*="databases"] { width: 70%; animation-delay: 0.5s; }
-        .skill-per[class*="devops"]:nth-of-type(1) { width: 75%; animation-delay: 0.6s; }
-        .skill-per[class*="devops"]:nth-of-type(2) { width: 75%; animation-delay: 0.6s; }
-        .skill-per[class*="devops"]:nth-of-type(3) { width: 75%; animation-delay: 0.6s; }
-        .skill-per[class*="devops"]:nth-of-type(4) { width: 70%; animation-delay: 0.6s; }
-        .skill-per[class*="devops"]:nth-of-type(5) { width: 70%; animation-delay: 0.6s; }
-        .skill-per[class*="devops"]:nth-of-type(6) { width: 70%; animation-delay: 0.6s; }
-
-        @keyframes progress {
-            0% {
-                width: 0;
-                opacity: 1;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .skill-per .tooltip {
-            position: absolute;
-            right: -14px;
-            top: -28px;
-            font-size: 0.75rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
             font-weight: 500;
-            color: #fff;
-            padding: 2px 6px;
-            border-radius: 3px;
-            background: #8A2BE2;
-            z-index: 1;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
-        .tooltip::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -2px;
-            height: 10px;
-            width: 10px;
-            z-index: -1;
-            background-color: #8A2BE2;
-            transform: translateX(-50%) rotate(45deg);
+        .skill-label:hover {
+            background: rgba(138, 43, 226, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.2);
         }
 
         @media screen and (max-width: 768px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .container {
-                margin: 0;
-                padding: 20px 25px;
-            }
-
-            .skills-progress {
+            .skills-section {
                 padding: 2rem 1rem;
             }
-
-            .skills-progress h2 {
+            
+            .skills-section h2 {
                 font-size: 2rem;
+                margin-bottom: 2rem;
             }
-
-            .skills-progress h3 {
-                font-size: 1.25rem;
+            
+            .category-tab {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+            
+            .skill-label {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
             }
         }
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.category-tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all skills containers
+                    const skillContainers = document.querySelectorAll('.skills-container');
+                    skillContainers.forEach(container => {
+                        container.classList.remove('active');
+                    });
+                    
+                    // Show the selected skills container
+                    const category = this.getAttribute('data-category');
+                    document.getElementById(category + '-skills').classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
