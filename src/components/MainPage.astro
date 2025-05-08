@@ -36,68 +36,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Skills Carousel - Responsive Version -->
-            <div class="skills-section">
-                <h2>Technical Skills</h2>
-                <div class="skills-carousel" id="skillsCarousel">
-                    <div class="carousel-track" id="carouselTrack">
-                        <!-- Languages -->
-                        <div class="carousel-item">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5</span>
-                        </div>
-                        <div class="carousel-item">
-                            <i class="fab fa-css3-alt"></i>
-                            <span>CSS3</span>
-                        </div>
-                        <div class="carousel-item">
-                            <i class="fab fa-js"></i>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="carousel-item">
-                            <i class="fab fa-react"></i>
-                            <span>React</span>
-                        </div>
-                        <div class="carousel-item">
-                            <i class="fas fa-code"></i>
-                            <span>TypeScript</span>
-                        </div>
-                        <div class="carousel-item">
-                            <i class="fas fa-rocket"></i>
-                            <span>Astro.js</span>
-                        </div>
-                        <div class="carousel-item">
-                            <i class="fab fa-bootstrap"></i>
-                            <span>Bootstrap</span>
-                        </div>
-                        <div class="carousel-item">
-                            <i class="fab fa-github"></i>
-                            <span>Tailwind</span>
-                        </div>
-                        <div class="carousel-item">
-                            <i class="fas fa-paintbrush"></i>
-                            <span>ShadCN</span>
-                        </div>
-                        <div class="carousel-item">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                        </div>
-                        <div class="carousel-item">
-                            <i class="fab fa-php"></i>
-                            <span>PHP</span>
-                        </div>
-                        <div class="carousel-item">
-                            <i class="fas fa-database"></i>
-                            <span>SQL</span>
-                        </div>
-                        <div class="carousel-item">
-                            <i class="fab fa-node-js"></i>
-                            <span>Node.js</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </main>
     </div>
 
@@ -148,7 +86,6 @@
             align-items: center;
             justify-content: space-between;
             gap: 4rem;
-            margin-bottom: 4rem;
         }
 
         .content-left {
@@ -167,15 +104,6 @@
             font-size: 4.5rem;
             line-height: 1.1;
             margin-bottom: 1rem;
-            background: linear-gradient(90deg, #fff, #8A2BE2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
             background: linear-gradient(90deg, #fff, #8A2BE2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -262,59 +190,6 @@
             object-fit: cover;
         }
 
-        /* Skills Section & Carousel */
-        .skills-section {
-            margin-top: 2rem;
-            padding: 3rem 2rem;
-            background: rgba(138, 43, 226, 0.05);
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-        }
-
-        .skills-carousel {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            padding: 1.5rem 0;
-            cursor: grab;
-        }
-
-        .carousel-track {
-            display: flex;
-            gap: 2rem;
-            transition: transform 0.3s ease;
-            padding: 0 2rem;
-        }
-
-        .carousel-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            min-width: 120px;
-            background: rgba(138, 43, 226, 0.1);
-            border-radius: 12px;
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .carousel-item:hover {
-            transform: translateY(-5px);
-            background: rgba(138, 43, 226, 0.2);
-            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.2);
-        }
-
-        .carousel-item i {
-            font-size: 2.5rem;
-            color: #8A2BE2;
-        }
-
-        .carousel-item span {
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
         /* Responsive Design */
         @media screen and (max-width: 1024px) {
             h1 {
@@ -324,15 +199,6 @@
             .avatar {
                 width: 300px;
                 height: 300px;
-            }
-
-            .carousel-item {
-                min-width: 110px;
-                padding: 1.25rem;
-            }
-
-            .carousel-item i {
-                font-size: 2.25rem;
             }
         }
 
@@ -364,29 +230,6 @@
             h1 {
                 font-size: 3rem;
             }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .carousel-item {
-                min-width: 100px;
-                padding: 1rem;
-            }
-
-            .carousel-item i {
-                font-size: 2rem;
-            }
-
-            .carousel-track {
-                gap: 1.5rem;
-                animation: autoScroll 30s linear infinite;
-            }
-
-            @keyframes autoScroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-120px * 7)); } /* Adjust based on items */
-            }
         }
 
         @media screen and (max-width: 480px) {
@@ -402,29 +245,6 @@
             .avatar {
                 width: 200px;
                 height: 200px;
-            }
-
-            .skills-section {
-                padding: 2rem 1rem;
-            }
-
-            .carousel-item {
-                min-width: 90px;
-                padding: 0.75rem;
-                gap: 0.75rem;
-            }
-
-            .carousel-item i {
-                font-size: 1.75rem;
-            }
-
-            .carousel-item span {
-                font-size: 0.85rem;
-            }
-
-            .carousel-track {
-                gap: 1rem;
-                padding: 0 1rem;
             }
         }
     </style>
@@ -479,95 +299,6 @@
             
             // Start the typing animation
             setTimeout(typeEffect, 500);
-            
-            // Skills carousel interaction
-            const carousel = document.getElementById('skillsCarousel');
-            const track = document.getElementById('carouselTrack');
-            
-            let isDragging = false;
-            let startPosition = 0;
-            let currentTranslate = 0;
-            let prevTranslate = 0;
-            
-            // Clone items for mobile infinite scroll
-            if (window.innerWidth <= 768) {
-                const items = track.innerHTML;
-                track.innerHTML = items + items;
-            }
-            
-            // Mouse events for desktop
-            track.addEventListener('mousedown', dragStart);
-            track.addEventListener('mouseup', dragEnd);
-            track.addEventListener('mousemove', drag);
-            track.addEventListener('mouseleave', dragEnd);
-            
-            // Touch events for mobile
-            track.addEventListener('touchstart', dragStart);
-            track.addEventListener('touchend', dragEnd);
-            track.addEventListener('touchmove', drag);
-            
-            // Window resize handling
-            window.addEventListener('resize', handleResize);
-            
-            function handleResize() {
-                if (window.innerWidth <= 768) {
-                    // Don't apply manual dragging on mobile - use CSS animation instead
-                    track.style.transform = 'translateX(0)';
-                    currentTranslate = 0;
-                    prevTranslate = 0;
-                }
-            }
-            
-            function dragStart(e) {
-                if (window.innerWidth <= 768) return; // Don't enable drag on mobile
-                
-                e.preventDefault();
-                if (e.type === 'touchstart') {
-                    startPosition = e.touches[0].clientX;
-                } else {
-                    startPosition = e.clientX;
-                    carousel.style.cursor = 'grabbing';
-                }
-                
-                isDragging = true;
-            }
-            
-            function drag(e) {
-                if (!isDragging || window.innerWidth <= 768) return;
-                
-                let currentPosition = 0;
-                if (e.type === 'touchmove') {
-                    currentPosition = e.touches[0].clientX;
-                } else {
-                    e.preventDefault();
-                    currentPosition = e.clientX;
-                }
-                
-                const diff = currentPosition - startPosition;
-                currentTranslate = prevTranslate + diff;
-                
-                // Apply boundaries to prevent scrolling too far
-                const trackWidth = track.offsetWidth;
-                const carouselWidth = carousel.offsetWidth;
-                const maxTranslate = 0;
-                const minTranslate = -(trackWidth - carouselWidth);
-                
-                if (currentTranslate > maxTranslate) {
-                    currentTranslate = maxTranslate;
-                } else if (currentTranslate < minTranslate) {
-                    currentTranslate = minTranslate;
-                }
-                
-                track.style.transform = `translateX(${currentTranslate}px)`;
-            }
-            
-            function dragEnd() {
-                if (!isDragging || window.innerWidth <= 768) return;
-                
-                isDragging = false;
-                prevTranslate = currentTranslate;
-                carousel.style.cursor = 'grab';
-            }
         });
     </script>
 </body>
