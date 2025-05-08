@@ -14,8 +14,11 @@
                 <!-- Left Side Content -->
                 <div class="content-left">
                     <h1>Dharshan<br>Kumar J</h1>
-                    <p class="title">Software developer fueled by curiosity for new technologies, passionate about building impactful solutions while turning challenges into opportunities for growth and innovation</p>
-                
+                    <div class="animated-text">
+                        <span class="static-text">I am a </span>
+                        <span class="dynamic-text" id="role-text"></span>
+                        <span class="cursor">|</span>
+                    </div>
                     
                     <!-- <div class="buttons">
                         <a class="button" href="#projects">View Projects</a>
@@ -160,10 +163,39 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .title {
-            color: #8A2BE2;
-            font-size: 1rem;
+        /* Animated Text Styles */
+        .animated-text {
+            display: flex;
+            align-items: center;
+            min-height: 60px;
             margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .static-text {
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        .dynamic-text {
+            color: #8A2BE2;
+            font-weight: 600;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #8A2BE2;
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            color: #8A2BE2;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         .buttons {
@@ -280,6 +312,10 @@
                 padding: 1rem;
             }
 
+            .animated-text {
+                justify-content: center;
+            }
+
             .buttons {
                 flex-direction: column;
                 align-items: stretch;
@@ -294,10 +330,6 @@
                 font-size: 3rem;
             }
 
-            .title {
-                font-size: 1.5rem;
-            }
-
             .carousel-track {
                 animation: scrollMobile 30s linear infinite;
             }
@@ -306,6 +338,11 @@
         @media screen and (max-width: 480px) {
             h1 {
                 font-size: 2.5rem;
+            }
+
+            .animated-text {
+                font-size: 1.2rem;
+                min-height: 50px;
             }
 
             .avatar {
@@ -326,6 +363,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Skills carousel code
             const carousel = document.getElementById('skillsCarousel');
             const track = document.getElementById('carouselTrack');
             
@@ -389,8 +427,56 @@
                     carousel.scrollLeft = 0;
                 }
             });
+
+            // Text animation code
+            const roleText = document.getElementById('role-text');
+            const roles = [
+                "Software Developer",
+                "Web Developer",
+                "API Developer",
+                "App Developer",
+                "Backend Developer",
+                "Full-Stack Developer"
+            ];
+            
+            let roleIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+
+            function typeEffect() {
+                const currentRole = roles[roleIndex];
+                
+                if (isDeleting) {
+                    // Deleting text
+                    roleText.textContent = currentRole.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 50; // Faster when deleting
+                } else {
+                    // Typing text
+                    roleText.textContent = currentRole.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 100; // Normal speed when typing
+                }
+                
+                // If finished typing the word
+                if (!isDeleting && charIndex === currentRole.length) {
+                    isDeleting = true;
+                    typingSpeed = 1500; // Pause at the end
+                } 
+                // If finished deleting the word
+                else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    roleIndex = (roleIndex + 1) % roles.length; // Move to next role
+                    typingSpeed = 500; // Pause before typing next word
+                }
+                
+                setTimeout(typeEffect, typingSpeed);
+            }
+            
+            // Start the typing animation
+            setTimeout(typeEffect, 500);
         });
     </script>
-</div>
 </body>
 </html>
