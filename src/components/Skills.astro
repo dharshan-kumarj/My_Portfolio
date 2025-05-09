@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technical Proficiency</title>
+    <!-- Font Awesome for common icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Devicon for tech-specific icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 </head>
 <body>
     <div id="container">
@@ -20,71 +23,69 @@
                 <button class="category-tab" data-category="devops">DevOps</button>
                 <button class="category-tab" data-category="appdev">App Development</button>
                 <button class="category-tab" data-category="cloud">Cloud</button>
-
             </div>
             
             <div class="skills-container active" id="frontend-skills">
-                <span class="skill-label">HTML</span>
-                <span class="skill-label">CSS</span>
-                <span class="skill-label">React</span>
-                <span class="skill-label">TypeScript</span>
-                <span class="skill-label">JavaScript</span>
-                <span class="skill-label">Astro.js</span>
-                <span class="skill-label">jQuery</span>
-                <span class="skill-label">Bootstrap</span>
-                <span class="skill-label">Tailwind</span>
-                <span class="skill-label">ShadCN</span>
+                <span class="skill-label"><i class="devicon-html5-plain colored"></i> HTML</span>
+                <span class="skill-label"><i class="devicon-css3-plain colored"></i> CSS</span>
+                <span class="skill-label"><i class="devicon-react-original colored"></i> React</span>
+                <span class="skill-label"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+                <span class="skill-label"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                <span class="skill-label"><img src="https://astro.build/assets/press/astro-icon-light.svg" class="custom-icon"> Astro.js</span>
+                <span class="skill-label"><i class="devicon-jquery-plain colored"></i> jQuery</span>
+                <span class="skill-label"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+                <span class="skill-label"><i class="devicon-tailwindcss-plain colored"></i> Tailwind</span>
+                <span class="skill-label"><img src="https://ui.shadcn.com/favicon.ico" class="custom-icon"> ShadCN</span>
             </div>
             
             <div class="skills-container" id="backend-skills">
-                <span class="skill-label">Python</span>
-                <span class="skill-label">PHP</span>
-                <span class="skill-label">Golang</span>
-                <span class="skill-label">Java</span>
-                <span class="skill-label">C</span>
-                <span class="skill-label">Node JS</span>
-                <span class="skill-label">Django</span>
-                <span class="skill-label">Flask</span>
-                <span class="skill-label">FastAPI</span>
-                <span class="skill-label">Echo(Go)</span>
-                <span class="skill-label">Nest JS</span>
-                <span class="skill-label">Express Js</span>
-                <span class="skill-label">npm</span>
-                <span class="skill-label">npx</span>
-                <span class="skill-label">Laravel</span>
+                <span class="skill-label"><i class="devicon-python-plain colored"></i> Python</span>
+                <span class="skill-label"><i class="devicon-php-plain colored"></i> PHP</span>
+                <span class="skill-label"><i class="devicon-go-plain colored"></i> Golang</span>
+                <span class="skill-label"><i class="devicon-java-plain colored"></i> Java</span>
+                <span class="skill-label"><i class="devicon-c-plain colored"></i> C</span>
+                <span class="skill-label"><i class="devicon-nodejs-plain colored"></i> Node JS</span>
+                <span class="skill-label"><i class="devicon-django-plain colored"></i> Django</span>
+                <span class="skill-label"><img src="data:image/jpeg;base64,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" class="custom-icon"> Flask</span>
+                <span class="skill-label"><img src="https://fastapi.tiangolo.com/img/favicon.png" class="custom-icon"> FastAPI</span>
+                <span class="skill-label"><img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/golang_gopher_src_logo_icon_168155.png" class="custom-icon"> Echo(Go)</span>
+                <span class="skill-label"><i class="devicon-nestjs-plain colored"></i> Nest JS</span>
+                <span class="skill-label"><i class="devicon-express-original colored"></i> Express Js</span>
+                <span class="skill-label"><i class="devicon-npm-original-wordmark colored"></i> npm</span>
+                <!-- <span class="skill-label"><i class="devicon-npm-original-wordmark colored"></i> npx</span> -->
+                <span class="skill-label"><i class="devicon-laravel-plain colored"></i> Laravel</span>
             </div>
             
             <div class="skills-container" id="Database-skills">
-                <span class="skill-label">MySQL</span>
-                <span class="skill-label">PostgreSQL</span>
-                <span class="skill-label">SQLite</span>
-                <span class="skill-label">MongoDB</span>
-                <span class="skill-label">Redis</span>
-
+                <span class="skill-label"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+                <span class="skill-label"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+                <span class="skill-label"><i class="devicon-sqlite-plain colored"></i> SQLite</span>
+                <span class="skill-label"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+                <span class="skill-label"><i class="devicon-redis-plain colored"></i> Redis</span>
             </div>
 
             <div class="skills-container" id="tools-skills">
-                <span class="skill-label">VS Code</span>
-                <span class="skill-label">Postman</span>
-                <span class="skill-label">Adminer</span>
+                <span class="skill-label"><i class="devicon-vscode-plain colored"></i> VS Code</span>
+                <span class="skill-label"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" class="custom-icon"> Postman</span>
+                <span class="skill-label"><img src="https://www.adminer.org/static/images/logo.png" class="custom-icon"> Adminer</span>
             </div>
             
             <div class="skills-container" id="devops-skills">
-                <span class="skill-label">Git</span>
-                <span class="skill-label">GitHub</span>
-                <span class="skill-label">Docker</span>
-                <span class="skill-label">Docker-Compose</span>
-                <span class="skill-label">CI/CD</span>
+                <span class="skill-label"><i class="devicon-git-plain colored"></i> Git</span>
+                <span class="skill-label"><i class="devicon-github-original colored"></i> GitHub</span>
+                <span class="skill-label"><i class="devicon-docker-plain colored"></i> Docker</span>
+                <!-- <span class="skill-label"><i class="devicon-docker-plain colored"></i> Docker-Compose</span> -->
+                <!-- <span class="skill-label"><img src="https://raw.githubusercontent.com/cncf/artwork/master/projects/continuous-delivery-foundation/icon/color/continuous-delivery-foundation-icon-color.svg" class="custom-icon"> CI/CD</span> -->
             </div>
             
             <div class="skills-container" id="appdev-skills">
-                <span class="skill-label">Flutter</span>
-                <span class="skill-label">Dart</span>
+                <span class="skill-label"><i class="devicon-flutter-plain colored"></i> Flutter</span>
+                <span class="skill-label"><i class="devicon-dart-plain colored"></i> Dart</span>
             </div>
 
-             <div class="skills-container" id="cloud-skills">
-                <span class="skill-label">Render</span>
-                <span class="skill-label">Vercel</span>
+            <div class="skills-container" id="cloud-skills">
+                <span class="skill-label"><img src="https://mms.businesswire.com/media/20241112181390/en/2301437/22/Render_logo_-_Black.jpg" class="custom-icon"> Render</span>
+                <span class="skill-label"><img src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png" class="custom-icon"> Vercel</span>
             </div>
         </section>
     </div>
@@ -201,13 +202,26 @@
             font-size: 0.95rem;
             font-weight: 500;
             transition: all 0.3s ease;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .skill-label:hover {
             background: rgba(138, 43, 226, 0.4);
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(138, 43, 226, 0.2);
+        }
+        
+        .skill-label i {
+            font-size: 1.2rem;
+        }
+
+        .custom-icon {
+            width: 1.2rem;
+            height: 1.2rem;
+            object-fit: contain;
+            filter: brightness(1.2);
         }
 
         @media screen and (max-width: 768px) {
@@ -228,6 +242,36 @@
             .skill-label {
                 font-size: 0.85rem;
                 padding: 0.5rem 1rem;
+            }
+            
+            .skill-label i, .custom-icon {
+                font-size: 1rem;
+                width: 1rem;
+                height: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            #container {
+                padding: 1rem;
+            }
+            
+            .category-tabs {
+                gap: 0.5rem;
+            }
+            
+            .category-tab {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            .skills-container {
+                gap: 0.75rem;
+            }
+            
+            .skill-label {
+                padding: 0.4rem 0.9rem;
+                font-size: 0.8rem;
             }
         }
     </style>
