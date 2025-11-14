@@ -21,10 +21,6 @@
                             <span>contact@dharshankumar.com</span>
                         </div>
                         <div class="contact-method">
-                            <i class="fas fa-phone"></i>
-                            <span>7904826830</span>
-                        </div>
-                        <div class="contact-method">
                             <i class="fas fa-map-marker-alt"></i>
                             <span>Tirupur,Tamil Nadu</span>
                         </div>
@@ -50,15 +46,6 @@
 
                <div class="form-container">
                     <form class="form" id="contactForm">
-                        <!-- API Key (Hidden) -->
-                        <input
-                            type="text"
-                            id="api_key"
-                            name="api_key"
-                            value="5c9ded41b7e024534054f166902dedc9"
-                            style="display: none;"
-                        />
-
                         <!-- Full Name -->
                         <div class="form-group">
                             <label for="name">Full Name</label>
@@ -75,12 +62,6 @@
                         <div class="form-group">
                             <label for="message">Your Message</label>
                             <textarea required="" id="message" name="message" placeholder="Tell me about your project..."></textarea>
-                        </div>
-
-                        <!-- Phone Number -->
-                        <div class="form-group">
-                            <label for="phone_no">Phone Number</label>
-                            <input required="" name="phone_no" id="phone_no" type="text" placeholder="Your Phone Number">
                         </div>
 
                         <!-- Submit Button -->
@@ -400,45 +381,57 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const API_URL = 'https://dharshan--smtp-portfolio--9hk6jmk926rf.code.run/api/contact/submit/';
+            const MIN_LOADING_DURATION = 2000;
+
             const form = document.getElementById('contactForm');
             const submitButton = document.getElementById('submitButton');
             const formStatus = document.getElementById('formStatus');
-            
-            form.addEventListener('submit', function(e) {
-                // Prevent form from submitting normally
+
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                
-                // Show loading state
+
+                const startTime = Date.now();
                 setLoadingState(true);
-                
-                // Get form data
-                const formData = new FormData(form);
-                
-                // Send form data using fetch with form-urlencoded data
-                fetch('https://hlomail-backend.onrender.com/v1/contact-mail', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (response.ok) {
-                        showMessage('Your message has been sent successfully!', 'success');
-                        form.reset();
-                    } else {
+                resetStatus();
+
+                const payload = {
+                    name: form.name.value.trim(),
+                    email: form.email.value.trim(),
+                    message: form.message.value.trim()
+                };
+
+                try {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
                         throw new Error('Server error');
                     }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Show success message anyway as per your request
-                    showMessage('Your message has been sent successfully!', 'success');
+
+                    const data = await response.json();
+                    await ensureMinimumDelay(startTime);
+                    showMessage(data.message || 'Your message has been queued and will be sent shortly', 'success');
                     form.reset();
-                })
-                .finally(() => {
+                } catch (error) {
+                    console.error('Error:', error);
+                    await ensureMinimumDelay(startTime);
+                    showMessage('We could not send your message right now. Please try again later.', 'error');
+                } finally {
                     setLoadingState(false);
-                });
+                }
             });
-            
-            // Helper function to set loading state
+
+            function resetStatus() {
+                formStatus.className = 'form-status';
+                formStatus.style.display = 'none';
+            }
+
             function setLoadingState(isLoading) {
                 if (isLoading) {
                     submitButton.classList.add('loading');
@@ -450,20 +443,29 @@
                     submitButton.disabled = false;
                 }
             }
-            
-            // Helper function to show status messages
+
             function showMessage(message, type) {
                 formStatus.textContent = message;
                 formStatus.className = 'form-status';
                 formStatus.classList.add(type);
                 formStatus.style.display = 'block';
-                
-                // Auto-hide success messages after 5 seconds
+
                 if (type === 'success') {
                     setTimeout(() => {
                         formStatus.style.display = 'none';
                     }, 5000);
                 }
+            }
+
+            function ensureMinimumDelay(startTime) {
+                const elapsed = Date.now() - startTime;
+                const remaining = MIN_LOADING_DURATION - elapsed;
+
+                if (remaining > 0) {
+                    return new Promise(resolve => setTimeout(resolve, remaining));
+                }
+
+                return Promise.resolve();
             }
         });
     </script>
