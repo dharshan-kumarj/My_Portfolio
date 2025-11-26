@@ -1,393 +1,366 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
-<body>
-    <div id="container">
-        <div id="background-gradient"></div>
-        <main>
-            <h1 class="main-title">Get In Touch</h1>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h2>Let's Connect</h2>
-                    <p>Feel free to reach out for collaborations or just a friendly hello</p>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <i class="fas fa-envelope"></i>
-                            <span>contact@dharshankumar.com</span>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Tirupur,Tamil Nadu</span>
-                        </div>
+<div id="contact-container-wrapper">
+    <div id="contact-background-gradient"></div>
+    <section id="contact" class="contact-section">
+        <h1 class="main-title">Get In Touch</h1>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Let's Connect</h2>
+                <p>Feel free to reach out for collaborations or just a friendly hello</p>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@dharshankumar.com</span>
                     </div>
-                    <div class="social-links">
-    <a href="https://github.com/dharshan-kumarj/" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://leetcode.com/u/IbJgjW0doT/" class="social-link" title="LeetCode">
-        <svg class="leetcode-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-            <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.609-2.636a5.055 5.055 0 0 0-2.445-1.337l2.467-2.503c.516-.514.498-1.366-.037-1.901-.535-.535-1.387-.552-1.902-.036l-10.1 10.101c-.981.982-1.494 2.337-1.494 3.835 0 1.498.513 2.895 1.494 3.875l4.347 4.361c.981.979 2.337 1.452 3.834 1.452s2.853-.512 3.835-1.494l2.609-2.637c.514-.514.496-1.365-.039-1.9s-1.386-.553-1.899-.039zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z"/>
-        </svg>
-    </a>
-    <a href="https://www.linkedin.com/in/j-dharshan-kumar/" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://www.instagram.com/_dharshankumarj/" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://medium.com/@jdharshankumar18" class="social-link" title="Medium"><i class="fab fa-medium"></i></a>
-    <a href="mailto:contact@dharshankumar.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
-     <!-- <a href="#" class="social-link" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a href="#" class="social-link" title="Discord"><i class="fab fa-discord"></i></a> -->
-    <!-- <a href="#" class="social-link" title="Stack Overflow"><i class="fab fa-stack-overflow"></i></a> -->
-    <!-- <a href="#" class="social-link" title="Dev.to"><i class="fab fa-dev"></i></a>
-    <a href="#" class="social-link" title="CodePen"><i class="fab fa-codepen"></i></a> -->
-</div>
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Tirupur,Tamil Nadu</span>
+                    </div>
                 </div>
-
-               <div class="form-container">
-                    <form class="form" id="contactForm">
-                        <!-- Full Name -->
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input required="" name="name" id="name" type="text" placeholder="dharshan-kumarj">
-                        </div>
-
-                        <!-- Email Address -->
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input required="" name="email" id="email" type="email" placeholder="contact@dharshankumar.com">
-                        </div>
-
-                        <!-- Message -->
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea required="" id="message" name="message" placeholder="Tell me about your project..."></textarea>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <button type="submit" class="form-submit-btn" id="submitButton">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-
-                        <!-- Form Status Message -->
-                        <div id="formStatus" class="form-status"></div>
-                    </form>
+                <div class="social-links">
+                    <a href="https://github.com/dharshan-kumarj/" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://leetcode.com/u/IbJgjW0doT/" class="social-link" title="LeetCode">
+                        <svg class="leetcode-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                            <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.609-2.636a5.055 5.055 0 0 0-2.445-1.337l2.467-2.503c.516-.514.498-1.366-.037-1.901-.535-.535-1.387-.552-1.902-.036l-10.1 10.101c-.981.982-1.494 2.337-1.494 3.835 0 1.498.513 2.895 1.494 3.875l4.347 4.361c.981.979 2.337 1.452 3.834 1.452s2.853-.512 3.835-1.494l2.609-2.637c.514-.514.496-1.365-.039-1.9s-1.386-.553-1.899-.039zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/j-dharshan-kumar/" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/_dharshankumarj/" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://medium.com/@jdharshankumar18" class="social-link" title="Medium"><i class="fab fa-medium"></i></a>
+                    <a href="mailto:contact@dharshankumar.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-        </main>
-    </div>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+           <div class="form-container">
+                <form class="form" id="contactForm">
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input required="" name="name" id="name" type="text" placeholder="dharshan-kumarj">
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input required="" name="email" id="email" type="email" placeholder="contact@dharshankumar.com">
+                    </div>
+
+                    <!-- Message -->
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea required="" id="message" name="message" placeholder="Tell me about your project..."></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="form-submit-btn" id="submitButton">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+
+                    <!-- Form Status Message -->
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    #contact-background-gradient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at top right, #8A2BE2 0%, transparent 50%);
+        opacity: 0.15;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    #contact-container-wrapper {
+        position: relative;
+        z-index: 1;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .contact-section {
+        min-height: 100vh;
+        padding: 2rem 0;
+    }
+
+    .main-title {
+        font-size: 3.5rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        background: linear-gradient(90deg, #fff, #8A2BE2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .contact-info {
+        padding: 2rem;
+        background: rgba(138, 43, 226, 0.1);
+        border: 1px solid rgba(138, 43, 226, 0.2);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contact-info h2 {
+        font-size: 2rem;
+        background: linear-gradient(90deg, #fff, #8A2BE2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .contact-info p {
+        color: #ccc;
+        line-height: 1.6;
+    }
+
+    .contact-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .contact-method {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: #fff;
+    }
+
+    .contact-method i {
+        width: 40px;
+        height: 40px;
+        background: rgba(138, 43, 226, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #8A2BE2;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 0.8rem;
+        margin-top: auto;
+        flex-wrap: wrap;
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+        background: rgba(138, 43, 226, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #8A2BE2;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        background: #8A2BE2;
+        color: #fff;
+    }
+
+    .leetcode-icon {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+    }
+
+    .form-container {
+        background: rgba(33, 33, 33, 0.9);
+        border: 2px solid transparent;
+        padding: 2rem;
+        border-radius: 20px;
+        background: linear-gradient(#212121, #212121) padding-box,
+                    linear-gradient(145deg, transparent 35%,#8A2BE2, #40c9ff) border-box;
+        animation: gradient 5s ease infinite;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
         }
-
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: #000000;
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
+        50% {
+            background-position: 100% 50%;
         }
-
-        #background-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, #8A2BE2 0%, transparent 50%);
-            opacity: 0.15;
-            z-index: 0;
-            pointer-events: none;
+        100% {
+            background-position: 0% 50%;
         }
+    }
 
-        #container {
-            position: relative;
-            z-index: 1;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
 
-        main {
-            min-height: 100vh;
-            padding: 2rem 0;
-        }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 
-        .main-title {
-            font-size: 3.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(90deg, #fff, #8A2BE2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .form-group label {
+        color: #8A2BE2;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
 
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(138, 43, 226, 0.2);
+        border-radius: 10px;
+        color: #fff;
+        font-family: inherit;
+        transition: all 0.3s ease;
+    }
+
+    .form-group textarea {
+        height: 150px;
+        resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #8A2BE2;
+        background: rgba(138, 43, 226, 0.1);
+    }
+
+    .form-submit-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        background: #8A2BE2;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-family: inherit;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .form-submit-btn:hover {
+        background: #9A4BE2;
+        transform: translateY(-2px);
+    }
+
+    .form-submit-btn:active {
+        transform: translateY(0);
+    }
+
+    .form-submit-btn.loading {
+        background: #666;
+        cursor: not-allowed;
+    }
+
+    .form-status {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 0.9rem;
+        display: none;
+    }
+
+    .form-status.success {
+        display: block;
+        background: rgba(39, 174, 96, 0.2);
+        border: 1px solid #27ae60;
+        color: #2ecc71;
+    }
+
+    .form-status.error {
+        display: block;
+        background: rgba(231, 76, 60, 0.2);
+        border: 1px solid #e74c3c;
+        color: #e74c3c;
+    }
+
+    .spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 968px) {
         .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: 1fr;
         }
 
         .contact-info {
-            padding: 2rem;
-            background: rgba(138, 43, 226, 0.1);
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-info h2 {
-            font-size: 2rem;
-            background: linear-gradient(90deg, #fff, #8A2BE2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .contact-info p {
-            color: #ccc;
-            line-height: 1.6;
-        }
-
-        .contact-methods {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            text-align: center;
         }
 
         .contact-method {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: #fff;
-        }
-
-        .contact-method i {
-            width: 40px;
-            height: 40px;
-            background: rgba(138, 43, 226, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            color: #8A2BE2;
         }
 
         .social-links {
-    display: flex;
-    gap: 0.8rem;
-    margin-top: auto;
-    flex-wrap: wrap;
-}
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(138, 43, 226, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            color: #8A2BE2;
-            text-decoration: none;
-            transition: all 0.3s ease;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #contact-container-wrapper {
+            padding: 1rem;
         }
 
-        .social-link:hover {
-            background: #8A2BE2;
-            color: #fff;
-        }
-
-        .leetcode-icon {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
+        .main-title {
+            font-size: 2rem;
         }
 
         .form-container {
-            background: rgba(33, 33, 33, 0.9);
-            border: 2px solid transparent;
-            padding: 2rem;
-            border-radius: 20px;
-            background: linear-gradient(#212121, #212121) padding-box,
-                        linear-gradient(145deg, transparent 35%,#8A2BE2, #40c9ff) border-box;
-            animation: gradient 5s ease infinite;
-        }
-
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .form-group label {
-            color: #8A2BE2;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            border-radius: 10px;
-            color: #fff;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #8A2BE2;
-            background: rgba(138, 43, 226, 0.1);
+            padding: 1.5rem;
         }
 
         .form-submit-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: #8A2BE2;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            font-family: inherit;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            width: 100%;
         }
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const API_URL = 'https://dharshan--smtp-portfolio--9hk6jmk926rf.code.run/api/contact/submit/';
+        const MIN_LOADING_DURATION = 2000;
 
-        .form-submit-btn:hover {
-            background: #9A4BE2;
-            transform: translateY(-2px);
-        }
+        const form = document.getElementById('contactForm');
+        const submitButton = document.getElementById('submitButton');
+        const formStatus = document.getElementById('formStatus');
 
-        .form-submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .form-submit-btn.loading {
-            background: #666;
-            cursor: not-allowed;
-        }
-
-        .form-status {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 0.9rem;
-            display: none;
-        }
-
-        .form-status.success {
-            display: block;
-            background: rgba(39, 174, 96, 0.2);
-            border: 1px solid #27ae60;
-            color: #2ecc71;
-        }
-
-        .form-status.error {
-            display: block;
-            background: rgba(231, 76, 60, 0.2);
-            border: 1px solid #e74c3c;
-            color: #e74c3c;
-        }
-
-        .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 968px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
-                text-align: center;
-            }
-
-            .contact-method {
-                justify-content: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #container {
-                padding: 1rem;
-            }
-
-            .main-title {
-                font-size: 2rem;
-            }
-
-            .form-container {
-                padding: 1.5rem;
-            }
-
-            .form-submit-btn {
-                width: 100%;
-            }
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const API_URL = 'https://dharshan--smtp-portfolio--9hk6jmk926rf.code.run/api/contact/submit/';
-            const MIN_LOADING_DURATION = 2000;
-
-            const form = document.getElementById('contactForm');
-            const submitButton = document.getElementById('submitButton');
-            const formStatus = document.getElementById('formStatus');
-
+        if (form) {
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
@@ -426,48 +399,47 @@
                     setLoadingState(false);
                 }
             });
+        }
 
-            function resetStatus() {
-                formStatus.className = 'form-status';
-                formStatus.style.display = 'none';
+        function resetStatus() {
+            formStatus.className = 'form-status';
+            formStatus.style.display = 'none';
+        }
+
+        function setLoadingState(isLoading) {
+            if (isLoading) {
+                submitButton.classList.add('loading');
+                submitButton.innerHTML = '<div class="spinner"></div> Sending...';
+                submitButton.disabled = true;
+            } else {
+                submitButton.classList.remove('loading');
+                submitButton.innerHTML = '<span>Send Message</span> <i class="fas fa-paper-plane"></i>';
+                submitButton.disabled = false;
+            }
+        }
+
+        function showMessage(message, type) {
+            formStatus.textContent = message;
+            formStatus.className = 'form-status';
+            formStatus.classList.add(type);
+            formStatus.style.display = 'block';
+
+            if (type === 'success') {
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        function ensureMinimumDelay(startTime) {
+            const elapsed = Date.now() - startTime;
+            const remaining = MIN_LOADING_DURATION - elapsed;
+
+            if (remaining > 0) {
+                return new Promise(resolve => setTimeout(resolve, remaining));
             }
 
-            function setLoadingState(isLoading) {
-                if (isLoading) {
-                    submitButton.classList.add('loading');
-                    submitButton.innerHTML = '<div class="spinner"></div> Sending...';
-                    submitButton.disabled = true;
-                } else {
-                    submitButton.classList.remove('loading');
-                    submitButton.innerHTML = '<span>Send Message</span> <i class="fas fa-paper-plane"></i>';
-                    submitButton.disabled = false;
-                }
-            }
-
-            function showMessage(message, type) {
-                formStatus.textContent = message;
-                formStatus.className = 'form-status';
-                formStatus.classList.add(type);
-                formStatus.style.display = 'block';
-
-                if (type === 'success') {
-                    setTimeout(() => {
-                        formStatus.style.display = 'none';
-                    }, 5000);
-                }
-            }
-
-            function ensureMinimumDelay(startTime) {
-                const elapsed = Date.now() - startTime;
-                const remaining = MIN_LOADING_DURATION - elapsed;
-
-                if (remaining > 0) {
-                    return new Promise(resolve => setTimeout(resolve, remaining));
-                }
-
-                return Promise.resolve();
-            }
-        });
-    </script>
-</body>
-</html>
+            return Promise.resolve();
+        }
+    });
+</script>
