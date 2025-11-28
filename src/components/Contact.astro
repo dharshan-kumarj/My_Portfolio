@@ -316,8 +316,14 @@
     }
 
     @media (max-width: 968px) {
+        .contact-section {
+            min-height: auto;
+            padding: 3rem 0;
+        }
+        
         .contact-container {
             grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
 
         .contact-info {
@@ -331,23 +337,88 @@
         .social-links {
             justify-content: center;
         }
+        
+        .main-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        #contact-container-wrapper {
+            padding: 1.5rem;
+        }
+        
+        .contact-info {
+            padding: 1.5rem;
+            gap: 1.5rem;
+        }
+        
+        .contact-info h2 {
+            font-size: 1.5rem;
+        }
+        
+        .contact-method {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .contact-method i {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .contact-method span {
+            font-size: 0.9rem;
+        }
+        
+        .social-link {
+            width: 44px;
+            height: 44px;
+        }
     }
 
     @media (max-width: 480px) {
         #contact-container-wrapper {
             padding: 1rem;
         }
+        
+        .contact-section {
+            padding: 2rem 0;
+        }
 
         .main-title {
-            font-size: 2rem;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info {
+            padding: 1.25rem;
+            border-radius: 16px;
+        }
+        
+        .contact-info p {
+            font-size: 0.9rem;
         }
 
         .form-container {
-            padding: 1.5rem;
+            padding: 1.25rem;
+            border-radius: 16px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 0.875rem;
+            font-size: 16px; /* Prevents zoom on iOS */
+        }
+        
+        .form-group label {
+            font-size: 0.85rem;
         }
 
         .form-submit-btn {
             width: 100%;
+            padding: 0.875rem;
         }
     }
 </style>

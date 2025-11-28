@@ -467,14 +467,149 @@
             letter-spacing: 2px;
         }
 
+        /* Tablet Responsive */
+        @media (max-width: 968px) {
+            #achievements-section {
+                padding: 3rem 1rem;
+            }
+            
+            .title { font-size: 2.5rem; }
+            
+            .workshop-header h3 {
+                font-size: 1.5rem;
+            }
+            
+            .workshop-feature {
+                padding: 1.5rem;
+            }
+            
+            .workshop-stats {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            .title { font-size: 2.2rem; }
+            .title { font-size: 2rem; }
             .timeline { padding-left: 1.5rem; }
             .timeline-marker { left: -1.9rem; }
             .gallery-grid { grid-template-columns: 1fr 1fr; }
-            .lb-nav { width: 40px; height: 40px; font-size: 1rem; }
-            .lb-nav.prev { left: 1rem; }
-            .lb-nav.next { right: 1rem; }
+            
+            .timeline-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .timeline-item {
+                padding-bottom: 2.5rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            /* Lightbox mobile fixes */
+            .lb-close {
+                top: 1rem;
+                right: 1rem;
+                width: 44px;
+                height: 44px;
+                font-size: 1.2rem;
+                z-index: 1002;
+            }
+            
+            .lb-nav {
+                width: 44px;
+                height: 44px;
+                font-size: 1rem;
+                z-index: 1002;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+            
+            .lb-nav.prev { left: 0.5rem; }
+            .lb-nav.next { right: 0.5rem; }
+            
+            .lb-image-wrapper {
+                max-width: 95%;
+                max-height: 70vh;
+            }
+            
+            .lb-image {
+                max-height: 70vh;
+            }
+            
+            .lb-counter {
+                bottom: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #achievements-section {
+                padding: 2rem 0.75rem;
+            }
+            
+            .title { font-size: 1.75rem; }
+            
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+            
+            .gallery-grid { 
+                grid-template-columns: 1fr; 
+                gap: 0.75rem;
+            }
+            
+            .gallery-item {
+                aspect-ratio: 16/9;
+            }
+            
+            .timeline {
+                padding-left: 1rem;
+            }
+            
+            .timeline-item {
+                padding-left: 1rem;
+            }
+            
+            .timeline-marker {
+                left: -1.5rem;
+                width: 10px;
+                height: 10px;
+            }
+            
+            .workshop-feature {
+                padding: 1rem;
+            }
+            
+            .workshop-header h3 {
+                font-size: 1.25rem;
+            }
+            
+            .tags {
+                gap: 0.4rem;
+            }
+            
+            .tags span {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.75rem;
+            }
+            
+            /* Lightbox small mobile */
+            .lb-nav {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .lb-nav.prev { left: 0.25rem; }
+            .lb-nav.next { right: 0.25rem; }
         }
     </style>
 
@@ -505,10 +640,16 @@
 
         let currentGallery = [];
         let currentIndex = 0;
+        
+        // Touch/Swipe variables
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const minSwipeDistance = 50;
 
         // Open Lightbox
         document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
                 const grid = this.closest('.gallery-grid');
                 // Get all images in this specific grid
                 currentGallery = Array.from(grid.querySelectorAll('img')).map(img => ({
@@ -523,6 +664,12 @@
                 updateLightbox();
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
+            });
+            
+            // Also add touch event for mobile
+            item.addEventListener('touchend', function(e) {
+                // Prevent double-firing
+                if (e.cancelable) e.preventDefault();
             });
         });
 
@@ -547,19 +694,72 @@
             document.body.style.overflow = '';
         }
 
-        // Event Listeners
-        closeBtn.addEventListener('click', closeLightbox);
+        // Event Listeners - Click
+        closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeLightbox();
+        });
+        
         backdrop.addEventListener('click', closeLightbox);
         
-        prevBtn.addEventListener('click', (e) => {
+        prevBtn.addEventListener('click', function(e) {
+            e.preventDefault();
             e.stopPropagation();
             navigate(-1);
         });
         
-        nextBtn.addEventListener('click', (e) => {
+        nextBtn.addEventListener('click', function(e) {
+            e.preventDefault();
             e.stopPropagation();
             navigate(1);
         });
+        
+        // Touch Events for buttons (mobile fix)
+        closeBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeLightbox();
+        });
+        
+        prevBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            navigate(-1);
+        });
+        
+        nextBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            navigate(1);
+        });
+        
+        // Swipe gesture support for image navigation
+        lightbox.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        lightbox.addEventListener('touchend', function(e) {
+            // Don't process if touching nav buttons
+            if (e.target.closest('.lb-nav') || e.target.closest('.lb-close')) return;
+            
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeDistance = touchEndX - touchStartX;
+            
+            if (Math.abs(swipeDistance) > minSwipeDistance) {
+                if (swipeDistance > 0) {
+                    // Swiped right - go to previous
+                    navigate(-1);
+                } else {
+                    // Swiped left - go to next
+                    navigate(1);
+                }
+            }
+        }
 
         // Keyboard Navigation
         document.addEventListener('keydown', (e) => {
