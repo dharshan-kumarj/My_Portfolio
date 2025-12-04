@@ -472,7 +472,7 @@
         /* Show overlay by default on touch devices */
         .project-overlay {
             opacity: 1;
-            background: rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 100%);
         }
         
         .project-links {
@@ -482,6 +482,13 @@
         .project-link {
             width: 44px;
             height: 44px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .project-link:active {
+            background: var(--accent);
+            color: #fff;
+            transform: scale(0.95);
         }
     }
     

@@ -134,12 +134,20 @@
         color: #fff;
         border-color: var(--accent);
     }
+    
+    .category-tab:active {
+        transform: scale(0.95);
+    }
 
     .category-tab.active {
         background: var(--accent);
         border-color: var(--accent);
         color: #fff;
         box-shadow: 0 4px 15px var(--accent-glow);
+    }
+    
+    .category-tab {
+        -webkit-tap-highlight-color: transparent;
     }
 
     .skills-content {

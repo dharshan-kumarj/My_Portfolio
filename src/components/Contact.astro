@@ -233,7 +233,10 @@
         border-radius: 10px;
         color: #fff;
         font-family: inherit;
+        font-size: 16px; /* Prevents iOS zoom on focus */
         transition: all 0.3s ease;
+        -webkit-appearance: none;
+        appearance: none;
     }
 
     .form-group textarea {
