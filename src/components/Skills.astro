@@ -1,93 +1,278 @@
 <section id="skills" class="skills-section">
     <div class="container">
         <h2 class="section-title">Technical Proficiency</h2>
-        
+
         <div class="category-tabs">
-            <button class="category-tab active" data-category="frontend">Frontend</button>
-            <button class="category-tab" data-category="backend">Backend</button>
-            <button class="category-tab" data-category="database">Database</button>
+            <button class="category-tab active" data-category="frontend"
+                >Frontend</button
+            >
+            <button class="category-tab" data-category="backend">Backend</button
+            >
+            <button class="category-tab" data-category="database"
+                >Database</button
+            >
             <button class="category-tab" data-category="tools">Tools</button>
             <button class="category-tab" data-category="devops">DevOps</button>
             <button class="category-tab" data-category="appdev">App Dev</button>
             <button class="category-tab" data-category="cloud">Cloud</button>
         </div>
-        
+
         <div class="skills-content">
             <!-- Frontend -->
             <div class="skills-grid active" id="frontend-skills">
-                <div class="skill-card"><i class="devicon-html5-plain colored"></i> <span>HTML</span></div>
-                <div class="skill-card"><i class="devicon-css3-plain colored"></i> <span>CSS</span></div>
-                <div class="skill-card"><i class="devicon-react-original colored"></i> <span>React</span></div>
-                <div class="skill-card"><i class="devicon-typescript-plain colored"></i> <span>TypeScript</span></div>
-                <div class="skill-card"><i class="devicon-javascript-plain colored"></i> <span>JavaScript</span></div>
-                <div class="skill-card"><img src="https://astro.build/assets/press/astro-icon-light.svg" class="custom-icon"> <span>Astro.js</span></div>
-                <div class="skill-card"><i class="devicon-jquery-plain colored"></i> <span>jQuery</span></div>
-                <div class="skill-card"><i class="devicon-bootstrap-plain colored"></i> <span>Bootstrap</span></div>
-                <div class="skill-card"><i class="devicon-tailwindcss-plain colored"></i> <span>Tailwind</span></div>
-                <div class="skill-card"><img src="https://ui.shadcn.com/favicon.ico" class="custom-icon"> <span>ShadCN</span></div>
+                <div class="skill-card">
+                    <i class="devicon-html5-plain colored"></i>
+                    <span>HTML</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-css3-plain colored"></i>
+                    <span>CSS</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-react-original colored"></i>
+                    <span>React</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-typescript-plain colored"></i>
+                    <span>TypeScript</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-javascript-plain colored"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill-card">
+                    <img
+                        src="https://astro.build/assets/press/astro-icon-light.svg"
+                        class="custom-icon"
+                    />
+                    <span>Astro.js</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-jquery-plain colored"></i>
+                    <span>jQuery</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-bootstrap-plain colored"></i>
+                    <span>Bootstrap</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-tailwindcss-plain colored"></i>
+                    <span>Tailwind</span>
+                </div>
+                <div class="skill-card">
+                    <img
+                        src="https://ui.shadcn.com/favicon.ico"
+                        class="custom-icon"
+                        style="filter: invert(1);"
+                    />
+                    <span>ShadCN</span>
+                </div>
             </div>
-            
+
             <!-- Backend -->
             <div class="skills-grid" id="backend-skills">
-                <div class="skill-card"><i class="devicon-python-plain colored"></i> <span>Python</span></div>
-                <div class="skill-card"><i class="devicon-php-plain colored"></i> <span>PHP</span></div>
-                <div class="skill-card"><i class="devicon-go-plain colored"></i> <span>Golang</span></div>
-                <div class="skill-card"><i class="devicon-java-plain colored"></i> <span>Java</span></div>
-                <div class="skill-card"><i class="devicon-c-plain colored"></i> <span>C</span></div>
-                <div class="skill-card"><i class="devicon-nodejs-plain colored"></i> <span>Node JS</span></div>
-                <div class="skill-card"><i class="devicon-django-plain colored"></i> <span>Django</span></div>
-                <div class="skill-card"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxANDQ0NDQ0PDw0OEBANDQ0QFQ8QEw8NFREiFhcRHxQYHCgsGBsxJxQfIjMhJSk3LjIyGCs7ODMsQyg5LjcBCgoKDg0OGxAPGzUfHR0tMDEtKzA3MDUtKy0rKzctKysrKy0tKysvLzItLS0tLTcrNystKy0rKystLS8rLSstLf/AABEIAKgBLAMBIgACEQEDEQH/xAAbAAEBAAMBAQEAAAAAAAAAAAABAAIGBwUEA//EAD4QAAICAgAEBAMDCAgHAAAAAAABAgMEEQUSITEGE0FRImFxMoGxBxQzQlJydJEjJDVTYoKSshU0Q0ShwfD/xAAaAQEBAAMBAQAAAAAAAAAAAAAAAQIDBAUG/8QAKREBAAIBBAADCAMAAAAAAAAAAAECEQMSITFBYfAEEyJRcYGxwSMykf/aAAwDAQACEQMRAD8AyAQO584AExAgEAqAgKIGJiFQEAEAgFAEAEAgFACBRAQBUBABARAAEAVARFAAgFBEAEYiAVARFGwgQGtzoCIKAEAICAomBAFBEAVAQAQEwAgECqCIAIxEAoIgAgIAqAgKICAKgEAIxEAoAQAgICq2ICA1uZARBQAgURixYBQAgBAQBUBAB6XhxbzKE6JXqTcXXH7WpRa51vptb5tvp09O5sfirwff51t+PXWseFUZfa1OXJD4pNa+10+/7z0Pyf8Ah6yhxzp2w5LqPgqhuTcZtSTb9H07L37nv8bhdFwyKlZJ0c8/Ld0KK5xcf0cvhfN1S1v19UmzRa/xcPQ0tD+L4nGd7A6XnVcP4hjKV06astRhZbLEStnXKclBQfInzrc0mvf27mlPgFtkbZ4jWZVVLlnOmNikum/0c0m/8uzbW8T3w5r6M1659fJ5AC+nT1XRr2fsBm1ABACAgCoxECiAgAgIAqAQAAIgoIgKIxEArYSIDW50BEAAIMqhgJiBEQBUYiAAer4Wxq7s6iu6PPBucvL/ALyUa3KMPvaX17ep5R+mNkSpsrth9uqcbI/vRe1+AnmGVZiJiZdXldnzlOhUquuzFjKi+vlisfI11g1J9e6XZfZfT28azgNrpryeI5tmI6oSnbJWzttcmuupLpFdOkIp9+je9G7Y90ba67Yt8k4xsjr1jKO1+JzniNNefdHJnQ8fEx+emVmTOyM71KblGG568v7UmurS7PSSRy0n7PT1axEfP1+nlZdnDoz3TXk59k5STd9kquaW+ktQgnLe/Vpn7cU4tlYNlEcf+pp0QnLHrUfLVjk1J8st8z+Hu9v5muwsddinXLrXNTrl0fWMtxf/AIPQ45fZfDCyLZ89ltNqnLovijl2ei7dJI6Nrhi84nHE+XrL4uI5s8m2V1vLzy0pckVBPS1vS+h8pAZtWczmUAgBGIgFACBRAQBUBABAQBUBEUACDChgRAbEBAa3OgIigAmAVARAACAUAIAQEBVdR8CcSnbj4sG0664W4016q6DUq19HBv8A0H4cZ8P/AJy3hzyZQcJzyq7LLLLZTok25S8vSTcXLlXX4U9/rdda8B8VePleU38GQ4pL086L+Fdffbj9ZR9jo3GMGeXVGWPlzx58suWyKjKMoSXVShLv279Gjmt8NnpaUxqaXPOPBzPKuwKs6qyuPmY/JOvKqj8UI2ODrbhJ6549eZP+T69Phy5RngYnLvdFltNvNrrKyMbItaXRbjNdevw/ctqfg+nOjdlU5kJWznJzVXLKmFr25LfR8u2n9PfezXeA4cciGZhuUVkTip0JyWrL6m2op9t6c1vfaZti0f45rUtnEx36/TwgGSa2mmmujT6NP20Bsc4AQCgCIoAEAAiAKgIAICAKgECqAJgBAIAbEBAYOdAyAKgIAIBAKAIAIBAKAECi37dH6NdNHVPBviKORV/S2RhOPLC6MtRXnSlqNi+U9/6l/iRyo/fBzJ49ishp9HGcJLcLK30lXJesX/8AdjC9N0N2jqzp2y65jYlWFfbR+cUqnL57Y4d3ImrX0lyftQfrHXT09jR/HPAY0WRtxcecK3GXnKDU64ST7rT3Fd97SXTobd4Y43DOjGrk86CTlLzJQlZQ12jOMv0kfSNkdt/rJNNvZJ1P43DkjKS6Scd/HrSk+q5l8vl3OeLTS3L0J066tOPs4zlYjy6Vk1yjZkwr8zMri9ylBPl/OOX9rolNfNS/WPEN+8W8Ns4ZfTxLDUa5ybjdCtScHZy7cuTXSD09rffWvc12+zEz5rl5cDKm+sW94ts38+9Lf0cfxOitsxnwcOpp4nE9/l4QHpcT4FlYm/Px7IxX/US569e/PHaM/D3ALuIzkqeWNdfW2+f2IdN636v5fgZZjGWvZbO3HLyQM7oqM5xUozjGUoqcd8s0npSW/R9zAyYgBAKCIAIxEAqAgKIGQMKgIAICIDYgIDBzpmIgFBEAEBAFQEQAAgVQAn6Y2NO6arqrlZZLeoQTk3pbfRBYh+RielLgOYv+yyvuqtf4Iwu4JlwhKyeJfCuC5pTlCcVFe/VEzDLZb5Pkx8idU42VTlCyL3GcW00/qbbw/wAe3RWruln99CKlGT/xUtxT+sZRZ43DfDGVk0WZMYRhRCE7FZY9c6intRS2327vp8zxSTFbM62vp8xxl1zh3jOi5JTsx4t9JOVjrWvpbGL38ltfNn3Tswo1QrqajTFr+jx6lZGcf2Wowl067OKMxcV7I1+5jwlvj2u3jGXbcThmPGW8Sd+M3pyVKlGtpenlzi4R+5Jn78R8hKcbMyNFck1OtvFUJJrT2rIPe/U4Vyr2R6XA+AZGfNxxqk1HXPZJqMIb93/6Sb+RJ0vGZZV9pmeK1dCv4jwGicNxxZTit89VCmt+7dcOVs1bxDxvhtlNtOHw9Rsk1yZDhTVyalva5euumtP3Nb4hiyx7raJtOVU5Vycd6bi9bW/Q+Y2V04jnLVfWtPGIhAIGxoACAUAIAQEBVTMRACAgAgIgrYjFiwMHOAEAICAKgIAICAKgIigKNkoNThJxnH4oyi2nGS7NNdmRhPs/owOg/lJzrq/+Huu62tzrtlLy5zhzP4Or5Wvc1evj+VHFvx7Z2205UdQlbKcuVxn8Uoyl3XRpret/TruPjnOooWB5+FDKbqm4uVk6+TShtaiuu/n7GqeKuI0ZEMBYsI1QrolzURe/KnKzrHfr23v13v1NOn1EYdmvxe0xb7PY/J/fJ4fF63JuuNCnCDfSMpQs5ml6b5V/I0ZG5+Af+V41/DR/2WGs8Gsx4Xwlmwssx47coV6Tk9dF3XT7zOP7Wa7c0pH1/L4WwOk+EMt8QvyKZ8Pqhw2VcnUlSoxg1JJR8xLUpNNv32uhpHhmim3Oxa8lryJWam29KXwvlTfs3pfeWLd+STp4xie3mcy9zY/ye3yhxXFjGTUbPNhZFPpOKplJJr16pP7jZuLX5eBdZ+c4GPfwnc1GNNVeq6f1f3ZJa3zdPZmqeAf7Wwv3re/8PMm7dWWUU2alY8/2+PxT/aOd/EW/72eWdGlw2zDyeJ8UyqIzxFbZyUSrrsnfueoy3JPy4blty9Uu3Y0zjPGXltf1XFx4qXNFUVRhLtrTn3l3+nyFLZ6TUpjme58HlgIGxqAEAVEQFADFgFBEAEBAFQCAGwgQGDnQCAVGIgAEQAQEBVQEQUH6Y2O7pxqU64Oe1z2yjXCPTu5PsfkAG/8Aj6qrLhjTx8zDmsauxTg7qlOW1HXKt9X8L6HPyIxrXbGGzUvvtuw3bwIqq8XiHn5eNT+d1qiqNltcZJxU05OLfRfGj4/BePjUcRlXnTxp8te6LFOuyh27T+123ret/jo1QGSaZz5so1MbeOnSfD+RPH4lOfEOL49vmQsrrrhbKUeZyUk+XXLUtR6L5moUcHxvz5YlmfVKlwnvLhqNcLuV8sdy6SXRdn13rZ4ZFimPEnUziMdOkeGrsjhzks7PxZ8PjCWk7Va2/wBVQXf/AC/yRrvgeMHxWOTz1UY9MrbNWzhW1CcJRjBJvq1zLt219DV9EybO/Nfe9cdOh38deHxK935FOVw3Ok4ThC2N/lV8uk+RP4V1012a92jX/E/hyrF57sXMxrsZtOFfmxldFSeuVL9dLffe9d+2zWwLFMdFtTdGJj6eSAgM2tARFAAmLCpgRAACAEBAFQEAGxARGDnACAUAIAQEBVQEAEBAFQEQAAgFAERQAIBQRABAQBUBABAJiVUBMAIBAAAQCoCACAgCtiAiMHOAIgABIDECIqoCIKDEiAgEgMQIgoAiKACIKCIgAxEgrEiIoAYEFQEQABEAERBWIEQAQEFf/9k=" class="custom-icon"> <span>Flask</span></div>
-                <div class="skill-card"><img src="https://fastapi.tiangolo.com/img/favicon.png" class="custom-icon"> <span>FastAPI</span></div>
-                <div class="skill-card"><img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/golang_gopher_src_logo_icon_168155.png" class="custom-icon"> <span>Echo(Go)</span></div>
-                <div class="skill-card"><i class="devicon-nestjs-plain colored"></i> <span>Nest JS</span></div>
-                <div class="skill-card"><i class="devicon-express-original colored"></i> <span>Express Js</span></div>
-                <div class="skill-card"><i class="devicon-npm-original-wordmark colored"></i> <span>npm</span></div>
-                <div class="skill-card"><i class="devicon-laravel-plain colored"></i> <span>Laravel</span></div>
-                <div class="skill-card"><i class="devicon-apache-plain colored"></i> <span>Apache</span></div>
+                <div class="skill-card">
+                    <i class="devicon-python-plain colored"></i>
+                    <span>Python</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-php-plain colored"></i>
+                    <span>PHP</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-go-plain colored"></i>
+                    <span>Golang</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-java-plain colored"></i>
+                    <span>Java</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-c-plain colored"></i>
+                    <span>C</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-nodejs-plain colored"></i>
+                    <span>Node JS</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-django-plain colored"></i>
+                    <span>Django</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-flask-original"></i>
+                    <span>Flask</span>
+                </div>
+                <div class="skill-card">
+                    <img
+                        src="https://fastapi.tiangolo.com/img/favicon.png"
+                        class="custom-icon"
+                    />
+                    <span>FastAPI</span>
+                </div>
+                <div class="skill-card">
+                    <img
+                        src="https://cdn.icon-icons.com/icons2/2699/PNG/512/golang_gopher_src_logo_icon_168155.png"
+                        class="custom-icon"
+                    />
+                    <span>Echo(Go)</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-nestjs-plain colored"></i>
+                    <span>Nest JS</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-express-original"></i>
+                    <span>Express Js</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-npm-original-wordmark"></i>
+                    <span>npm</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-laravel-plain colored"></i>
+                    <span>Laravel</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-apache-plain colored"></i>
+                    <span>Apache</span>
+                </div>
             </div>
-            
+
             <!-- Database -->
             <div class="skills-grid" id="database-skills">
-                <div class="skill-card"><i class="devicon-mysql-plain colored"></i> <span>MySQL</span></div>
-                <div class="skill-card"><i class="devicon-postgresql-plain colored"></i> <span>PostgreSQL</span></div>
-                <div class="skill-card"><i class="devicon-sqlite-plain colored"></i> <span>SQLite</span></div>
-                <div class="skill-card"><i class="devicon-mongodb-plain colored"></i> <span>MongoDB</span></div>
-                <div class="skill-card"><i class="devicon-redis-plain colored"></i> <span>Redis</span></div>
+                <div class="skill-card">
+                    <i class="devicon-mysql-plain colored"></i>
+                    <span>MySQL</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <span>PostgreSQL</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-sqlite-plain colored"></i>
+                    <span>SQLite</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-mongodb-plain colored"></i>
+                    <span>MongoDB</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-redis-plain colored"></i>
+                    <span>Redis</span>
+                </div>
             </div>
 
             <!-- Tools -->
             <div class="skills-grid" id="tools-skills">
-                <div class="skill-card"><i class="devicon-vscode-plain colored"></i> <span>VS Code</span></div>
-                <div class="skill-card"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" class="custom-icon"> <span>Postman</span></div>
-                <div class="skill-card"><img src="https://www.adminer.org/static/images/logo.png" class="custom-icon"> <span>Adminer</span></div>
-                <div class="skill-card"><i class="devicon-terraform-plain colored"></i> <span>Terraform</span></div>
-                <div class="skill-card"><i class="devicon-ansible-plain colored"></i> <span>Ansible</span></div>
-                <div class="skill-card"><i class="devicon-jenkins-line colored"></i> <span>Jenkins</span></div>
+                <div class="skill-card">
+                    <i class="devicon-vscode-plain colored"></i>
+                    <span>VS Code</span>
+                </div>
+                <div class="skill-card">
+                    <img
+                        src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"
+                        class="custom-icon"
+                    />
+                    <span>Postman</span>
+                </div>
+                <div class="skill-card">
+                    <img
+                        src="https://www.adminer.org/static/images/logo.png"
+                        class="custom-icon"
+                    />
+                    <span>Adminer</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-terraform-plain colored"></i>
+                    <span>Terraform</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-ansible-plain"></i>
+                    <span>Ansible</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-jenkins-line colored"></i>
+                    <span>Jenkins</span>
+                </div>
             </div>
-            
+
             <!-- DevOps -->
             <div class="skills-grid" id="devops-skills">
-                <div class="skill-card"><i class="devicon-git-plain colored"></i> <span>Git</span></div>
-                <div class="skill-card"><i class="devicon-github-original colored"></i> <span>GitHub</span></div>
-                <div class="skill-card"><i class="devicon-docker-plain colored"></i> <span>Docker</span></div>
-                <div class="skill-card"><i class="fab fa-linux"></i> <span>Linux</span></div>
-                <div class="skill-card"><i class="fas fa-terminal"></i> <span>SSH</span></div>
+                <div class="skill-card">
+                    <i class="devicon-git-plain colored"></i>
+                    <span>Git</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-github-original"></i>
+                    <span>GitHub</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-docker-plain colored"></i>
+                    <span>Docker</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-linux"></i>
+                    <span>Linux</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-terminal"></i>
+                    <span>SSH</span>
+                </div>
             </div>
-            
+
             <!-- App Dev -->
             <div class="skills-grid" id="appdev-skills">
-                <div class="skill-card"><i class="devicon-flutter-plain colored"></i> <span>Flutter</span></div>
-                <div class="skill-card"><i class="devicon-dart-plain colored"></i> <span>Dart</span></div>
+                <div class="skill-card">
+                    <i class="devicon-flutter-plain colored"></i>
+                    <span>Flutter</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-dart-plain colored"></i>
+                    <span>Dart</span>
+                </div>
             </div>
 
             <!-- Cloud -->
             <div class="skills-grid" id="cloud-skills">
-                <div class="skill-card"><img src="https://logospng.org/download/amazon-web-services/logo-amazon-web-services-1024.png" class="custom-icon"> <span>AWS</span></div>
-                <div class="skill-card"><i class="devicon-azure-plain colored"></i> <span>Azure</span></div>
-                <div class="skill-card"><img src="https://th.bing.com/th/id/OIP.i3HY8W5NXBbAW1pXCsVrYwHaHa?w=176&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" class="custom-icon"> <span>GCP</span></div>
-                <div class="skill-card"><img src="https://mms.businesswire.com/media/20241112181390/en/2301437/22/Render_logo_-_Black.jpg" class="custom-icon"> <span>Render</span></div>
-                <div class="skill-card"><img src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png" class="custom-icon"> <span>Vercel</span></div>
-                <div class="skill-card"><img src="https://www.vectorlogo.zone/logos/netlify/netlify-icon.svg" class="custom-icon"> <span>Netlify</span></div>
+                <div class="skill-card">
+                    <i class="devicon-amazonwebservices-plain-wordmark"></i>
+                    <span>AWS</span>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-azure-plain colored"></i>
+                    <span>Azure</span>
+                </div>
+                <div class="skill-card">
+                    <img
+                        src="https://th.bing.com/th/id/OIP.i3HY8W5NXBbAW1pXCsVrYwHaHa?w=176&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+                        class="custom-icon"
+                    />
+                    <span>GCP</span>
+                </div>
+                <div class="skill-card">
+                    <img
+                        src="https://mms.businesswire.com/media/20241112181390/en/2301437/22/Render_logo_-_Black.jpg"
+                        class="custom-icon"
+                        style="filter: invert(1);"
+                    />
+                    <span>Render</span>
+                </div>
+                <div class="skill-card">
+                    <img
+                        src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png"
+                        class="custom-icon"
+                        style="filter: invert(1);"
+                    />
+                    <span>Vercel</span>
+                </div>
+                <div class="skill-card">
+                    <img
+                        src="https://www.vectorlogo.zone/logos/netlify/netlify-icon.svg"
+                        class="custom-icon"
+                    />
+                    <span>Netlify</span>
+                </div>
             </div>
         </div>
     </div>
@@ -138,7 +323,7 @@
         color: #fff;
         border-color: var(--accent);
     }
-    
+
     .category-tab:active {
         transform: scale(0.95);
     }
@@ -149,7 +334,7 @@
         color: #fff;
         box-shadow: 0 4px 15px var(--accent-glow);
     }
-    
+
     .category-tab {
         -webkit-tap-highlight-color: transparent;
     }
@@ -187,7 +372,7 @@
         transform: translateY(-5px);
         background: rgba(255, 255, 255, 0.05);
         border-color: var(--accent);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
     .skill-card i {
@@ -211,19 +396,25 @@
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     @media (max-width: 968px) {
         .skills-section {
             padding: 3rem 0;
         }
-        
+
         .category-tabs {
             gap: 0.5rem;
         }
-        
+
         .category-tab {
             padding: 0.5rem 1rem;
             font-size: 0.85rem;
@@ -235,7 +426,7 @@
             font-size: 2.5rem;
             margin-bottom: 2rem;
         }
-        
+
         .skills-grid {
             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             gap: 1rem;
@@ -245,51 +436,53 @@
             padding: 1.2rem;
         }
 
-        .skill-card i, .custom-icon {
+        .skill-card i,
+        .custom-icon {
             font-size: 2rem;
             width: 2rem;
             height: 2rem;
         }
-        
+
         .skills-content {
             min-height: 200px;
         }
     }
-    
+
     @media (max-width: 480px) {
         .section-title {
             font-size: 2rem;
         }
-        
+
         .category-tabs {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 0.5rem;
             width: 100%;
         }
-        
+
         .category-tab {
             padding: 0.6rem 0.8rem;
             font-size: 0.8rem;
             border-radius: 10px;
         }
-        
+
         .skills-grid {
             grid-template-columns: repeat(3, 1fr);
             gap: 0.75rem;
         }
-        
+
         .skill-card {
             padding: 1rem 0.5rem;
             border-radius: 12px;
         }
-        
-        .skill-card i, .custom-icon {
+
+        .skill-card i,
+        .custom-icon {
             font-size: 1.5rem;
             width: 1.5rem;
             height: 1.5rem;
         }
-        
+
         .skill-card span {
             font-size: 0.7rem;
         }
@@ -297,23 +490,23 @@
 </style>
 
 <script type="module">
-    const tabs = document.querySelectorAll('.category-tab');
-    const grids = document.querySelectorAll('.skills-grid');
+    const tabs = document.querySelectorAll(".category-tab");
+    const grids = document.querySelectorAll(".skills-grid");
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
             // Remove active class from all tabs
-            tabs.forEach(t => t.classList.remove('active'));
+            tabs.forEach((t) => t.classList.remove("active"));
             // Add active class to clicked tab
-            tab.classList.add('active');
-            
+            tab.classList.add("active");
+
             // Hide all grids
-            grids.forEach(g => g.classList.remove('active'));
-            
+            grids.forEach((g) => g.classList.remove("active"));
+
             // Show target grid
             const category = tab.dataset.category;
             const targetGrid = document.getElementById(`${category}-skills`);
-            if (targetGrid) targetGrid.classList.add('active');
+            if (targetGrid) targetGrid.classList.add("active");
         });
     });
 </script>
