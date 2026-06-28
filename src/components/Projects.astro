@@ -2,32 +2,41 @@
 // For images in public folder, we'll use direct paths instead of imports
 ---
 
-
-
-
 <section id="projects" class="projects-section">
     <div class="container">
         <h2 class="section-title">Featured Projects</h2>
-        
+
         <div class="projects-grid">
             <!-- Card 1 -->
+            <!-- Card: Cratoss Local RAG -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="/AI.png" alt="Cratoss">
+                    <img src="/AI.png" alt="Cratoss Local RAG System" />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://github.com/dharshan-kumarj/Cratoss_Frontend" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-                            <a href="https://cratoss.dharshankumar.com" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a
+                                href="https://github.com/dharshan-kumarj/Cratoss--RAG"
+                                class="project-link"
+                                title="View on GitHub"
+                                ><i class="fab fa-github"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Cratoss</h3>
-                    <p class="project-description">An AI chatting application customized for IoT interactions and smart device control.</p>
+                    <h3 class="project-title">Cratoss · Local RAG System</h3>
+                    <p class="project-description">
+                        End-to-end Retrieval-Augmented Generation: PDF ingestion
+                        → Sentence Transformer embeddings → ChromaDB → BM25 +
+                        semantic hybrid retrieval → Cross Encoder reranking →
+                        3-stage confidence validation → Llama 3.2 via Ollama.
+                        Zero cloud APIs. Runs offline.
+                    </p>
                     <div class="project-tech">
-                        <span>AI</span>
-                        <span>IoT</span>
-                        <span>React</span>
+                        <span>Python</span>
+                        <span>ChromaDB</span>
+                        <span>Ollama</span>
+                        <span>LLM</span>
                     </div>
                 </div>
             </article>
@@ -35,17 +44,36 @@
             <!-- Card 2 - Praxis -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="/Praxis.jpeg" alt="Praxis" onerror="this.src='https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                    <img
+                        src="/Praxis.jpeg"
+                        alt="Praxis"
+                        onerror="this.src='https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'"
+                    />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://github.com/dharshan-kumarj/Praxis-devops" class="project-link" title="GitHub (Ansible & Terraform)"><i class="fab fa-github"></i></a>
-                            <a href="https://praxis.dharshankumar.com/" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a
+                                href="https://github.com/dharshan-kumarj/Praxis-devops"
+                                class="project-link"
+                                title="GitHub (Ansible & Terraform)"
+                                ><i class="fab fa-github"></i></a
+                            >
+                            <a
+                                href="https://praxis.dharshankumar.com/"
+                                class="project-link"
+                                title="Live Demo"
+                                ><i class="fas fa-external-link-alt"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Praxis</h3>
-                    <p class="project-description">My first DevOps project — a chatbot built for DevOps use cases, provisioned on Azure with Terraform, configured via Ansible, and deployed through a Jenkins CI/CD pipeline with Docker.</p>
+                    <p class="project-description">
+                        My first DevOps project — a chatbot built for DevOps use
+                        cases, provisioned on Azure with Terraform, configured
+                        via Ansible, and deployed through a Jenkins CI/CD
+                        pipeline with Docker.
+                    </p>
                     <div class="project-tech">
                         <span>Terraform</span>
                         <span>Ansible</span>
@@ -59,17 +87,30 @@
             <!-- Card 3 (was Card 2) -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="QRmatrix.jpeg">
+                    <img src="QRmatrix.jpeg" />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://github.com/dharshan-kumarj/QRMatrix" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-                            <a href="https://qrmatrix.dharshankumar.com" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a
+                                href="https://github.com/dharshan-kumarj/QRMatrix"
+                                class="project-link"
+                                title="View Code"
+                                ><i class="fab fa-github"></i></a
+                            >
+                            <a
+                                href="https://qrmatrix.dharshankumar.com"
+                                class="project-link"
+                                title="Live Demo"
+                                ><i class="fas fa-external-link-alt"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">QRMatrix</h3>
-                    <p class="project-description">A simple QR code generator with custom logo integration features for branding.</p>
+                    <p class="project-description">
+                        A simple QR code generator with custom logo integration
+                        features for branding.
+                    </p>
                     <div class="project-tech">
                         <span>JavaScript</span>
                         <span>QR Code</span>
@@ -81,17 +122,30 @@
             <!-- Card 3 -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="PDFMatrix.jpeg">
+                    <img src="PDFMatrix.jpeg" />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://github.com/dharshan-kumarj/PDFMatrix" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-                            <a href="https://pdfmatrix.dharshankumar.com/" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a
+                                href="https://github.com/dharshan-kumarj/PDFMatrix"
+                                class="project-link"
+                                title="View Code"
+                                ><i class="fab fa-github"></i></a
+                            >
+                            <a
+                                href="https://pdfmatrix.dharshankumar.com/"
+                                class="project-link"
+                                title="Live Demo"
+                                ><i class="fas fa-external-link-alt"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">PDFMatrix</h3>
-                    <p class="project-description">A privacy-first, client-side PDF editor that runs entirely in your browser without server uploads.</p>
+                    <p class="project-description">
+                        A privacy-first, client-side PDF editor that runs
+                        entirely in your browser without server uploads.
+                    </p>
                     <div class="project-tech">
                         <span>PDF.js</span>
                         <span>Client-side</span>
@@ -103,16 +157,24 @@
             <!-- Card 4 -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="RULE.jpeg">
+                    <img src="RULE.jpeg" />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://github.com/MSG-Mutual-Support-to-Grow/rule" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+                            <a
+                                href="https://github.com/MSG-Mutual-Support-to-Grow/rule"
+                                class="project-link"
+                                title="View Code"
+                                ><i class="fab fa-github"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">R.U.L.E</h3>
-                    <p class="project-description">AI-Powered Resume Parsing and Analysis Platform developed in MSG Community.</p>
+                    <p class="project-description">
+                        AI-Powered Resume Parsing and Analysis Platform
+                        developed in MSG Community.
+                    </p>
                     <div class="project-tech">
                         <span>AI/ML</span>
                         <span>Python</span>
@@ -124,16 +186,28 @@
             <!-- Card 5 -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="/PortOS.png" alt="PortOS" onerror="this.src='https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                    <img
+                        src="/PortOS.png"
+                        alt="PortOS"
+                        onerror="this.src='https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'"
+                    />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://portos.cloud" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a
+                                href="https://portos.cloud"
+                                class="project-link"
+                                title="Live Demo"
+                                ><i class="fas fa-external-link-alt"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">PortOS</h3>
-                    <p class="project-description">Revolutionizing Development with Seamless Browser Workspace. Code, Host and Browse Securely.</p>
+                    <p class="project-description">
+                        Revolutionizing Development with Seamless Browser
+                        Workspace. Code, Host and Browse Securely.
+                    </p>
                     <div class="project-tech">
                         <span>Golang</span>
                         <span>MySQL</span>
@@ -145,17 +219,34 @@
             <!-- Card 6 -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="/Calc.png" alt="Calculator App" onerror="this.src='https://images.unsplash.com/photo-1587145820266-a5951ee1f620?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                    <img
+                        src="/Calc.png"
+                        alt="Calculator App"
+                        onerror="this.src='https://images.unsplash.com/photo-1587145820266-a5951ee1f620?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'"
+                    />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://github.com/dharshan-kumarj/Calculator_App" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-                            <a href="https://github.com/dharshan-kumarj/Calculator_App/tree/main/build/app/outputs/flutter-apk" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a
+                                href="https://github.com/dharshan-kumarj/Calculator_App"
+                                class="project-link"
+                                title="View Code"
+                                ><i class="fab fa-github"></i></a
+                            >
+                            <a
+                                href="https://github.com/dharshan-kumarj/Calculator_App/tree/main/build/app/outputs/flutter-apk"
+                                class="project-link"
+                                title="Live Demo"
+                                ><i class="fas fa-external-link-alt"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Calculator App</h3>
-                    <p class="project-description">Real-time Calculator and hidden gallery dashboard built with Flutter.</p>
+                    <p class="project-description">
+                        Real-time Calculator and hidden gallery dashboard built
+                        with Flutter.
+                    </p>
                     <div class="project-tech">
                         <span>Flutter</span>
                         <span>Dart</span>
@@ -167,16 +258,24 @@
             <!-- Card 7 -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="HloMail.png">
+                    <img src="HloMail.png" />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://hlomail.in" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a
+                                href="https://github.com/dharshan-kumarj/HloMail-Frontend"
+                                class="project-link"
+                                title="View Code"
+                                ><i class="fab fa-github"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">HloMail</h3>
-                    <p class="project-description">A Mail server to forward mails built in Golang with a React JS dashboard.</p>
+                    <p class="project-description">
+                        A Mail server to forward mails built in Golang with a
+                        React JS dashboard.
+                    </p>
                     <div class="project-tech">
                         <span>Golang</span>
                         <span>React</span>
@@ -188,16 +287,19 @@
             <!-- Card 8 -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="/MKM.png" alt="MKM Group" onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="https://mkm.group" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
+                    <img
+                        src="/MKM.png"
+                        alt="MKM Group"
+                        onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'"
+                    />
+                    <div class="project-overlay"></div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">MKM Group</h3>
-                    <p class="project-description">A standalone corporate website for the MKM Group of Companies.</p>
+                    <p class="project-description">
+                        A standalone corporate website for the MKM Group of
+                        Companies.
+                    </p>
                     <div class="project-tech">
                         <span>Web</span>
                         <span>Corporate</span>
@@ -209,16 +311,24 @@
             <!-- Card 9 -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="Pingstream.jpeg">
+                    <img src="Pingstream.jpeg" />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://github.com/dharshan-kumarj/API_tool" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+                            <a
+                                href="https://github.com/dharshan-kumarj/API_tool"
+                                class="project-link"
+                                title="View Code"
+                                ><i class="fab fa-github"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Pingstream</h3>
-                    <p class="project-description">GUI tool in Streamlit to execute HTTP/HTTPS requests via curl command.</p>
+                    <p class="project-description">
+                        GUI tool in Streamlit to execute HTTP/HTTPS requests via
+                        curl command.
+                    </p>
                     <div class="project-tech">
                         <span>Python</span>
                         <span>Streamlit</span>
@@ -230,16 +340,24 @@
             <!-- Card 10 -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="SMTP.jpeg">
+                    <img src="SMTP.jpeg" />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://github.com/dharshan-kumarj/SMTP_Django" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+                            <a
+                                href="https://github.com/dharshan-kumarj/SMTP_Django"
+                                class="project-link"
+                                title="View Code"
+                                ><i class="fab fa-github"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">SMTP Django</h3>
-                    <p class="project-description">An SMTP server implementation built with the Django Framework.</p>
+                    <p class="project-description">
+                        An SMTP server implementation built with the Django
+                        Framework.
+                    </p>
                     <div class="project-tech">
                         <span>Django</span>
                         <span>Python</span>
@@ -251,17 +369,30 @@
             <!-- Card 11 -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="Photogram.jpeg">
+                    <img src="Photogram.jpeg" />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://github.com/dharshan-kumarj/Photogram" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-                            <a href="https://photogram.great-site.net/" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a
+                                href="https://github.com/dharshan-kumarj/Photogram"
+                                class="project-link"
+                                title="View Code"
+                                ><i class="fab fa-github"></i></a
+                            >
+                            <a
+                                href="https://photogram.great-site.net/"
+                                class="project-link"
+                                title="Live Demo"
+                                ><i class="fas fa-external-link-alt"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Photogram</h3>
-                    <p class="project-description">Full-featured Instagram lite version built with PHP and MySQL.</p>
+                    <p class="project-description">
+                        Full-featured Instagram lite version built with PHP and
+                        MySQL.
+                    </p>
                     <div class="project-tech">
                         <span>PHP</span>
                         <span>MySQL</span>
@@ -273,17 +404,33 @@
             <!-- Card 12 -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="/Web_broadcast.jpeg" alt="Web Broadcast" onerror="this.src='https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                    <img
+                        src="/Web_broadcast.jpeg"
+                        alt="Web Broadcast"
+                        onerror="this.src='https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'"
+                    />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://github.com/dharshan-kumarj/WebCamBroadcast_Frontend" class="project-link" title="Frontend"><i class="fab fa-github"></i></a>
-                            <a href="https://github.com/dharshan-kumarj/WebCamBroadcast_Backend" class="project-link" title="Backend"><i class="fas fa-server"></i></a>
+                            <a
+                                href="https://github.com/dharshan-kumarj/WebCamBroadcast_Frontend"
+                                class="project-link"
+                                title="Frontend"
+                                ><i class="fab fa-github"></i></a
+                            >
+                            <a
+                                href="https://github.com/dharshan-kumarj/WebCamBroadcast_Backend"
+                                class="project-link"
+                                title="Backend"><i class="fas fa-server"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Live Web Broadcast</h3>
-                    <p class="project-description">Live Web Broadcast developed using WebRTC protocol with Django and React.</p>
+                    <p class="project-description">
+                        Live Web Broadcast developed using WebRTC protocol with
+                        Django and React.
+                    </p>
                     <div class="project-tech">
                         <span>WebRTC</span>
                         <span>Django</span>
@@ -295,20 +442,105 @@
             <!-- Card 13 -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="/Legalsphere.png" alt="Legal Sphere" onerror="this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                    <img
+                        src="/Legalsphere.png"
+                        alt="Legal Sphere"
+                        onerror="this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'"
+                    />
                     <div class="project-overlay">
                         <div class="project-links">
-                            <a href="https://github.com/dharshan-kumarj/LegalSphere_Frontend" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+                            <a
+                                href="https://github.com/dharshan-kumarj/LegalSphere_Frontend"
+                                class="project-link"
+                                title="View Code"
+                                ><i class="fab fa-github"></i></a
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Legal Sphere</h3>
-                    <p class="project-description">A Chat application frontend built in ReactJS for legal consultations.</p>
+                    <p class="project-description">
+                        A Chat application frontend built in ReactJS for legal
+                        consultations.
+                    </p>
                     <div class="project-tech">
                         <span>React</span>
                         <span>Chat</span>
                         <span>Frontend</span>
+                    </div>
+                </div>
+            </article>
+            <!-- Card: MsgSift -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="/Msgsift.jpeg" alt="MsgSift SMS Spam Detection" />
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a
+                                href="https://github.com/dharshan-kumarj"
+                                class="project-link"
+                                title="View on GitHub"
+                                ><i class="fab fa-github"></i></a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">MsgSift · SMS Spam Detection</h3>
+                    <p class="project-description">
+                        Production-grade ML classification system: ensemble
+                        pipeline achieving 98.2% accuracy, FastAPI REST layer,
+                        PostgreSQL persistence, Prometheus + Grafana
+                        observability, and full CI/CD. Not a notebook — a
+                        system.
+                    </p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>FastAPI</span>
+                        <span>PostgreSQL</span>
+                        <span>Prometheus</span>
+                        <span>Grafana</span>
+                        <span>GitHub Actions</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card: Smart Contract Vulnerability Detection -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                        alt="Smart Contract Vulnerability Detection IEEE"
+                    />
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a
+                                href="https://github.com/dharshan-kumarj"
+                                class="project-link"
+                                title="View on GitHub"
+                                ><i class="fab fa-github"></i></a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">
+                        Smart Contract Vulnerability Detection · IEEE
+                    </h3>
+                    <p class="project-description">
+                        Research-grade dataset from verified DeFi exploits +
+                        safe production contracts. Slither static analysis →
+                        feature extraction → Gradient Boosting → SHAP
+                        explainability. 98.49% accuracy.IEEE — publication in
+                        progress.
+                    </p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Scikit-Learn</span>
+                        <span>Ethereum</span>
+                        <span>SHAP</span>
+                        <span>IEEE</span>
                     </div>
                 </div>
             </article>
@@ -356,7 +588,7 @@
     .project-card:hover {
         transform: translateY(-10px);
         border-color: var(--accent);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
     .project-image {
@@ -464,7 +696,7 @@
         .projects-section {
             padding: 3rem 0;
         }
-        
+
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 3rem;
@@ -475,78 +707,82 @@
         .section-title {
             font-size: 2.2rem;
         }
-        
+
         .projects-grid {
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
-        
+
         .project-image {
             height: 180px;
         }
-        
+
         .project-content {
             padding: 1.25rem;
         }
-        
+
         .project-title {
             font-size: 1.1rem;
         }
-        
+
         /* Show overlay by default on touch devices */
         .project-overlay {
             opacity: 1;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 100%);
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.8) 0%,
+                rgba(0, 0, 0, 0.3) 100%
+            );
         }
-        
+
         .project-links {
             transform: translateY(0);
         }
-        
+
         .project-link {
             width: 44px;
             height: 44px;
             -webkit-tap-highlight-color: transparent;
         }
-        
+
         .project-link:active {
             background: var(--accent);
             color: #fff;
             transform: scale(0.95);
         }
     }
-    
+
     @media (max-width: 480px) {
         .projects-section {
             padding: 2rem 0;
         }
-        
+
         .section-title {
             font-size: 2rem;
             margin-bottom: 2rem;
         }
-        
+
         .projects-grid {
             grid-template-columns: 1fr;
             gap: 1.25rem;
         }
-        
+
         .project-card {
             border-radius: 16px;
         }
-        
+
         .project-image {
             height: 160px;
         }
-        
+
         .project-content {
             padding: 1rem;
         }
-        
+
         .project-description {
             font-size: 0.9rem;
         }
-        
+
         .project-tech span {
             font-size: 0.75rem;
             padding: 0.25rem 0.6rem;

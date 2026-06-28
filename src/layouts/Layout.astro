@@ -3,40 +3,73 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/jpeg" href="/Dharshan.jpg" />
+        <link rel="icon" type="image/jpeg" href="/Dharshan.jpeg" />
         <meta name="generator" content={Astro.generator} />
-        
+
         <!-- Primary Meta Tags -->
-        <title>Dharshan Kumar J | Full Stack Developer & API Specialist</title>
-        <meta name="title" content="Dharshan Kumar J | Full Stack Developer & API Specialist" />
-        <meta name="description" content="Software developer specializing in backend development, API integration, and full-stack solutions using Golang. Building robust and scalable applications with modern technologies." />
+        <title>
+            Dharshan Kumar J | Software Engineer · AI Systems · Cloud & DevOps ·
+            Web3
+        </title>
+        <meta
+            name="title"
+            content="Dharshan Kumar J | Software Engineer · AI Systems · Cloud & DevOps · Web3"
+        />
+        <meta
+            name="description"
+            content="Software Engineer specializing in AI Systems, Backend Engineering, Cloud & DevOps, and Web3. Building production-grade ML pipelines, RAG systems, scalable backend APIs, and decentralized applications."
+        />
         <meta name="author" content="Dharshan Kumar J" />
-        
+
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+        />
 
         <!-- Keywords for SEO -->
-        <meta name="keywords" content="software developer, backend developer, full stack developer, Golang developer, API development, web applications, backend engineering, software engineering, REST API, microservices" />
-        
+        <meta
+            name="keywords"
+            content="software engineer, AI systems, machine learning, backend engineering, cloud DevOps, Web3, Golang developer, FastAPI, RAG system, LLM, smart contract, Ethereum, Prometheus, Grafana, ChromaDB, Scikit-Learn, SHAP, Slither, Python, REST API"
+        />
+
         <!-- Robots Meta -->
         <meta name="robots" content="index, follow" />
-        
+
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Dharshan Kumar J | Full Stack Developer & API Developer" />
-        <meta property="og:description" content="Software developer specializing in backend development, API integration, and full-stack solutions using Golang. Building robust and scalable applications with modern technologies." />
-        <meta property="og:image" content="/Dharshan.jpg" />
-        
+        <meta
+            property="og:title"
+            content="Dharshan Kumar J | Software Engineer · AI · Cloud & DevOps · Web3"
+        />
+        <meta
+            property="og:description"
+            content="Software Engineer specializing in AI Systems, Backend Engineering, Cloud & DevOps, and Web3. Building production-grade ML pipelines, RAG systems, scalable backend APIs, and decentralized applications."
+        />
+        <meta property="og:image" content="/Dharshan.jpeg" />
+
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:title" content="Dharshan Kumar J | Full Stack Developer & API Developer" />
-        <meta property="twitter:description" content="Software developer specializing in backend development, API integration, and full-stack solutions using Golang. Building robust and scalable applications with modern technologies." />
+        <meta
+            property="twitter:title"
+            content="Dharshan Kumar J | Software Engineer · AI · Cloud & DevOps · Web3"
+        />
+        <meta
+            property="twitter:description"
+            content="Software Engineer specializing in AI Systems, Backend Engineering, Cloud & DevOps, and Web3. Building production-grade ML pipelines, RAG systems, scalable backend APIs, and decentralized applications."
+        />
         <meta property="twitter:image" content="/Dharshan.jpeg" />
-        
+
         <!-- Additional Meta Tags -->
         <meta name="theme-color" content="#0a0a0a" />
         <meta name="copyright" content="Dharshan Kumar J" />
@@ -56,11 +89,11 @@
         --bg-card-hover: #1a1a1a;
         --text-main: #ffffff;
         --text-muted: #a3a3a3;
-        --accent: #8A2BE2;
+        --accent: #8a2be2;
         --accent-glow: rgba(138, 43, 226, 0.3);
         --border: #262626;
-        --font-main: 'Outfit', sans-serif;
-        --font-display: 'Space Grotesk', sans-serif;
+        --font-main: "Outfit", sans-serif;
+        --font-display: "Space Grotesk", sans-serif;
     }
 
     * {
@@ -81,7 +114,12 @@
         overflow-x: hidden;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         font-family: var(--font-display);
         font-weight: 700;
     }
@@ -101,9 +139,17 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: 
-            radial-gradient(circle at 15% 50%, rgba(138, 43, 226, 0.08), transparent 25%),
-            radial-gradient(circle at 85% 30%, rgba(64, 201, 255, 0.08), transparent 25%);
+        background:
+            radial-gradient(
+                circle at 15% 50%,
+                rgba(138, 43, 226, 0.08),
+                transparent 25%
+            ),
+            radial-gradient(
+                circle at 85% 30%,
+                rgba(64, 201, 255, 0.08),
+                transparent 25%
+            );
         z-index: -1;
         pointer-events: none;
     }
@@ -113,14 +159,14 @@
         margin: 0 auto;
         padding: 0 1.5rem;
     }
-    
+
     /* Responsive padding */
     @media (max-width: 768px) {
         .content-wrapper {
             padding: 0 1rem;
         }
     }
-    
+
     @media (max-width: 480px) {
         .content-wrapper {
             padding: 0 0.75rem;
