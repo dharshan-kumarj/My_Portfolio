@@ -32,6 +32,68 @@
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-marker"></div>
+                            <div class="timeline-date">Oct 2026</div>
+                            <div class="timeline-content">
+                                <h3>
+                                    1st Prize · Quantum Hackathon | National
+                                    Quantum Summit 2026
+                                </h3>
+                                <p>
+                                    Secured 1st Prize with my teammate
+                                    <a
+                                        class="inline-link"
+                                        href="https://thirupathi.tech/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >Thirupathi S.</a
+                                    >
+                                    at the Quantum Hackathon, organised in
+                                    collaboration with Bloq Quantum as part of
+                                    the National Quantum Summit 2026 at Karunya
+                                    Institute of Technology and Sciences,
+                                    Coimbatore. We tackled a healthcare
+                                    challenge: using a 4-qubit Quantum Machine
+                                    Learning model to predict mortality risk
+                                    among heart failure patients.
+                                </p>
+                                <div
+                                    class="gallery-grid"
+                                    data-gallery="quantum"
+                                >
+                                    <div class="gallery-item">
+                                        <img
+                                            src="/quantum-hackathon/quantum-1.jpeg"
+                                            alt="Quantum Hackathon 1st Prize"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img
+                                            src="/quantum-hackathon/quantum-2.jpeg"
+                                            alt="National Quantum Summit 2026"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img
+                                            src="/quantum-hackathon/quantum-3.jpeg"
+                                            alt="Team at Quantum Hackathon"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img
+                                            src="/quantum-hackathon/quantum-4.jpeg"
+                                            alt="Quantum Hackathon Certificate"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
                             <div class="timeline-date">Mar 2026</div>
                             <div class="timeline-content">
                                 <h3>
@@ -604,6 +666,48 @@
                 color: var(--text-muted);
                 margin-bottom: 1.5rem;
                 max-width: 600px;
+            }
+
+            .inline-link {
+                color: var(--accent);
+                font-weight: 500;
+                text-decoration: none;
+                border-bottom: 1px solid var(--accent-glow);
+                transition: all 0.3s ease;
+            }
+
+            .inline-link:hover {
+                color: #fff;
+                border-bottom-color: var(--accent);
+            }
+
+            .highlight-list {
+                list-style: none;
+                color: var(--text-muted);
+                margin-bottom: 1.5rem;
+                max-width: 600px;
+            }
+
+            .highlight-list li {
+                position: relative;
+                padding-left: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .highlight-list li::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0.65rem;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--accent);
+            }
+
+            .highlight-list strong {
+                color: var(--text-main);
+                font-weight: 500;
             }
 
             /* Gallery Grid */
