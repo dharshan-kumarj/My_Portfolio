@@ -1,0 +1,110 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import { skillGroups } from "../data/skills";
+
+const pad = (n: number) => String(n).padStart(2, "0");
+---
+
+<section id="arsenal" class="section" aria-labelledby="arsenal-title">
+    <div class="shell">
+        <SectionHeader id="arsenal-title" index="02" label="Arsenal" title="The tools I build with" />
+
+        <div
+            role="tablist"
+            aria-label="Skill categories"
+            class="-mx-4 flex gap-1 overflow-x-auto border-b border-line px-4 [scrollbar-width:none] sm:mx-0 sm:px-0"
+            data-reveal="fade"
+        >
+            {
+                skillGroups.map((group, i) => (
+                    <button
+                        type="button"
+                        role="tab"
+                        id={`tab-${group.id}`}
+                        aria-controls={`panel-${group.id}`}
+                        aria-selected={i === 0 ? "true" : "false"}
+                        tabindex={i === 0 ? 0 : -1}
+                        class="hud relative shrink-0 whitespace-nowrap px-3 py-3 text-[0.7rem] text-ink-dim transition-colors hover:text-ink-muted after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:scale-x-0 after:bg-gold after:transition-transform aria-selected:text-ink aria-selected:after:scale-x-100"
+                    >
+                        {group.label}
+                    </button>
+                ))
+            }
+        </div>
+
+        {
+            skillGroups.map((group, i) => (
+                <div
+                    role="tabpanel"
+                    id={`panel-${group.id}`}
+                    aria-labelledby={`tab-${group.id}`}
+                    hidden={i !== 0}
+                    class="pt-6"
+                    data-skill-panel
+                >
+                    <p class="hud flex flex-wrap items-center gap-x-6 gap-y-1 text-[0.65rem] text-ink-dim">
+                        <span class="flex items-center gap-2">
+                            <span class="status-dot" />
+                            {group.core} : <span class="text-arc">Online</span>
+                        </span>
+                        <span>{pad(group.skills.length)} modules loaded</span>
+                    </p>
+                    <ul class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                        {group.skills.map((skill, j) => (
+                            <li
+                                class="panel corner-tr group flex min-h-[4.75rem] flex-col justify-between gap-3 p-3.5 transition-colors hover:border-gold-dim sm:min-h-[5.5rem]"
+                                data-skill-card
+                            >
+                                <span class="grid h-6 w-6 place-items-center text-lg text-gold" aria-hidden="true">
+                                    {skill.img ? (
+                                        <img
+                                            src={skill.img}
+                                            alt=""
+                                            loading="lazy"
+                                            class:list={[
+                                                "h-5 w-5 object-contain opacity-80 grayscale transition group-hover:opacity-100 group-hover:grayscale-0",
+                                                skill.invert && "invert",
+                                            ]}
+                                        />
+                                    ) : (
+                                        <i class={skill.icon} />
+                                    )}
+                                </span>
+                                <span class="flex flex-wrap items-baseline justify-between gap-x-2">
+                                    <span class="font-hud text-[0.95rem] font-semibold text-ink">{skill.name}</span>
+                                    <span class="hud text-[0.6rem] font-medium text-ink-dim">M-{pad(j + 1)}</span>
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<script>
+    const tabs = [...document.querySelectorAll<HTMLButtonElement>('#arsenal [role="tab"]')];
+
+    const select = (tab: HTMLButtonElement) => {
+        tabs.forEach((t) => {
+            const active = t === tab;
+            t.setAttribute("aria-selected", String(active));
+            t.tabIndex = active ? 0 : -1;
+            document.getElementById(t.getAttribute("aria-controls")!)!.hidden = !active;
+        });
+        const panel = document.getElementById(tab.getAttribute("aria-controls")!)!;
+        panel.dispatchEvent(new CustomEvent("arsenal:shown", { bubbles: true }));
+    };
+
+    tabs.forEach((tab, i) => {
+        tab.addEventListener("click", () => select(tab));
+        tab.addEventListener("keydown", (e) => {
+            const step = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+            if (!step) return;
+            const next = tabs[(i + step + tabs.length) % tabs.length];
+            next.focus();
+            select(next);
+        });
+    });
+</script>

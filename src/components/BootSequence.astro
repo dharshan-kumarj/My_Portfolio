@@ -1,0 +1,99 @@
+---
+// Arc-reactor boot overlay. Only rendered visible when <html> has .booting
+// (first visit per session, motion allowed). Timeline lives in scripts/motion.ts.
+const ticks = [0, 90, 180, 270];
+---
+
+<div
+    id="boot"
+    class="fixed inset-0 z-[100] hidden flex-col items-center justify-center bg-void-deep [.booting_&]:flex"
+    role="status"
+    aria-live="polite"
+    aria-label="Loading"
+>
+    <div class="relative h-44 w-44 sm:h-48 sm:w-48">
+        <!-- reactor glow + core -->
+        <div
+            data-boot="glow"
+            class="absolute inset-[18%] scale-50 rounded-full bg-reactor-glow opacity-30 blur-[2px]"
+        >
+        </div>
+        <div
+            data-boot="core"
+            class="absolute left-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 scale-0 rounded-full bg-reactor-core shadow-[0_0_24px_6px_rgb(253_241_201/0.45)]"
+        >
+        </div>
+
+        <svg viewBox="0 0 160 160" class="absolute inset-0 h-full w-full" aria-hidden="true">
+            <circle cx="80" cy="80" r="68" fill="none" class="stroke-arc/10" stroke-width="1"></circle>
+            <circle
+                data-boot="dots"
+                cx="80"
+                cy="80"
+                r="60"
+                fill="none"
+                class="stroke-reactor/60 opacity-0"
+                stroke-width="1"
+                stroke-dasharray="1 4"></circle>
+            <circle
+                data-boot="arc"
+                cx="80"
+                cy="80"
+                r="68"
+                fill="none"
+                class="stroke-arc"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                pathLength="1"
+                stroke-dasharray="1"
+                stroke-dashoffset="1"
+                transform="rotate(-90 80 80)"></circle>
+            <g data-boot="head">
+                <circle cx="80" cy="12" r="2" class="fill-arc"></circle>
+            </g>
+            <g data-boot="ticks" class="opacity-0">
+                {
+                    ticks.map((deg) => (
+                        <line
+                            x1="80"
+                            y1="5"
+                            x2="80"
+                            y2="17"
+                            class="stroke-arc"
+                            stroke-width="1"
+                            transform={`rotate(${deg} 80 80)`}
+                        />
+                    ))
+                }
+            </g>
+        </svg>
+    </div>
+
+    <p class="mt-10 h-6 font-display text-sm font-semibold uppercase tracking-[0.3em] sm:text-base">
+        <span data-boot="text" class="text-arc">Initializing</span><span
+            class="ml-0.5 inline-block h-[1.05em] w-[0.45em] translate-y-[0.15em] animate-blink bg-arc"
+            data-boot="cursor"
+            aria-hidden="true"></span>
+    </p>
+    <p
+        data-boot="online"
+        class="hud mt-5 inline-flex items-center gap-2 rounded-full border border-line-strong px-3 py-1 text-[0.65rem] text-ink-muted opacity-0"
+    >
+        <span class="status-dot"></span> Online
+    </p>
+
+    <p
+        data-boot="clock"
+        class="hud absolute bottom-6 left-6 text-[0.65rem] font-medium text-ink-dim"
+        aria-hidden="true"
+    >
+        T+0.00s
+    </p>
+    <button
+        type="button"
+        data-boot="skip"
+        class="hud absolute bottom-5 right-5 px-2 py-2 text-[0.7rem] text-ink-muted transition-colors hover:text-ink"
+    >
+        Skip ›
+    </button>
+</div>

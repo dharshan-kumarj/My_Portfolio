@@ -1,0 +1,83 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import { blogs, mediumProfile } from "../data/blogs";
+
+const ordered = [...blogs.filter((b) => b.featured), ...blogs.filter((b) => !b.featured)];
+const featuredCount = blogs.filter((b) => b.featured).length;
+
+const stamp = (date: string) =>
+    new Date(date)
+        .toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" })
+        .toUpperCase();
+
+// Heartbeat trace with the spike shifted per channel.
+const trace = (i: number) => {
+    const x = 30 + ((i * 37) % 55);
+    return `M0 12 H${x} l3 -7 l4 13 l3 -9 l2 3 H200`;
+};
+---
+
+<section id="transmissions" class="section" aria-labelledby="transmissions-title">
+    <div class="shell">
+        <SectionHeader id="transmissions-title" index="05" label="Transmissions" title="Signals from the workshop" />
+
+        <ul class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {
+                ordered.map((blog, i) => (
+                    <li hidden={i >= featuredCount} data-transmission={i >= featuredCount ? "archive" : "featured"}>
+                        <a
+                            href={blog.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="panel group flex h-full flex-col p-5 transition-colors hover:border-gold-dim/70 sm:p-6"
+                        >
+                            <span class="hud flex items-center justify-between gap-3 text-[0.6rem]">
+                                <span class="flex items-center gap-2 text-arc">
+                                    <span class="status-dot" /> Incoming · CH-{String(i + 1).padStart(2, "0")}
+                                </span>
+                                <time class="text-gold" datetime={new Date(blog.date).toISOString().slice(0, 10)}>
+                                    {stamp(blog.date)}
+                                </time>
+                            </span>
+                            <svg viewBox="0 0 200 24" class="mt-4 h-5 w-full" preserveAspectRatio="none" aria-hidden="true">
+                                <path d={trace(i)} fill="none" class="stroke-arc-dim" stroke-width="1" pathLength="1" data-trace />
+                            </svg>
+                            <h3 class="mt-4 font-display text-base font-bold leading-snug text-ink">{blog.title}</h3>
+                            <p class="mt-3 line-clamp-4 text-sm leading-relaxed text-ink-muted">{blog.description}</p>
+                            <span class="hud mt-auto pt-6 text-[0.65rem] text-gold">
+                                Read transmission{" "}
+                                <span class="inline-block transition-transform group-hover:translate-x-1" aria-hidden="true">
+                                    →
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+
+        <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            {
+                ordered.length > featuredCount && (
+                    <button type="button" id="transmissions-toggle" class="btn-gold" aria-expanded="false">
+                        All {ordered.length} transmissions
+                    </button>
+                )
+            }
+            <a href={mediumProfile} target="_blank" rel="noopener noreferrer" class="btn-arc">
+                View all on Medium <span aria-hidden="true">↗</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    const toggle = document.getElementById("transmissions-toggle");
+    toggle?.addEventListener("click", () => {
+        const archived = document.querySelectorAll<HTMLElement>('[data-transmission="archive"]');
+        archived.forEach((el) => (el.hidden = false));
+        toggle.remove();
+        archived[0]?.querySelector("a")?.focus();
+        archived[0]?.dispatchEvent(new CustomEvent("transmissions:expanded", { bubbles: true }));
+    });
+</script>

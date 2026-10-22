@@ -1,0 +1,67 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import BuildCard from "./BuildCard.astro";
+import { projects } from "../data/projects";
+
+const featured = projects.slice(0, 6);
+const archive = projects.slice(6);
+const pad = (n: number) => String(n).padStart(2, "0");
+---
+
+<section id="builds" class="section" aria-labelledby="builds-title">
+    <div class="shell">
+        <SectionHeader id="builds-title" index="03" label="Builds" title="Shipped, not sketched">
+            <p class="hud mt-3 text-[0.65rem] text-ink-dim md:-mt-7 md:text-right">
+                {pad(featured.length)} / {projects.length} on display
+            </p>
+        </SectionHeader>
+
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <BuildCard project={featured[0]} number={1} flagship class="md:col-span-2 lg:row-span-2" />
+            {featured.slice(1).map((p, i) => <BuildCard project={p} number={i + 2} />)}
+        </div>
+
+        {
+            archive.length > 0 && (
+                <>
+                    <div id="builds-archive" class="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3" hidden>
+                        {archive.map((p, i) => (
+                            <BuildCard project={p} number={featured.length + i + 1} />
+                        ))}
+                    </div>
+                    <div class="mt-10 flex justify-center">
+                        <button
+                            type="button"
+                            id="builds-toggle"
+                            class="btn-gold"
+                            aria-controls="builds-archive"
+                            aria-expanded="false"
+                            data-more={`View all ${projects.length} builds`}
+                            data-less="Show featured only"
+                        >
+                            <span data-label>View all {projects.length} builds</span>
+                            <span aria-hidden="true">→</span>
+                        </button>
+                    </div>
+                </>
+            )
+        }
+    </div>
+</section>
+
+<script>
+    const toggle = document.getElementById("builds-toggle");
+    const archive = document.getElementById("builds-archive");
+    if (toggle && archive) {
+        toggle.addEventListener("click", () => {
+            const open = archive.hidden;
+            archive.hidden = !open;
+            toggle.setAttribute("aria-expanded", String(open));
+            toggle.querySelector("[data-label]")!.textContent = open
+                ? toggle.dataset.less!
+                : toggle.dataset.more!;
+            if (open) archive.dispatchEvent(new CustomEvent("builds:expanded", { bubbles: true }));
+            else document.getElementById("builds")!.scrollIntoView({ block: "start" });
+        });
+    }
+</script>

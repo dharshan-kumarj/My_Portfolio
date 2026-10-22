@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        @apply bg-void text-ink antialiased;
+        scroll-padding-top: 5rem;
+    }
+
+    body {
+        @apply bg-void font-body text-ink;
+        overflow-x: hidden;
+    }
+
+    ::selection {
+        @apply bg-reactor text-ink;
+    }
+
+    :focus-visible {
+        @apply outline outline-2 outline-offset-2 outline-arc;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        @apply bg-void;
+    }
+    ::-webkit-scrollbar-thumb {
+        @apply rounded bg-line-strong;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-gold-dim;
+    }
+}
+
+@layer components {
+    .shell {
+        @apply mx-auto w-full max-w-shell px-4 sm:px-6 lg:px-8;
+    }
+
+    /* Small uppercase HUD text: "SYSTEM 02 // ARSENAL", meta, chips */
+    .hud {
+        @apply font-hud text-xs font-semibold uppercase tracking-hud;
+    }
+
+    .section {
+        @apply relative py-20 md:py-28;
+    }
+
+    .section-title {
+        @apply font-display text-[1.75rem] font-bold uppercase leading-tight tracking-wide2 text-ink sm:text-4xl;
+    }
+
+    .panel {
+        @apply relative rounded-sm border border-line bg-void-panel bg-panel-sheen;
+    }
+
+    .btn {
+        @apply hud inline-flex min-h-[2.75rem] items-center justify-center gap-2 rounded-sm border px-5 py-2.5 transition-colors duration-200;
+    }
+    .btn-reactor {
+        @apply btn border-reactor bg-reactor text-ink hover:border-reactor-hot hover:bg-reactor-hot;
+    }
+    .btn-arc {
+        @apply btn border-arc-dim text-ink hover:border-arc hover:text-arc;
+    }
+    .btn-gold {
+        @apply btn border-gold-dim text-gold hover:border-gold hover:bg-gold/10;
+    }
+
+    .chip {
+        @apply font-hud inline-flex items-center gap-1 rounded-sm border border-line bg-void-raised px-2 py-0.5 text-[0.7rem] font-semibold tracking-wide2 text-ink-muted;
+    }
+
+    .status-dot {
+        @apply inline-block h-1.5 w-1.5 rounded-full bg-arc shadow-arc;
+    }
+
+    /* Cyan corner bracket on cards (top-right) */
+    .corner-tr::after {
+        content: "";
+        @apply pointer-events-none absolute -right-px -top-px h-3 w-3 border-r border-t border-arc;
+    }
+
+    .hex-grid {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='98' viewBox='0 0 56 98'%3E%3Cpath d='M28 66 0 50V16L28 0l28 16v34L28 66zm0 32V66' fill='none' stroke='%235ee2ff' stroke-opacity='.05'/%3E%3C/svg%3E");
+    }
+}
+
+/* Tailwind display utilities must not override the hidden attribute. */
+[hidden] {
+    display: none !important;
+}
+
+/* Elements GSAP reveals start hidden only when JS + motion are available,
+   so no-JS and reduced-motion visitors always see content. */
+html.motion-ok [data-reveal],
+html.motion-ok [data-hero] {
+    visibility: hidden;
+}
+
+html.booting body {
+    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

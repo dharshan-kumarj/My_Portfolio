@@ -1,0 +1,165 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import { missions } from "../data/missions";
+
+const [lead, ...rest] = missions;
+---
+
+<section id="missions" class="section" aria-labelledby="missions-title">
+    <div class="shell">
+        <SectionHeader id="missions-title" index="04" label="Mission log" title="Field record" />
+
+        <div class="relative md:ml-[5.5rem] lg:ml-[7.5rem]" data-timeline>
+            <!-- rail + scroll-driven fill -->
+            <span class="absolute bottom-2 left-[5px] top-2 w-px bg-arc-dim/30" aria-hidden="true"></span>
+            <span
+                class="absolute bottom-2 left-[5px] top-2 w-px origin-top bg-arc-dim"
+                aria-hidden="true"
+                data-timeline-fill></span>
+
+            <ol>
+            <!-- Lead mission -->
+            <li class="relative pb-14 pl-8 md:pl-10" data-mission>
+                <span
+                    class="absolute left-0 top-1 h-3 w-3 rotate-45 border border-reactor-hot bg-reactor shadow-reactor"
+                    aria-hidden="true"
+                    data-node></span>
+                <p class="hud mb-3 text-[0.65rem] text-gold md:absolute md:-left-[5.5rem] md:top-0.5 lg:-left-[7.5rem]">
+                    {lead.date}
+                </p>
+                <article class="panel max-w-2xl overflow-hidden border-gold-dim/60">
+                    <div class="relative aspect-[16/8] bg-void-deep">
+                        <img
+                            src={lead.gallery[0].src}
+                            alt={lead.gallery[0].alt}
+                            loading="lazy"
+                            class="h-full w-full object-cover"
+                        />
+                        <span class="hud absolute left-3 top-3 rounded-sm bg-reactor px-2 py-1 text-[0.6rem] text-ink">
+                            Mission accomplished
+                        </span>
+                        <button
+                            type="button"
+                            class="hud absolute bottom-3 right-3 rounded-sm border border-line-strong bg-void/85 px-2.5 py-1.5 text-[0.6rem] text-ink transition-colors hover:border-gold hover:text-gold"
+                            data-gallery-open={JSON.stringify(lead.gallery)}
+                            data-gallery-title={lead.title}
+                        >
+                            Open gallery ›
+                        </button>
+                    </div>
+                    <div class="p-5 sm:p-6">
+                        <h3 class="font-display text-lg font-bold leading-snug text-ink sm:text-xl">{lead.title}</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-ink-muted" set:html={lead.description} />
+                    </div>
+                </article>
+            </li>
+
+            {
+                rest.map((m) => (
+                    <li class="relative pb-12 pl-8 last:pb-0 md:pl-10" data-mission>
+                        <span
+                            class="absolute left-0 top-1 h-[11px] w-[11px] rounded-full border border-arc bg-void"
+                            aria-hidden="true"
+                            data-node
+                        />
+                        <p class="hud mb-3 text-[0.65rem] text-gold md:absolute md:-left-[5.5rem] md:top-0.5 lg:-left-[7.5rem]">
+                            {m.date}
+                        </p>
+                        <div class="flex max-w-3xl flex-col gap-4 sm:flex-row sm:gap-5">
+                            <button
+                                type="button"
+                                class="group relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-sm border border-line bg-void-panel sm:w-32"
+                                data-gallery-open={JSON.stringify(m.gallery)}
+                                data-gallery-title={m.title}
+                                aria-label={`Open gallery: ${m.title} (${m.gallery.length} photos)`}
+                            >
+                                <img
+                                    src={m.gallery[0].src}
+                                    alt=""
+                                    loading="lazy"
+                                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                                <span class="hud absolute bottom-1 right-1 rounded-sm bg-void/85 px-1.5 text-[0.55rem] text-ink-muted">
+                                    {m.gallery.length}
+                                </span>
+                            </button>
+                            <div>
+                                <p class="hud text-[0.6rem] text-arc-soft">{m.kind}</p>
+                                <h3 class="mt-1 font-display text-[0.95rem] font-bold leading-snug text-ink sm:text-base">
+                                    {m.title}
+                                </h3>
+                                <p class="mt-1.5 text-sm leading-relaxed text-ink-muted" set:html={m.description} />
+                            </div>
+                        </div>
+                    </li>
+                ))
+            }
+            </ol>
+        </div>
+    </div>
+
+    <dialog
+        id="gallery"
+        class="m-auto w-[min(92vw,60rem)] border border-line-strong bg-void-deep p-0 text-ink backdrop:bg-black/85 backdrop:backdrop-blur-sm"
+        aria-labelledby="gallery-title"
+    >
+        <div class="flex items-center justify-between gap-4 border-b border-line px-4 py-3">
+            <p id="gallery-title" class="hud truncate text-[0.65rem] text-gold"></p>
+            <div class="flex items-center gap-3">
+                <span class="hud text-[0.65rem] text-ink-dim" data-gallery-count></span>
+                <button type="button" class="grid h-9 w-9 place-items-center text-ink-muted hover:text-ink" data-gallery-close aria-label="Close gallery">
+                    <i class="fas fa-xmark" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div class="relative grid place-items-center bg-black">
+            <img src="" alt="" class="max-h-[75vh] w-full object-contain" data-gallery-img />
+            <button type="button" class="absolute left-2 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-sm border border-line-strong bg-void/80 text-ink hover:border-arc hover:text-arc" data-gallery-step="-1" aria-label="Previous photo">
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="absolute right-2 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-sm border border-line-strong bg-void/80 text-ink hover:border-arc hover:text-arc" data-gallery-step="1" aria-label="Next photo">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </dialog>
+</section>
+
+<script>
+    type Photo = { src: string; alt: string };
+
+    const dialog = document.getElementById("gallery") as HTMLDialogElement;
+    const img = dialog.querySelector<HTMLImageElement>("[data-gallery-img]")!;
+    const title = dialog.querySelector("#gallery-title")!;
+    const count = dialog.querySelector("[data-gallery-count]")!;
+    let photos: Photo[] = [];
+    let index = 0;
+
+    const show = (i: number) => {
+        index = (i + photos.length) % photos.length;
+        img.src = photos[index].src;
+        img.alt = photos[index].alt;
+        count.textContent = `${String(index + 1).padStart(2, "0")} / ${String(photos.length).padStart(2, "0")}`;
+        dialog.querySelectorAll<HTMLButtonElement>("[data-gallery-step]").forEach((b) => (b.hidden = photos.length < 2));
+    };
+
+    document.querySelectorAll<HTMLButtonElement>("[data-gallery-open]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            photos = JSON.parse(btn.dataset.galleryOpen!);
+            title.textContent = btn.dataset.galleryTitle ?? "";
+            show(0);
+            dialog.showModal();
+        });
+    });
+
+    dialog.querySelectorAll<HTMLButtonElement>("[data-gallery-step]").forEach((b) =>
+        b.addEventListener("click", () => show(index + Number(b.dataset.galleryStep))),
+    );
+    dialog.querySelector("[data-gallery-close]")!.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (e) => {
+        if (e.target === dialog) dialog.close();
+    });
+    dialog.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") show(index + 1);
+        if (e.key === "ArrowLeft") show(index - 1);
+    });
+</script>

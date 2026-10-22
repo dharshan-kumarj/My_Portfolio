@@ -1,0 +1,123 @@
+---
+import { navLinks, site } from "../data/site";
+---
+
+<header
+    id="site-nav"
+    class="group fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300 [&.is-scrolled]:border-gold-dim/70 [&.is-scrolled]:bg-void/70 [&.is-scrolled]:backdrop-blur-md"
+>
+    <nav
+        class="shell flex items-center justify-between py-4 transition-[padding] duration-300 group-[.is-scrolled]:py-2.5"
+        aria-label="Primary"
+    >
+        <a href="#top" class="relative grid h-11 w-11 place-items-center" aria-label="Dharshan Kumar J — home">
+            <svg viewBox="0 0 44 44" class="absolute inset-0 h-full w-full transition-transform duration-300 group-[.is-scrolled]:scale-[0.85]" aria-hidden="true">
+                <polygon points="22,2 39.3,12 39.3,32 22,42 4.7,32 4.7,12" fill="none" class="stroke-gold" stroke-width="1.5"></polygon>
+            </svg>
+            <span class="relative font-display text-xs font-bold text-ink">DK</span>
+        </a>
+
+        <ul class="hidden items-center gap-8 lg:flex">
+            {
+                navLinks.map((link) => (
+                    <li>
+                        <a
+                            href={link.href}
+                            data-nav-link
+                            class="hud relative py-2 text-ink-muted transition-colors hover:text-ink after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 aria-[current=true]:text-ink aria-[current=true]:after:scale-x-100"
+                        >
+                            {link.label}
+                        </a>
+                    </li>
+                ))
+            }
+            <li>
+                <a href={site.resume} class="btn-gold min-h-0 py-2" target="_blank" rel="noopener">Resume</a>
+            </li>
+        </ul>
+
+        <button
+            type="button"
+            id="nav-toggle"
+            class="grid h-11 w-11 place-items-center rounded-sm border border-arc-dim text-arc lg:hidden"
+            aria-controls="nav-menu"
+            aria-expanded="false"
+            aria-label="Open menu"
+        >
+            <i class="fas fa-bars" aria-hidden="true" data-icon-open></i>
+            <i class="fas fa-xmark hidden" aria-hidden="true" data-icon-close></i>
+        </button>
+    </nav>
+</header>
+
+<!-- Mobile: NAV // SELECT MODULE (outside the header so its backdrop-filter
+     doesn't become this fixed panel's containing block) -->
+    <div
+        id="nav-menu"
+        class="invisible fixed inset-0 z-40 flex flex-col overflow-y-auto bg-void px-4 pb-6 opacity-0 transition-[opacity,visibility] duration-300 lg:hidden [&.is-open]:visible [&.is-open]:opacity-100"
+        style="background-image: radial-gradient(120% 60% at 100% 100%, rgb(179 18 26 / 0.22), transparent 60%)"
+    >
+        <p class="hud mt-24 text-[0.65rem] text-ink-dim">Nav // Select module</p>
+        <ol class="mt-4">
+            {
+                navLinks.map((link, i) => (
+                    <li class="border-b border-line">
+                        <a href={link.href} class="flex items-baseline gap-4 py-4" data-menu-link>
+                            <span class="hud text-[0.65rem] text-arc">0{i + 1}</span>
+                            <span class="font-display text-xl font-bold uppercase tracking-wide2 text-ink">{link.label}</span>
+                        </a>
+                    </li>
+                ))
+            }
+        </ol>
+        <a href={site.resume} class="btn-gold mt-8 w-full" target="_blank" rel="noopener">Resume</a>
+        <p class="hud mt-auto flex items-center gap-2 pt-10 text-[0.65rem] text-ink-muted">
+            <span class="status-dot"></span> System online
+        </p>
+    </div>
+
+<script>
+    const nav = document.getElementById("site-nav")!;
+    const toggle = document.getElementById("nav-toggle")!;
+    const menu = document.getElementById("nav-menu")!;
+
+    // State 01 (top, transparent) ↔ State 02 (scrolled, glass + gold line)
+    const setScrolled = () => nav.classList.toggle("is-scrolled", window.scrollY > 24);
+    setScrolled();
+    window.addEventListener("scroll", setScrolled, { passive: true });
+
+    const setMenu = (open: boolean) => {
+        menu.classList.toggle("is-open", open);
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        toggle.querySelector("[data-icon-open]")!.classList.toggle("hidden", open);
+        toggle.querySelector("[data-icon-close]")!.classList.toggle("hidden", !open);
+        document.body.style.overflow = open ? "hidden" : "";
+        nav.classList.toggle("is-scrolled", open || window.scrollY > 24);
+    };
+    toggle.addEventListener("click", () => setMenu(!menu.classList.contains("is-open")));
+    menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && menu.classList.contains("is-open")) {
+            setMenu(false);
+            toggle.focus();
+        }
+    });
+
+    // Highlight the module currently in view.
+    const links = [...document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]")];
+    const observer = new IntersectionObserver(
+        (entries) => {
+            for (const entry of entries) {
+                if (!entry.isIntersecting) continue;
+                const id = `#${entry.target.id}`;
+                links.forEach((l) => l.setAttribute("aria-current", String(l.getAttribute("href") === id)));
+            }
+        },
+        { rootMargin: "-45% 0px -50% 0px" },
+    );
+    links.forEach((l) => {
+        const section = document.querySelector(l.getAttribute("href")!);
+        if (section) observer.observe(section);
+    });
+</script>

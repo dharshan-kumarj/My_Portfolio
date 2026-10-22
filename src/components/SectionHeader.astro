@@ -1,0 +1,25 @@
+---
+interface Props {
+    index: string;
+    label: string;
+    title: string;
+    id: string;
+}
+
+const { index, label, title, id } = Astro.props;
+---
+
+<header class="mb-10 md:mb-12" data-section-header>
+    <div class="flex items-center gap-3">
+        <p class="hud whitespace-nowrap text-gold" data-reveal="label">
+            System {index} <span class="text-arc">//</span>
+            {label}
+        </p>
+        <span
+            class="h-px flex-1 origin-left bg-gradient-to-r from-arc-dim/70 to-transparent"
+            aria-hidden="true"
+            data-reveal="rule"></span>
+    </div>
+    <h2 id={id} class="section-title mt-3" data-reveal="title">{title}</h2>
+    <slot />
+</header>

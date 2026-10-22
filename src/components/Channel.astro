@@ -1,0 +1,191 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import { site, socials } from "../data/site";
+
+const field =
+    "mt-2 w-full rounded-sm border border-line bg-void-deep px-3.5 py-3 text-sm text-ink placeholder:text-ink-dim transition-colors focus:border-arc focus:outline-none";
+const label = "hud text-[0.65rem] text-gold";
+---
+
+<section id="channel" class="section" aria-labelledby="channel-title">
+    <div class="shell">
+        <SectionHeader id="channel-title" index="06" label="Open a channel" title="Let's build something" />
+
+        <div class="grid gap-5 lg:grid-cols-[1.65fr_1fr]">
+            <!-- Comms terminal -->
+            <div class="panel overflow-hidden" data-terminal>
+                <span class="absolute -left-px -top-px h-3 w-3 border-l border-t border-arc" aria-hidden="true"></span>
+                <span class="absolute -bottom-px -right-px h-3 w-3 border-b border-r border-gold" aria-hidden="true"></span>
+
+                <div class="flex items-center justify-between gap-4 border-b border-line bg-void-raised px-4 py-3">
+                    <span class="flex gap-1.5" aria-hidden="true">
+                        <span class="h-1.5 w-1.5 rounded-full bg-reactor"></span>
+                        <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+                        <span class="h-1.5 w-1.5 rounded-full bg-arc"></span>
+                    </span>
+                    <p class="hud text-right text-[0.6rem] text-ink-dim">Comms terminal // awaiting input</p>
+                </div>
+
+                <form id="contactForm" class="grid gap-5 p-5 sm:grid-cols-2 sm:p-6">
+                    <!-- Honeypot Field (Hidden from humans, visible to bots) -->
+                    <div class="absolute left-0 top-0 -z-10 h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
+                        <input type="text" name="website_check" id="website_check" tabindex="-1" autocomplete="off" />
+                    </div>
+
+                    <label class="block">
+                        <span class={label}>Name</span>
+                        <input required name="name" id="name" type="text" autocomplete="name" placeholder="Your name" class={field} />
+                    </label>
+                    <label class="block">
+                        <span class={label}>Email</span>
+                        <input required name="email" id="email" type="email" autocomplete="email" placeholder="you@domain.com" class={field} />
+                    </label>
+                    <label class="block sm:col-span-2">
+                        <span class={label}>Message</span>
+                        <textarea required id="message" name="message" rows="6" placeholder="Describe the mission..." class:list={[field, "resize-y"]}></textarea>
+                    </label>
+
+                    <div class="flex flex-col-reverse items-start justify-between gap-4 sm:col-span-2 sm:flex-row sm:items-center">
+                        <p class="hud text-[0.6rem] text-ink-dim">Encrypted · Response within 48h</p>
+                        <button type="submit" id="submitButton" class="btn-reactor w-full disabled:cursor-wait disabled:opacity-70 sm:w-auto">
+                            <span data-submit-label>Transmit</span>
+                            <i class="fas fa-arrow-right" aria-hidden="true" data-submit-icon></i>
+                        </button>
+                    </div>
+
+                    <p id="formStatus" class="hidden rounded-sm border px-3.5 py-3 text-sm sm:col-span-2" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+
+            <!-- Direct line -->
+            <aside class="panel flex flex-col gap-7 p-5 sm:p-6" aria-label="Contact details">
+                <div>
+                    <p class="hud text-[0.6rem] text-ink-dim">Direct line</p>
+                    <a href={`mailto:${site.email}`} class="mt-2 block font-hud text-lg font-semibold text-ink transition-colors hover:text-gold">
+                        {site.email}
+                    </a>
+                </div>
+                <div>
+                    <p class="hud text-[0.6rem] text-ink-dim">Base of operations</p>
+                    <p class="mt-2 flex items-center gap-2 text-sm text-ink">
+                        <i class="fas fa-location-dot text-arc" aria-hidden="true"></i>
+                        {site.location}
+                    </p>
+                    <p class="hud mt-4 flex items-center gap-2 text-[0.6rem] text-ink-muted">
+                        <span class="status-dot animate-pulse-dot"></span> Open to opportunities
+                    </p>
+                </div>
+                <div class="mt-auto">
+                    <p class="hud text-[0.6rem] text-ink-dim">Frequencies</p>
+                    <ul class="mt-3 grid grid-cols-3 gap-2">
+                        {
+                            socials.map((s) => (
+                                <li>
+                                    <a
+                                        href={s.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="hud flex flex-col items-center gap-1.5 rounded-sm border border-line bg-void-raised px-2 py-2.5 text-[0.55rem] text-ink-muted transition-colors hover:border-arc-dim hover:text-arc"
+                                    >
+                                        <i class:list={[s.icon, "text-sm text-ink"]} aria-hidden="true" />
+                                        {s.label}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<script>
+    import { site } from "../data/site";
+
+    const MIN_LOADING_DURATION = 2000;
+    const MIN_SUBMISSION_TIME = 2000; // 2 seconds
+    const pageLoadTime = Date.now();
+
+    const form = document.getElementById("contactForm") as HTMLFormElement;
+    const submitButton = document.getElementById("submitButton") as HTMLButtonElement;
+    const submitLabel = submitButton.querySelector("[data-submit-label]")!;
+    const submitIcon = submitButton.querySelector("[data-submit-icon]")!;
+    const formStatus = document.getElementById("formStatus")!;
+
+    const showMessage = (message: string, type: "success" | "error") => {
+        formStatus.textContent = message;
+        formStatus.className = `rounded-sm border px-3.5 py-3 text-sm sm:col-span-2 ${
+            type === "success" ? "border-arc-dim bg-arc/5 text-arc" : "border-reactor bg-reactor/10 text-ink"
+        }`;
+    };
+
+    const resetStatus = () => {
+        formStatus.className = "hidden";
+        formStatus.textContent = "";
+    };
+
+    const setLoadingState = (isLoading: boolean) => {
+        submitButton.disabled = isLoading;
+        submitLabel.textContent = isLoading ? "Transmitting..." : "Transmit";
+        submitIcon.className = isLoading ? "fas fa-circle-notch fa-spin" : "fas fa-arrow-right";
+    };
+
+    const ensureMinimumDelay = async (startTime: number) => {
+        const elapsed = Date.now() - startTime;
+        if (elapsed < MIN_LOADING_DURATION) {
+            await new Promise((resolve) => setTimeout(resolve, MIN_LOADING_DURATION - elapsed));
+        }
+    };
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // 1. Honeypot Spy Check
+        const honeyPot = document.getElementById("website_check") as HTMLInputElement | null;
+        if (honeyPot && honeyPot.value) {
+            // It's a bot! Fake a success to stop them from trying again.
+            showMessage("Your message has been queued and will be sent shortly", "success");
+            form.reset();
+            return;
+        }
+
+        // 2. Time Trap Check
+        if (Date.now() - pageLoadTime < MIN_SUBMISSION_TIME) {
+            // Filled out too fast - likely a bot
+            showMessage("Please fill out the form carefully.", "error");
+            return;
+        }
+
+        const startTime = Date.now();
+        setLoadingState(true);
+        resetStatus();
+
+        const data = new FormData(form);
+        const payload = {
+            name: String(data.get("name")).trim(),
+            email: String(data.get("email")).trim(),
+            message: String(data.get("message")).trim(),
+        };
+
+        try {
+            const response = await fetch(site.contactApi, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+            if (!response.ok) throw new Error("Server error");
+
+            const result = await response.json();
+            await ensureMinimumDelay(startTime);
+            showMessage(result.message || "Your message has been queued and will be sent shortly", "success");
+            form.reset();
+        } catch (error) {
+            console.error("Error:", error);
+            await ensureMinimumDelay(startTime);
+            showMessage("We could not send your message right now. Please try again later.", "error");
+        } finally {
+            setLoadingState(false);
+        }
+    });
+</script>

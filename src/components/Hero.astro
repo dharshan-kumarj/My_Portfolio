@@ -1,0 +1,135 @@
+---
+import { site } from "../data/site";
+import { projects } from "../data/projects";
+
+const ticks = [20, 100, 160, 250, 320];
+---
+
+<section
+    id="top"
+    class="hex-grid relative flex min-h-[100svh] items-center overflow-hidden pb-16 pt-28 lg:pt-24"
+    aria-labelledby="hero-name"
+>
+    <div
+        class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-arc/[0.04] to-transparent"
+        aria-hidden="true"
+    >
+    </div>
+
+    <div class="shell grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-8">
+        <!-- Identity -->
+        <div class="order-2 text-center lg:order-1 lg:text-left">
+            <p
+                class="hud inline-flex items-center gap-2 rounded-full border border-arc-dim/60 bg-void-panel/60 px-3.5 py-1.5 text-[0.65rem] text-ink"
+                data-hero="chip"
+            >
+                <span class="status-dot animate-pulse-dot"></span>
+                System online <span class="text-arc">//</span> Engineer
+            </p>
+
+            <h1
+                id="hero-name"
+                class="mt-6 font-display text-[2.6rem] font-bold uppercase leading-[1.02] tracking-[0.06em] text-ink sm:text-6xl lg:text-[4.25rem]"
+            >
+                <span class="block overflow-hidden"><span class="block" data-hero="line">Dharshan</span></span>
+                <span class="block overflow-hidden"><span class="block" data-hero="line">Kumar J</span></span>
+            </h1>
+
+            <p class="mt-5 flex items-center justify-center gap-4 lg:justify-start" data-hero="role">
+                <span class="hidden h-px w-8 bg-gold lg:block" aria-hidden="true"></span>
+                <span class="sr-only">Roles: {site.roles.join(", ")}</span>
+                <span
+                    id="hero-role"
+                    class="font-hud text-lg font-semibold uppercase tracking-[0.2em] text-gold sm:text-xl"
+                    data-roles={JSON.stringify(site.roles)}
+                    aria-hidden="true">{site.roles[0]}</span
+                ><span
+                    class="-ml-2 inline-block h-6 w-1.5 animate-blink bg-arc"
+                    aria-hidden="true"></span>
+            </p>
+
+            <p class="mx-auto mt-6 max-w-md text-base text-ink-muted sm:text-lg lg:mx-0" data-hero="copy">
+                I build systems that run in production, not just in notebooks.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start" data-hero="cta">
+                <a href="#builds" class="btn-reactor">View builds</a>
+                <a href="#channel" class="btn-arc">Open channel</a>
+            </div>
+
+            <dl
+                class="hud mt-10 flex flex-col items-center gap-2 border-t border-line pt-6 text-[0.68rem] text-ink-muted lg:flex-row lg:items-stretch lg:gap-0"
+                data-hero="stats"
+            >
+                <div class="lg:pr-6">
+                    <dt class="sr-only">Award</dt>
+                    <dd><span class="text-gold">1st Prize</span> · National Quantum Hackathon 2026</dd>
+                </div>
+                <div class="lg:border-l lg:border-line lg:px-6">
+                    <dt class="sr-only">Projects</dt>
+                    <dd><span class="text-ink">{projects.length}</span> Builds</dd>
+                </div>
+                <div class="lg:border-l lg:border-line lg:pl-6">
+                    <dt class="sr-only">Research</dt>
+                    <dd>IEEE Research</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Portrait in HUD rings -->
+        <div class="order-1 flex justify-center lg:order-2" data-hero="portrait">
+            <div class="relative aspect-square w-[min(78vw,26rem)]" data-parallax>
+                <svg viewBox="0 0 200 200" class="absolute inset-0 h-full w-full animate-spin-slow" aria-hidden="true">
+                    <circle cx="100" cy="100" r="96" fill="none" class="stroke-arc/50" stroke-width="0.6" stroke-dasharray="120 18 60 30"></circle>
+                    {
+                        ticks.map((deg) => (
+                            <line x1="100" y1="1" x2="100" y2="9" class="stroke-arc" stroke-width="0.8" transform={`rotate(${deg} 100 100)`} />
+                        ))
+                    }
+                    <circle cx="100" cy="4" r="1.4" class="fill-gold" transform="rotate(62 100 100)"></circle>
+                </svg>
+                <svg viewBox="0 0 200 200" class="absolute inset-0 h-full w-full animate-spin-slower" aria-hidden="true">
+                    <circle cx="100" cy="100" r="87" fill="none" class="stroke-arc/30" stroke-width="0.6" stroke-dasharray="0.6 3"></circle>
+                </svg>
+                <div class="absolute inset-[15%] rounded-full border border-reactor-deep shadow-reactor">
+                    <img
+                        src="/Dharshan.jpeg"
+                        alt="Dharshan Kumar J"
+                        class="h-full w-full rounded-full object-cover"
+                        width="420"
+                        height="420"
+                        fetchpriority="high"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Rotating role readout. Reduced-motion: keep the first role static.
+    const el = document.getElementById("hero-role");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (el && !reduce.matches) {
+        const roles: string[] = JSON.parse(el.dataset.roles ?? "[]");
+        let role = 0;
+        let chars = roles[0].length;
+        let deleting = true;
+        const tick = () => {
+            const current = roles[role];
+            chars += deleting ? -1 : 1;
+            el.textContent = current.slice(0, chars);
+            let delay = deleting ? 45 : 90;
+            if (!deleting && chars === current.length) {
+                deleting = true;
+                delay = 2200;
+            } else if (deleting && chars === 0) {
+                deleting = false;
+                role = (role + 1) % roles.length;
+                delay = 350;
+            }
+            setTimeout(tick, delay);
+        };
+        setTimeout(tick, 3200);
+    }
+</script>

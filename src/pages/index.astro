@@ -1,20 +1,24 @@
 ---
-import MainPage from "../components/MainPage.astro";
 import Layout from "../layouts/Layout.astro";
-import Skills from "../components/Skills.astro";
-import Projects from "../components/Projects.astro";
-import BeyondTheCode from "../components/Beyond-the-code.astro";
-import Contact from "../components/Contact.astro";
-import Blogs from "../components/Blogs.astro";
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BootSequence from "../components/BootSequence.astro";
+import NavBar from "../components/NavBar.astro";
+import Hero from "../components/Hero.astro";
+import Arsenal from "../components/Arsenal.astro";
+import Builds from "../components/Builds.astro";
+import MissionLog from "../components/MissionLog.astro";
+import Transmissions from "../components/Transmissions.astro";
+import Channel from "../components/Channel.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 ---
 
 <Layout>
-	<MainPage />
-	<Skills />
-	<BeyondTheCode />
-	<Projects />
-	<Blogs />
-	<Contact />
+    <BootSequence slot="overlay" />
+    <NavBar slot="header" />
+    <Hero />
+    <Arsenal />
+    <Builds />
+    <MissionLog />
+    <Transmissions />
+    <Channel />
+    <SiteFooter slot="footer" />
 </Layout>

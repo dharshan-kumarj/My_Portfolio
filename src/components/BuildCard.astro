@@ -1,0 +1,89 @@
+---
+import type { Project } from "../data/projects";
+
+interface Props {
+    project: Project;
+    number: number;
+    flagship?: boolean;
+    class?: string;
+}
+
+const { project, number, flagship = false, class: className } = Astro.props;
+const label = `Build ${String(number).padStart(2, "0")}${flagship ? " // Flagship" : ""}`;
+---
+
+<article
+    class:list={["panel group flex flex-col overflow-hidden transition-colors hover:border-gold-dim/70", className]}
+    data-build-card
+>
+    <div
+        class:list={[
+            "relative overflow-hidden border-b border-line bg-void-deep bg-grid-arc bg-grid",
+            flagship ? "aspect-[4/3] lg:aspect-auto lg:min-h-[22rem] lg:flex-1" : "aspect-[16/9]",
+        ]}
+    >
+        <span class="hud absolute left-3 top-3 z-10 rounded-sm border border-gold-dim bg-void/85 px-2 py-1 text-[0.6rem] text-gold">
+            {label}
+        </span>
+
+        {
+            project.visual === "contract-graph" ? (
+                <div class="absolute inset-0 grid place-items-center" aria-hidden="true">
+                    <svg viewBox="0 0 240 90" class="w-[78%] max-w-xs">
+                        <rect x="8" y="22" width="44" height="32" rx="3" fill="none" class="stroke-gold-soft" stroke-width="1" />
+                        <rect x="98" y="22" width="44" height="32" rx="3" fill="none" class="stroke-gold-soft" stroke-width="1" />
+                        <rect x="188" y="22" width="44" height="32" rx="3" fill="none" class="stroke-gold-soft" stroke-width="1" />
+                        <line x1="52" y1="38" x2="98" y2="38" class="stroke-gold-soft" stroke-width="1" />
+                        <line x1="142" y1="38" x2="188" y2="38" class="stroke-gold-soft" stroke-width="1" />
+                        <circle cx="120" cy="38" r="27" fill="none" class="stroke-arc" stroke-width="1" stroke-dasharray="3 3" data-scan-ring />
+                        <line x1="139" y1="57" x2="147" y2="65" class="stroke-arc" stroke-width="1.2" />
+                        <text x="120" y="86" text-anchor="middle" class="fill-arc-soft font-hud text-[7px] tracking-[0.2em]">SCAN // CONTRACT GRAPH</text>
+                    </svg>
+                </div>
+            ) : (
+                <img
+                    src={project.image}
+                    alt={`${project.title} preview`}
+                    loading="lazy"
+                    class:list={[
+                        "absolute inset-0 h-full w-full transition-transform duration-500 group-hover:scale-[1.03]",
+                        flagship ? "object-contain p-6 sm:p-10" : "object-cover",
+                    ]}
+                />
+            )
+        }
+    </div>
+
+    <div class="flex flex-col gap-3 p-5 sm:p-6">
+        <h3
+            class:list={[
+                "font-display font-bold uppercase leading-snug tracking-wide2 text-ink",
+                flagship ? "text-lg sm:text-2xl" : "text-[0.95rem] sm:text-base",
+            ]}
+        >
+            {project.title}
+        </h3>
+        <p class="text-sm leading-relaxed text-ink-muted">{project.description}</p>
+        <ul class="flex flex-wrap gap-1.5" aria-label="Tech stack">
+            {project.tech.map((t) => <li class="chip">– {t}</li>)}
+        </ul>
+        {
+            (project.github || project.live) && (
+                <div class="mt-2 flex flex-wrap gap-2">
+                    {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" class="btn-arc min-h-[2.5rem] px-4 text-[0.65rem]">
+                            <i class="fas fa-code" aria-hidden="true" /> GitHub
+                            <span class="sr-only">: {project.title}</span>
+                        </a>
+                    )}
+                    {project.live && (
+                        <a href={project.live} target="_blank" rel="noopener noreferrer" class="btn-reactor min-h-[2.5rem] px-4 text-[0.65rem]">
+                            Live <span aria-hidden="true">↗</span>
+                            <span class="sr-only">: {project.title}</span>
+                        </a>
+                    )}
+                </div>
+            )
+        }
+    </div>
+</article>
