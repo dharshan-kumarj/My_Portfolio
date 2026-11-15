@@ -1,3 +1,34 @@
+---
+interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+    type?: string;
+    publishedTime?: string;
+    keywords?: string;
+    structuredData?: Record<string, unknown>;
+}
+
+const siteUrl = "https://dharshankumar.com";
+const defaultTitle =
+    "Dharshan Kumar J | Software Engineer · AI Systems · Cloud & DevOps · Web3";
+const defaultDescription =
+    "Software Engineer specializing in AI Systems, Backend Engineering, Cloud & DevOps, and Web3. Building production-grade ML pipelines, RAG systems, scalable backend APIs, and decentralized applications.";
+
+const {
+    title = defaultTitle,
+    description = defaultDescription,
+    image = "/Dharshan.jpeg",
+    type = "website",
+    publishedTime,
+    keywords = "software engineer, AI systems, machine learning, backend engineering, cloud DevOps, Web3, Golang developer, FastAPI, RAG system, LLM, smart contract, Ethereum, Prometheus, Grafana, ChromaDB, Scikit-Learn, SHAP, Slither, Python, REST API",
+    structuredData,
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const imageUrl = new URL(image, siteUrl).toString();
+---
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -7,19 +38,11 @@
         <meta name="generator" content={Astro.generator} />
 
         <!-- Primary Meta Tags -->
-        <title>
-            Dharshan Kumar J | Software Engineer · AI Systems · Cloud & DevOps ·
-            Web3
-        </title>
-        <meta
-            name="title"
-            content="Dharshan Kumar J | Software Engineer · AI Systems · Cloud & DevOps · Web3"
-        />
-        <meta
-            name="description"
-            content="Software Engineer specializing in AI Systems, Backend Engineering, Cloud & DevOps, and Web3. Building production-grade ML pipelines, RAG systems, scalable backend APIs, and decentralized applications."
-        />
+        <title>{title}</title>
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
         <meta name="author" content="Dharshan Kumar J" />
+        <link rel="canonical" href={canonicalUrl} />
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,41 +61,44 @@
         />
 
         <!-- Keywords for SEO -->
-        <meta
-            name="keywords"
-            content="software engineer, AI systems, machine learning, backend engineering, cloud DevOps, Web3, Golang developer, FastAPI, RAG system, LLM, smart contract, Ethereum, Prometheus, Grafana, ChromaDB, Scikit-Learn, SHAP, Slither, Python, REST API"
-        />
+        <meta name="keywords" content={keywords} />
 
         <!-- Robots Meta -->
         <meta name="robots" content="index, follow" />
 
         <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta
-            property="og:title"
-            content="Dharshan Kumar J | Software Engineer · AI · Cloud & DevOps · Web3"
-        />
-        <meta
-            property="og:description"
-            content="Software Engineer specializing in AI Systems, Backend Engineering, Cloud & DevOps, and Web3. Building production-grade ML pipelines, RAG systems, scalable backend APIs, and decentralized applications."
-        />
-        <meta property="og:image" content="/Dharshan.jpeg" />
+        <meta property="og:type" content={type} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="Dharshan Kumar J" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={imageUrl} />
+        {
+            publishedTime && (
+                <meta
+                    property="article:published_time"
+                    content={publishedTime}
+                />
+            )
+        }
 
         <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-            property="twitter:title"
-            content="Dharshan Kumar J | Software Engineer · AI · Cloud & DevOps · Web3"
-        />
-        <meta
-            property="twitter:description"
-            content="Software Engineer specializing in AI Systems, Backend Engineering, Cloud & DevOps, and Web3. Building production-grade ML pipelines, RAG systems, scalable backend APIs, and decentralized applications."
-        />
-        <meta property="twitter:image" content="/Dharshan.jpeg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={imageUrl} />
 
         <!-- Additional Meta Tags -->
         <meta name="theme-color" content="#0a0a0a" />
         <meta name="copyright" content="Dharshan Kumar J" />
+        {
+            structuredData && (
+                <script
+                    type="application/ld+json"
+                    set:html={JSON.stringify(structuredData)}
+                />
+            )
+        }
     </head>
     <body>
         <div class="background-gradient"></div>

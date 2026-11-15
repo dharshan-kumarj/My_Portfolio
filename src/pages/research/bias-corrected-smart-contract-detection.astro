@@ -1,0 +1,2085 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { publications } from "../../data/publications";
+
+const pub = publications[0];
+if (!pub) {
+    throw new Error("Publication data is missing.");
+}
+
+const pageTitle = `${pub.title} | IEEE ${pub.year}`;
+const pageDescription =
+    "A peer-reviewed IEEE ICOSICS 2026 paper that identifies size-proxy bias in smart contract vulnerability detection, corrects it across 3,316 Ethereum contracts, and uses SHAP to verify security-driven predictions.";
+const pageKeywords = [
+    ...pub.tags,
+    "IEEE",
+    "ICOSICS 2026",
+    "Ethereum",
+    "SHAP",
+    "Slither",
+    "DeFi security",
+].join(", ");
+
+const maxShap = Math.max(...pub.shap.map((feature) => feature.value));
+const firstEvidence = pub.evidence[0];
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    headline: pub.title,
+    name: pub.title,
+    author: pub.authors.map((name) => ({ "@type": "Person", name })),
+    datePublished: pub.publishedDate,
+    publisher: { "@type": "Organization", name: "IEEE" },
+    isPartOf: {
+        "@type": "PublicationIssue",
+        name: pub.venue,
+    },
+    pageStart: "1436",
+    pageEnd: "1442",
+    pagination: pub.pages,
+    identifier: {
+        "@type": "PropertyValue",
+        propertyID: "DOI",
+        value: pub.doi,
+    },
+    sameAs: [pub.url],
+    url: pub.url,
+    abstract: pub.abstract,
+    keywords: pub.tags.join(", "),
+    image: "https://dharshankumar.com/research/ieee-xplore.webp",
+    inLanguage: "en",
+};
+---
+
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    image="/research/ieee-xplore.webp"
+    type="article"
+    publishedTime={pub.publishedDate}
+    keywords={pageKeywords}
+    structuredData={schema}
+>
+    <main class="publication-page">
+        <div class="page-glow" aria-hidden="true"></div>
+
+        <div class="container">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <a href="/">Home</a>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                <a href="/#research">Research</a>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                <span aria-current="page">Publication</span>
+            </nav>
+
+            <header class="publication-hero">
+                <div class="hero-main">
+                    <p class="hero-eyebrow">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        Published in IEEE Xplore
+                    </p>
+
+                    <h1>{pub.title}</h1>
+
+                    <p class="hero-authors">{pub.authors.join(" · ")}</p>
+                    <p class="hero-affiliation">
+                        School of Computer Science and Technology · Karunya
+                        Institute of Technology and Sciences
+                    </p>
+
+                    <div class="hero-venue">
+                        <span>{pub.venue}</span>
+                        <span>{pub.conferenceDates} · {pub.location}</span>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a
+                            class="pub-btn pub-btn-primary"
+                            href={pub.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Read on IEEE Xplore
+                            <i
+                                class="fas fa-arrow-up-right-from-square"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+                        <a class="pub-btn pub-btn-secondary" href="#citation">
+                            Cite this paper
+                            <i class="fas fa-quote-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <ul class="hero-tags" aria-label="Research areas">
+                        {
+                            pub.tags.map((tag) => (
+                                <li>{tag}</li>
+                            ))
+                        }
+                    </ul>
+                </div>
+
+                <aside class="hero-record" aria-label="Publication record">
+                    <p class="record-title">Publication record</p>
+                    <div class="record-row">
+                        <span>Publisher</span>
+                        <strong>IEEE</strong>
+                    </div>
+                    <div class="record-row">
+                        <span>Year</span>
+                        <strong>{pub.year}</strong>
+                    </div>
+                    <div class="record-row">
+                        <span>Pages</span>
+                        <strong>{pub.pages}</strong>
+                    </div>
+                    <div class="record-row">
+                        <span>Conference</span>
+                        <strong>ICOSICS 2026</strong>
+                    </div>
+                    <div class="record-row">
+                        <span>Location</span>
+                        <strong>{pub.location}</strong>
+                    </div>
+                    <div class="record-row record-row-doi">
+                        <span>DOI</span>
+                        <strong>{pub.doi}</strong>
+                    </div>
+                    <a
+                        class="record-link"
+                        href={pub.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View official record
+                        <i
+                            class="fas fa-arrow-up-right-from-square"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+                </aside>
+            </header>
+
+            <section class="metric-strip" aria-label="Research at a glance">
+                {
+                    pub.metrics.map((metric) => (
+                        <div class="strip-metric">
+                            <strong>{metric.value}</strong>
+                            <span>{metric.label}</span>
+                        </div>
+                    ))
+                }
+            </section>
+
+            <div class="publication-layout">
+                <aside class="publication-nav">
+                    <nav aria-label="On this page">
+                        <p class="nav-title">On this page</p>
+                        <a href="#abstract">Abstract</a>
+                        <a href="#contributions">Contributions</a>
+                        <a href="#problem">The bias problem</a>
+                        <a href="#methodology">Methodology</a>
+                        <a href="#results">Results</a>
+                        <a href="#evidence">Publication evidence</a>
+                        <a href="#citation">Citation</a>
+                    </nav>
+
+                    <div class="nav-card">
+                        <i class="fas fa-quote-left" aria-hidden="true"></i>
+                        <p>
+                            “The 4.88 percentage-point accuracy drop after bias
+                            correction is not a performance loss but a removal
+                            of a confounding factor.”
+                        </p>
+                        <a href="#citation">Copy the citation</a>
+                    </div>
+                </aside>
+
+                <div class="publication-body">
+                    <section id="abstract" class="content-section">
+                        <p class="section-label">01 · Abstract</p>
+                        <h2>Abstract</h2>
+                        <p class="lead">{pub.abstract}</p>
+                    </section>
+
+                    <section id="contributions" class="content-section">
+                        <p class="section-label">02 · Contributions</p>
+                        <h2>What the paper contributes</h2>
+
+                        <div class="contribution-grid">
+                            {
+                                pub.contributions.map((contribution) => (
+                                    <article class="contribution-card">
+                                        <span class="contribution-icon">
+                                            <i
+                                                class={`fas ${contribution.icon}`}
+                                                aria-hidden="true"
+                                            />
+                                        </span>
+                                        <h3>{contribution.title}</h3>
+                                        <p>{contribution.description}</p>
+                                    </article>
+                                ))
+                            }
+                        </div>
+                    </section>
+
+                    <section id="problem" class="content-section">
+                        <p class="section-label">03 · The problem</p>
+                        <h2>When 98.49% accuracy is a warning sign</h2>
+                        <p class="body-copy">
+                            Audited safe contracts from large DeFi protocols
+                            average 91.9 functions; exploited vulnerable
+                            contracts average 6.2. That 14.9× gap is enough for
+                            a model to learn contract size as a stand-in for
+                            vulnerability. On the raw 4,492-contract dataset,
+                            <code>function_count</code> absorbed 89.51% of
+                            Gradient Boosting&rsquo;s impurity importance and
+                            accuracy reached 98.49%—a number that measured size
+                            discrimination, not security learning.
+                        </p>
+
+                        <div class="bias-panel">
+                            <div class="bias-side">
+                                <span class="bias-tag">Raw dataset</span>
+                                <strong>98.49%</strong>
+                                <p class="bias-caption">accuracy</p>
+                                <div class="bias-bar" aria-hidden="true">
+                                    <span style="width: 100%"></span>
+                                </div>
+                                <p class="bias-note">
+                                    function_count · 89.51% of feature
+                                    importance
+                                </p>
+                            </div>
+
+                            <div class="bias-arrow" aria-hidden="true">
+                                <i class="fas fa-arrow-right-long"></i>
+                                <span>Bias correction</span>
+                            </div>
+
+                            <div class="bias-side bias-side-after">
+                                <span class="bias-tag">After correction</span>
+                                <strong>93.37%</strong>
+                                <p class="bias-caption">accuracy</p>
+                                <div class="bias-bar" aria-hidden="true">
+                                    <span style="width: 94.8%"></span>
+                                </div>
+                                <p class="bias-note">
+                                    assembly_flag · SHAP value 2.02
+                                </p>
+                            </div>
+                        </div>
+
+                        <p class="callout">
+                            The 4.88 percentage-point drop is not a performance
+                            loss. It is the removal of a confounding factor.
+                        </p>
+                    </section>
+
+                    <section id="methodology" class="content-section">
+                        <p class="section-label">04 · Methodology</p>
+                        <h2>A nine-stage, reproducible pipeline</h2>
+                        <p class="body-copy">
+                            The final corpus contains 3,316 real-world Ethereum
+                            contracts: 924 vulnerable and 2,392 safe. Every
+                            stage runs with checkpoints every 100 contracts, and
+                            nine security-oriented features combine Slither
+                            analysis with source-code metrics.
+                        </p>
+
+                        <ol class="pipeline-list">
+                            {
+                                pub.pipeline.map((stage) => (
+                                    <li class="pipeline-item">
+                                        <span class="pipeline-step">
+                                            {stage.step}
+                                        </span>
+                                        <div>
+                                            <h3>{stage.title}</h3>
+                                            <p>{stage.description}</p>
+                                        </div>
+                                    </li>
+                                ))
+                            }
+                        </ol>
+                    </section>
+
+                    <section id="results" class="content-section">
+                        <p class="section-label">05 · Results</p>
+                        <h2>What changes when size stops being the signal</h2>
+                        <p class="body-copy">
+                            The held-out test set contains 664 contracts: 172
+                            vulnerable and 492 safe. Gradient Boosting
+                            outperforms both baselines on accuracy and
+                            ROC-AUC, and Random Forest on precision.
+                            Logistic Regression has higher precision, but it
+                            misses nearly one in three vulnerable contracts.
+                        </p>
+
+                        <div
+                            class="results-table-wrap"
+                            role="region"
+                            aria-label="Model comparison results"
+                            tabindex="0"
+                        >
+                            <table class="results-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Model</th>
+                                        <th scope="col">Accuracy</th>
+                                        <th scope="col">Precision</th>
+                                        <th scope="col">Recall</th>
+                                        <th scope="col">ROC-AUC</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        pub.results.map((row) => (
+                                            <tr
+                                                class:list={{
+                                                    "is-highlighted":
+                                                        row.highlight,
+                                                }}
+                                            >
+                                                <th scope="row">{row.model}</th>
+                                                <td>{row.accuracy}</td>
+                                                <td>{row.precision}</td>
+                                                <td>{row.recall}</td>
+                                                <td>{row.auc}</td>
+                                            </tr>
+                                        ))
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="table-note">
+                            All models use identical features and the same
+                            held-out split.
+                        </p>
+
+                        <h3 class="subheading">SHAP feature importance</h3>
+                        <p class="body-copy">
+                            After correction, security flags dominate.
+                            <code>assembly_flag</code> leads at 2.02, followed
+                            by <code>external_calls</code> (0.92) and
+                            <code>function_count</code> (0.71). Size now
+                            provides context instead of driving the decision.
+                        </p>
+
+                        <ul class="shap-list">
+                            {
+                                pub.shap.map((feature) => (
+                                    <li class="shap-item">
+                                        <div class="shap-head">
+                                            <span class="shap-name">
+                                                {feature.feature}
+                                            </span>
+                                            <span class="shap-value">
+                                                {feature.display}
+                                            </span>
+                                        </div>
+                                        <div
+                                            class="shap-track"
+                                            aria-hidden="true"
+                                        >
+                                            <span
+                                                style={`width: ${Math.max(
+                                                    1.5,
+                                                    (feature.value / maxShap) *
+                                                        100,
+                                                )}%`}
+                                            />
+                                        </div>
+                                        <span class="shap-meta">
+                                            {feature.type}
+                                        </span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+
+                        <div class="findings">
+                            {
+                                pub.findings.map((finding) => (
+                                    <p>
+                                        <i
+                                            class="fas fa-circle-check"
+                                            aria-hidden="true"
+                                        />
+                                        <span>{finding}</span>
+                                    </p>
+                                ))
+                            }
+                        </div>
+                    </section>
+
+                    <section id="evidence" class="content-section">
+                        <p class="section-label">06 · Publication evidence</p>
+                        <h2>Official record</h2>
+                        <p class="body-copy">
+                            Both official IEEE Xplore screenshots and the
+                            paper&rsquo;s framework and first page are included
+                            as publication evidence. Select any image to view it
+                            at full size.
+                        </p>
+
+                        <div class="evidence-grid">
+                            {
+                                pub.evidence.map((image) => (
+                                    <figure class="evidence-card">
+                                        <button
+                                            type="button"
+                                            class="evidence-button"
+                                            data-src={image.src}
+                                            data-alt={image.alt}
+                                            data-caption={image.caption}
+                                            data-width={image.width}
+                                            data-height={image.height}
+                                            aria-label={`View larger: ${image.caption}`}
+                                            aria-haspopup="dialog"
+                                            aria-controls="evidence-lightbox"
+                                        >
+                                            <img
+                                                src={image.src}
+                                                alt={image.alt}
+                                                width={image.width}
+                                                height={image.height}
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
+                                            <span
+                                                class="evidence-zoom"
+                                                aria-hidden="true"
+                                            >
+                                                <i class="fas fa-expand"></i>
+                                            </span>
+                                        </button>
+                                        <figcaption>{image.caption}</figcaption>
+                                    </figure>
+                                ))
+                            }
+                        </div>
+
+                        <p class="evidence-note">
+                            <i
+                                class="fas fa-circle-info"
+                                aria-hidden="true"
+                            ></i>
+                            The two IEEE Xplore screenshots document the
+                            official record; the framework diagram summarizes
+                            the paper&rsquo;s pipeline, and the first page is
+                            reproduced from the published PDF.
+                        </p>
+                    </section>
+
+                    <section id="citation" class="content-section">
+                        <p class="section-label">07 · Citation</p>
+                        <h2>Cite this paper</h2>
+                        <p class="body-copy">
+                            If you reference this work, please use the BibTeX
+                            entry below.
+                        </p>
+
+                        <div class="citation-card">
+                            <pre><code id="bibtex">{pub.citation}</code></pre>
+                            <button
+                                type="button"
+                                id="copy-citation"
+                                class="copy-btn"
+                            >
+                                <i class="far fa-copy" aria-hidden="true"></i>
+                                Copy BibTeX
+                            </button>
+                            <span
+                                id="copy-status"
+                                class="copy-status"
+                                role="status"
+                                aria-live="polite"
+                            ></span>
+                        </div>
+
+                        <p class="citation-links">
+                            Official record:
+                            <a
+                                href={pub.url}
+                                target="_blank"
+                                rel="noopener noreferrer">{pub.url}</a
+                            >
+                        </p>
+                    </section>
+
+                    <section class="closing-cta">
+                        <div>
+                            <p class="closing-eyebrow">Read the full paper</p>
+                            <h2>
+                                Explore the methodology, results, and SHAP
+                                analysis on IEEE Xplore.
+                            </h2>
+                        </div>
+                        <a
+                            class="pub-btn pub-btn-primary"
+                            href={pub.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Open IEEE Xplore
+                            <i
+                                class="fas fa-arrow-up-right-from-square"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+                    </section>
+                </div>
+            </div>
+
+            <footer class="page-footer">
+                <a href="/#research">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                    Back to research
+                </a>
+                <a href="/">Home</a>
+            </footer>
+        </div>
+    </main>
+
+    <dialog
+        id="evidence-lightbox"
+        class="publication-lightbox"
+        aria-labelledby="lightbox-caption"
+    >
+        <div class="lightbox-shell">
+            <button
+                type="button"
+                class="lightbox-close"
+                id="lightbox-close"
+                aria-label="Close image viewer"
+            >
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <button
+                type="button"
+                class="lightbox-nav lightbox-prev"
+                id="lightbox-prev"
+                aria-label="Previous image"
+            >
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <figure class="lightbox-figure">
+                <img
+                    id="lightbox-image"
+                    src={firstEvidence?.src ?? ""}
+                    alt=""
+                    width={firstEvidence?.width ?? 2000}
+                    height={firstEvidence?.height ?? 1250}
+                />
+                <figcaption id="lightbox-caption"></figcaption>
+            </figure>
+            <button
+                type="button"
+                class="lightbox-nav lightbox-next"
+                id="lightbox-next"
+                aria-label="Next image"
+            >
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+            <p class="lightbox-counter" id="lightbox-counter" aria-live="polite"></p>
+        </div>
+    </dialog>
+
+    <script>
+        interface EvidenceItem {
+            src: string;
+            alt: string;
+            caption: string;
+            width: number;
+            height: number;
+        }
+
+        const triggers = Array.from(
+            document.querySelectorAll<HTMLButtonElement>(".evidence-button"),
+        );
+
+        const lightbox = document.getElementById(
+            "evidence-lightbox",
+        ) as HTMLDialogElement | null;
+        const lightboxImage = document.getElementById(
+            "lightbox-image",
+        ) as HTMLImageElement | null;
+        const lightboxCaption = document.getElementById("lightbox-caption");
+        const lightboxCounter = document.getElementById("lightbox-counter");
+        const closeButton = document.getElementById(
+            "lightbox-close",
+        ) as HTMLButtonElement | null;
+        const prevButton = document.getElementById(
+            "lightbox-prev",
+        ) as HTMLButtonElement | null;
+        const nextButton = document.getElementById(
+            "lightbox-next",
+        ) as HTMLButtonElement | null;
+
+        const items: EvidenceItem[] = triggers.map((trigger) => ({
+            src: trigger.dataset.src ?? "",
+            alt: trigger.dataset.alt ?? "",
+            caption: trigger.dataset.caption ?? "",
+            width: Number(trigger.dataset.width ?? 2000),
+            height: Number(trigger.dataset.height ?? 1250),
+        }));
+
+        let currentIndex = 0;
+
+        function showImage(index: number) {
+            if (!lightboxImage || !lightboxCaption || !lightboxCounter) return;
+            if (items.length === 0) return;
+
+            currentIndex = (index + items.length) % items.length;
+            const item = items[currentIndex];
+            if (!item) return;
+
+            lightboxImage.src = item.src;
+            lightboxImage.alt = item.alt;
+            lightboxImage.width = item.width;
+            lightboxImage.height = item.height;
+            lightboxCaption.textContent = item.caption;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${items.length}`;
+        }
+
+        function openLightbox(index: number) {
+            if (!lightbox) return;
+            showImage(index);
+            lightbox.showModal();
+            document.body.style.overflow = "hidden";
+            closeButton?.focus();
+        }
+
+        function closeLightbox() {
+            lightbox?.close();
+        }
+
+        triggers.forEach((trigger, index) => {
+            trigger.addEventListener("click", () => openLightbox(index));
+        });
+
+        closeButton?.addEventListener("click", closeLightbox);
+        prevButton?.addEventListener("click", () => showImage(currentIndex - 1));
+        nextButton?.addEventListener("click", () => showImage(currentIndex + 1));
+
+        lightbox?.addEventListener("click", (event) => {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        lightbox?.addEventListener("close", () => {
+            document.body.style.overflow = "";
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (!lightbox?.open) return;
+            if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                showImage(currentIndex - 1);
+            }
+            if (event.key === "ArrowRight") {
+                event.preventDefault();
+                showImage(currentIndex + 1);
+            }
+        });
+
+        const copyButton = document.getElementById(
+            "copy-citation",
+        ) as HTMLButtonElement | null;
+        const bibtex = document.getElementById("bibtex");
+        const copyStatus = document.getElementById("copy-status");
+
+        copyButton?.addEventListener("click", async () => {
+            const text = bibtex?.textContent ?? "";
+            if (!text) return;
+
+            try {
+                await navigator.clipboard.writeText(text);
+            } catch {
+                const selection = window.getSelection();
+                const range = document.createRange();
+                if (!selection) return;
+                range.selectNodeContents(bibtex as Node);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                document.execCommand("copy");
+                selection.removeAllRanges();
+            }
+
+            if (copyStatus) {
+                copyStatus.textContent = "Copied to clipboard";
+            }
+            copyButton.classList.add("is-copied");
+
+            window.setTimeout(() => {
+                if (copyStatus) copyStatus.textContent = "";
+                copyButton.classList.remove("is-copied");
+            }, 2200);
+        });
+    </script>
+</Layout>
+
+<style>
+    .publication-page {
+        position: relative;
+        padding: 1.5rem 0 4rem;
+        overflow: hidden;
+    }
+
+    .page-glow {
+        position: absolute;
+        top: -12rem;
+        left: 50%;
+        width: min(900px, 90vw);
+        height: 500px;
+        transform: translateX(-50%);
+        background: radial-gradient(
+            circle,
+            rgba(138, 43, 226, 0.16),
+            transparent 65%
+        );
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .breadcrumbs {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.5rem 0 1.5rem;
+        color: var(--text-muted);
+        font-size: 0.78rem;
+    }
+
+    .breadcrumbs a {
+        transition: color 0.2s ease;
+    }
+
+    .breadcrumbs a:hover {
+        color: var(--accent);
+    }
+
+    .breadcrumbs i {
+        font-size: 0.55rem;
+        color: #555;
+    }
+
+    .breadcrumbs span {
+        color: #ddd;
+    }
+
+    .publication-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        gap: 3rem;
+        align-items: start;
+        padding: 1rem 0 2.5rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .hero-main {
+        min-width: 0;
+    }
+
+    .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1.1rem;
+        padding: 0.4rem 0.7rem;
+        border: 1px solid rgba(110, 231, 183, 0.25);
+        border-radius: 100px;
+        background: rgba(110, 231, 183, 0.07);
+        color: #8ff0c4;
+        font-family: var(--font-display);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .status-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #6ee7b7;
+        box-shadow: 0 0 0 4px rgba(110, 231, 183, 0.12);
+    }
+
+    .publication-hero h1 {
+        max-width: 950px;
+        margin-bottom: 1rem;
+        font-size: clamp(2.1rem, 4.3vw, 3.45rem);
+        line-height: 1.12;
+        letter-spacing: -0.03em;
+    }
+
+    .hero-authors {
+        margin-bottom: 0.25rem;
+        color: #f0f0f0;
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .hero-affiliation {
+        margin-bottom: 1rem;
+        color: var(--text-muted);
+        font-size: 0.82rem;
+        line-height: 1.5;
+    }
+
+    .hero-venue {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        margin-bottom: 1.4rem;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .hero-venue span:first-child {
+        color: #ccc;
+        font-weight: 500;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 1.35rem;
+    }
+
+    .pub-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        padding: 0.78rem 1.1rem;
+        border-radius: 10px;
+        font-family: var(--font-display);
+        font-size: 0.84rem;
+        font-weight: 600;
+        transition:
+            transform 0.2s ease,
+            border-color 0.2s ease,
+            background 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .pub-btn i {
+        font-size: 0.72rem;
+    }
+
+    .pub-btn-primary {
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 4px 18px rgba(138, 43, 226, 0.25);
+    }
+
+    .pub-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(138, 43, 226, 0.35);
+    }
+
+    .pub-btn-secondary {
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text-main);
+    }
+
+    .pub-btn-secondary:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        transform: translateY(-2px);
+    }
+
+    .hero-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .hero-tags li {
+        padding: 0.3rem 0.7rem;
+        border: 1px solid rgba(138, 43, 226, 0.22);
+        border-radius: 100px;
+        background: rgba(138, 43, 226, 0.09);
+        color: #c9a8ff;
+        font-size: 0.72rem;
+    }
+
+    .hero-record {
+        display: flex;
+        flex-direction: column;
+        padding: 1.35rem;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background:
+            linear-gradient(
+                150deg,
+                rgba(255, 255, 255, 0.04),
+                rgba(255, 255, 255, 0.01)
+            ),
+            var(--bg-card);
+    }
+
+    .record-title {
+        margin-bottom: 0.9rem;
+        color: var(--text-muted);
+        font-family: var(--font-display);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    .record-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.62rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 0.78rem;
+    }
+
+    .record-row span {
+        flex: 0 0 auto;
+        color: var(--text-muted);
+    }
+
+    .record-row strong {
+        color: #e8e8e8;
+        font-weight: 500;
+        text-align: right;
+    }
+
+    .record-row-doi strong {
+        color: #bdbdbd;
+        font-size: 0.68rem;
+        word-break: break-all;
+    }
+
+    .record-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        margin-top: 1.1rem;
+        padding: 0.7rem 0.85rem;
+        border-radius: 9px;
+        background: rgba(138, 43, 226, 0.12);
+        color: #d8bcff;
+        font-family: var(--font-display);
+        font-size: 0.78rem;
+        font-weight: 600;
+        transition:
+            background 0.2s ease,
+            color 0.2s ease;
+    }
+
+    .record-link:hover {
+        background: rgba(138, 43, 226, 0.22);
+        color: #fff;
+    }
+
+    .record-link i {
+        font-size: 0.66rem;
+    }
+
+    .metric-strip {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0;
+        margin: 2.25rem 0 3.5rem;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.025);
+        overflow: hidden;
+    }
+
+    .strip-metric {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        padding: 1.3rem 1.4rem;
+        border-left: 1px solid var(--border);
+    }
+
+    .strip-metric:first-child {
+        border-left: none;
+    }
+
+    .strip-metric strong {
+        color: var(--accent);
+        font-family: var(--font-display);
+        font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+        line-height: 1;
+        letter-spacing: -0.02em;
+    }
+
+    .strip-metric span {
+        color: var(--text-muted);
+        font-size: 0.76rem;
+    }
+
+    .publication-layout {
+        display: grid;
+        grid-template-columns: 210px minmax(0, 1fr);
+        gap: 3.5rem;
+        align-items: start;
+    }
+
+    .publication-nav {
+        position: sticky;
+        top: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .nav-title {
+        margin-bottom: 0.65rem;
+        color: var(--text-muted);
+        font-family: var(--font-display);
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    .publication-nav nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+
+    .publication-nav nav a {
+        padding: 0.38rem 0;
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        transition:
+            color 0.2s ease,
+            padding-left 0.2s ease;
+    }
+
+    .publication-nav nav a:hover {
+        padding-left: 0.25rem;
+        color: var(--accent);
+    }
+
+    .nav-card {
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.025);
+    }
+
+    .nav-card i {
+        margin-bottom: 0.55rem;
+        color: var(--accent);
+        font-size: 0.8rem;
+    }
+
+    .nav-card p {
+        margin-bottom: 0.7rem;
+        color: var(--text-muted);
+        font-size: 0.76rem;
+        line-height: 1.65;
+    }
+
+    .nav-card a {
+        color: #c9a8ff;
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 600;
+    }
+
+    .nav-card a:hover {
+        color: #fff;
+    }
+
+    .publication-body {
+        min-width: 0;
+    }
+
+    .content-section {
+        margin-bottom: 3.75rem;
+        scroll-margin-top: 2rem;
+    }
+
+    .section-label {
+        margin-bottom: 0.55rem;
+        color: var(--accent);
+        font-family: var(--font-display);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    .content-section h2 {
+        margin-bottom: 1rem;
+        font-size: clamp(1.65rem, 3vw, 2.25rem);
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+    }
+
+    .lead {
+        color: #b9b9b9;
+        font-size: 1.01rem;
+        line-height: 1.9;
+    }
+
+    .body-copy {
+        color: var(--text-muted);
+        font-size: 0.94rem;
+        line-height: 1.85;
+    }
+
+    .body-copy + .body-copy {
+        margin-top: 1rem;
+    }
+
+    code {
+        padding: 0.12rem 0.35rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.04);
+        color: #e0ccff;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.84em;
+    }
+
+    .contribution-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.9rem;
+        margin-top: 1.4rem;
+    }
+
+    .contribution-card {
+        padding: 1.25rem;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.025);
+        transition:
+            border-color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .contribution-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(138, 43, 226, 0.5);
+    }
+
+    .contribution-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        margin-bottom: 0.8rem;
+        border: 1px solid rgba(138, 43, 226, 0.28);
+        border-radius: 9px;
+        background: rgba(138, 43, 226, 0.12);
+        color: var(--accent);
+        font-size: 0.8rem;
+    }
+
+    .contribution-card h3 {
+        margin-bottom: 0.45rem;
+        font-size: 0.98rem;
+        line-height: 1.35;
+    }
+
+    .contribution-card p {
+        color: var(--text-muted);
+        font-size: 0.82rem;
+        line-height: 1.7;
+    }
+
+    .bias-panel {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 1rem;
+        align-items: center;
+        margin: 1.6rem 0;
+        padding: 1.4rem;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background:
+            radial-gradient(
+                circle at 0% 0%,
+                rgba(138, 43, 226, 0.12),
+                transparent 45%
+            ),
+            rgba(255, 255, 255, 0.025);
+    }
+
+    .bias-side {
+        min-width: 0;
+    }
+
+    .bias-tag {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        color: var(--text-muted);
+        font-family: var(--font-display);
+        font-size: 0.66rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .bias-side strong {
+        display: block;
+        color: #fff;
+        font-family: var(--font-display);
+        font-size: clamp(1.9rem, 4vw, 2.7rem);
+        line-height: 1;
+        letter-spacing: -0.03em;
+    }
+
+    .bias-side-after strong {
+        color: var(--accent);
+    }
+
+    .bias-caption {
+        margin: 0.15rem 0 0.7rem;
+        color: var(--text-muted);
+        font-size: 0.75rem;
+    }
+
+    .bias-bar {
+        height: 6px;
+        margin-bottom: 0.55rem;
+        border-radius: 100px;
+        background: rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+    }
+
+    .bias-bar span {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #7c3aed, #c084fc);
+    }
+
+    .bias-side-after .bias-bar span {
+        background: linear-gradient(90deg, #22c55e, #6ee7b7);
+    }
+
+    .bias-note {
+        color: var(--text-muted);
+        font-size: 0.72rem;
+        line-height: 1.5;
+    }
+
+    .bias-arrow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--text-muted);
+        font-size: 0.64rem;
+        text-align: center;
+    }
+
+    .bias-arrow i {
+        color: var(--accent);
+        font-size: 1.1rem;
+    }
+
+    .callout {
+        margin-top: 1.2rem;
+        padding: 0.9rem 1.1rem;
+        border-left: 2px solid var(--accent);
+        border-radius: 0 8px 8px 0;
+        background: rgba(138, 43, 226, 0.07);
+        color: #d4c2f0;
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .pipeline-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.8rem;
+        margin-top: 1.4rem;
+    }
+
+    .pipeline-item {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 0.85rem;
+        align-items: start;
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.025);
+    }
+
+    .pipeline-step {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(138, 43, 226, 0.3);
+        border-radius: 50%;
+        background: rgba(138, 43, 226, 0.1);
+        color: var(--accent);
+        font-family: var(--font-display);
+        font-size: 0.7rem;
+        font-weight: 700;
+    }
+
+    .pipeline-item h3 {
+        margin-bottom: 0.22rem;
+        font-size: 0.88rem;
+        line-height: 1.3;
+    }
+
+    .pipeline-item p {
+        color: var(--text-muted);
+        font-size: 0.76rem;
+        line-height: 1.6;
+    }
+
+    .results-table-wrap {
+        margin-top: 1.4rem;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.025);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .results-table-wrap:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+    }
+
+    .results-table {
+        width: 100%;
+        min-width: 560px;
+        border-collapse: collapse;
+        font-size: 0.82rem;
+    }
+
+    .results-table th,
+    .results-table td {
+        padding: 0.9rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .results-table thead th {
+        color: var(--text-muted);
+        font-family: var(--font-display);
+        font-size: 0.66rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .results-table tbody th {
+        color: #e8e8e8;
+        font-weight: 500;
+    }
+
+    .results-table tbody td {
+        color: var(--text-muted);
+    }
+
+    .results-table tbody tr:last-child th,
+    .results-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .results-table .is-highlighted {
+        background: rgba(138, 43, 226, 0.08);
+    }
+
+    .results-table .is-highlighted th,
+    .results-table .is-highlighted td {
+        color: #fff;
+    }
+
+    .results-table .is-highlighted td {
+        color: #d8bcff;
+        font-weight: 600;
+    }
+
+    .table-note {
+        margin-top: 0.65rem;
+        color: #737373;
+        font-size: 0.72rem;
+    }
+
+    .subheading {
+        margin: 2.2rem 0 0.65rem;
+        font-size: 1.12rem;
+        letter-spacing: -0.01em;
+    }
+
+    .shap-list {
+        display: grid;
+        gap: 0.55rem;
+        margin-top: 1rem;
+    }
+
+    .shap-item {
+        padding: 0.7rem 0.9rem;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .shap-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .shap-name {
+        color: #e2e2e2;
+        font-family: var(--font-display);
+        font-size: 0.78rem;
+        font-weight: 500;
+    }
+
+    .shap-value {
+        color: var(--accent);
+        font-family: var(--font-display);
+        font-size: 0.78rem;
+        font-weight: 600;
+    }
+
+    .shap-track {
+        height: 5px;
+        margin-bottom: 0.25rem;
+        border-radius: 100px;
+        background: rgba(255, 255, 255, 0.07);
+        overflow: hidden;
+    }
+
+    .shap-track span {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #7c3aed, #c084fc);
+    }
+
+    .shap-meta {
+        color: #737373;
+        font-size: 0.64rem;
+    }
+
+    .findings {
+        display: grid;
+        gap: 0.55rem;
+        margin-top: 1.4rem;
+    }
+
+    .findings p {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.55rem;
+        color: var(--text-muted);
+        font-size: 0.83rem;
+        line-height: 1.65;
+    }
+
+    .findings i {
+        flex: 0 0 auto;
+        margin-top: 0.28rem;
+        color: #6ee7b7;
+        font-size: 0.7rem;
+    }
+
+    .evidence-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.4rem;
+    }
+
+    .evidence-card {
+        margin: 0;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.025);
+        overflow: hidden;
+    }
+
+    .evidence-button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        padding: 0;
+        border: none;
+        background: #08080b;
+        cursor: zoom-in;
+    }
+
+    .evidence-button img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
+
+    .evidence-button:hover img {
+        transform: scale(1.02);
+    }
+
+    .evidence-zoom {
+        position: absolute;
+        right: 0.65rem;
+        bottom: 0.65rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        background: rgba(5, 5, 5, 0.75);
+        color: #fff;
+        font-size: 0.7rem;
+        backdrop-filter: blur(8px);
+    }
+
+    .evidence-card figcaption {
+        padding: 0.8rem 0.9rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.76rem;
+        line-height: 1.55;
+    }
+
+    .evidence-note {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-top: 0.8rem;
+        color: #737373;
+        font-size: 0.72rem;
+        line-height: 1.5;
+    }
+
+    .evidence-note i {
+        margin-top: 0.2rem;
+    }
+
+    .citation-card {
+        margin-top: 1.2rem;
+        padding: 1.1rem;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: #0b0b0f;
+    }
+
+    .citation-card pre {
+        margin: 0 0 0.85rem;
+        overflow-x: auto;
+    }
+
+    .citation-card code {
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: #cfcfcf;
+        font-size: 0.74rem;
+        line-height: 1.7;
+    }
+
+    .copy-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.55rem 0.8rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: transparent;
+        color: #e8e8e8;
+        font-family: var(--font-display);
+        font-size: 0.74rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+            border-color 0.2s ease,
+            color 0.2s ease,
+            background 0.2s ease;
+    }
+
+    .copy-btn:hover,
+    .copy-btn.is-copied {
+        border-color: var(--accent);
+        background: rgba(138, 43, 226, 0.1);
+        color: #d8bcff;
+    }
+
+    .copy-status {
+        margin-left: 0.7rem;
+        color: #6ee7b7;
+        font-size: 0.74rem;
+    }
+
+    .citation-links {
+        margin-top: 0.75rem;
+        color: var(--text-muted);
+        font-size: 0.76rem;
+        line-height: 1.6;
+    }
+
+    .citation-links a {
+        color: #c9a8ff;
+        word-break: break-all;
+    }
+
+    .citation-links a:hover {
+        color: #fff;
+    }
+
+    .closing-cta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-top: 0.5rem;
+        padding: 1.5rem;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background:
+            radial-gradient(
+                circle at 100% 0%,
+                rgba(138, 43, 226, 0.16),
+                transparent 50%
+            ),
+            rgba(255, 255, 255, 0.025);
+    }
+
+    .closing-eyebrow {
+        margin-bottom: 0.35rem;
+        color: var(--accent);
+        font-family: var(--font-display);
+        font-size: 0.66rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .closing-cta h2 {
+        max-width: 620px;
+        font-size: 1.2rem;
+        line-height: 1.4;
+    }
+
+    .page-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 2.5rem;
+        padding-top: 1.4rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.82rem;
+    }
+
+    .page-footer a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        transition: color 0.2s ease;
+    }
+
+    .page-footer a:hover {
+        color: var(--accent);
+    }
+
+    .page-footer i {
+        font-size: 0.68rem;
+    }
+
+    .publication-lightbox {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        max-width: 100vw;
+        height: 100%;
+        max-height: 100vh;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: #fff;
+        overflow: hidden;
+    }
+
+    .publication-lightbox::backdrop {
+        background: rgba(0, 0, 0, 0.94);
+        backdrop-filter: blur(8px);
+    }
+
+    .lightbox-shell {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 3rem;
+        pointer-events: none;
+    }
+
+    .lightbox-figure {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        max-width: min(1600px, 100%);
+        max-height: 88vh;
+        margin: 0;
+        pointer-events: auto;
+    }
+
+    .lightbox-figure img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 78vh;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+        object-fit: contain;
+    }
+
+    .lightbox-figure figcaption {
+        max-width: 900px;
+        color: #d4d4d4;
+        font-size: 0.84rem;
+        line-height: 1.55;
+        text-align: center;
+    }
+
+    .lightbox-close,
+    .lightbox-nav {
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        pointer-events: auto;
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.18);
+        transform: scale(1.05);
+    }
+
+    .lightbox-close {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .lightbox-nav {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .lightbox-nav:hover {
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    .lightbox-prev {
+        left: 1rem;
+    }
+
+    .lightbox-next {
+        right: 1rem;
+    }
+
+    .lightbox-counter {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #999;
+        font-family: var(--font-display);
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        pointer-events: auto;
+    }
+
+    @media (max-width: 1024px) {
+        .publication-hero {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .hero-record {
+            max-width: 620px;
+        }
+
+        .publication-layout {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .publication-nav {
+            position: static;
+            display: block;
+        }
+
+        .publication-nav nav {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0.2rem 1rem;
+        }
+
+        .nav-title {
+            margin-bottom: 0.45rem;
+        }
+
+        .nav-card {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 0 1rem;
+        }
+
+        .publication-page {
+            padding-top: 1rem;
+        }
+
+        .publication-hero {
+            padding-top: 0.5rem;
+        }
+
+        .publication-hero h1 {
+            font-size: clamp(1.9rem, 8vw, 2.5rem);
+        }
+
+        .metric-strip {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin: 2rem 0 2.75rem;
+        }
+
+        .strip-metric {
+            border-top: 1px solid var(--border);
+        }
+
+        .strip-metric:nth-child(1),
+        .strip-metric:nth-child(2) {
+            border-top: none;
+        }
+
+        .strip-metric:nth-child(odd) {
+            border-left: none;
+        }
+
+        .contribution-grid,
+        .pipeline-list,
+        .evidence-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .bias-panel {
+            grid-template-columns: 1fr;
+        }
+
+        .bias-arrow {
+            flex-direction: row;
+            justify-content: center;
+            padding: 0.25rem 0;
+        }
+
+        .bias-arrow i {
+            transform: rotate(90deg);
+        }
+
+        .closing-cta {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .closing-cta .pub-btn {
+            width: 100%;
+        }
+
+        .lightbox-shell {
+            padding: 1rem;
+        }
+
+        .lightbox-figure img {
+            max-height: 72vh;
+        }
+
+        .lightbox-close {
+            top: 0.5rem;
+            right: 0.5rem;
+        }
+
+        .lightbox-prev {
+            left: 0.5rem;
+        }
+
+        .lightbox-next {
+            right: 0.5rem;
+        }
+
+        .lightbox-close,
+        .lightbox-nav {
+            width: 40px;
+            height: 40px;
+        }
+
+        .lightbox-figure figcaption {
+            font-size: 0.76rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            padding: 0 0.75rem;
+        }
+
+        .breadcrumbs {
+            font-size: 0.72rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.62rem;
+        }
+
+        .hero-authors {
+            font-size: 0.9rem;
+        }
+
+        .hero-actions {
+            flex-direction: column;
+        }
+
+        .hero-actions .pub-btn {
+            width: 100%;
+        }
+
+        .hero-tags li {
+            font-size: 0.66rem;
+        }
+
+        .record-row {
+            font-size: 0.74rem;
+        }
+
+        .record-row-doi strong {
+            font-size: 0.62rem;
+        }
+
+        .strip-metric {
+            padding: 1rem;
+        }
+
+        .strip-metric strong {
+            font-size: 1.3rem;
+        }
+
+        .strip-metric span {
+            font-size: 0.68rem;
+        }
+
+        .content-section {
+            margin-bottom: 2.75rem;
+        }
+
+        .lead {
+            font-size: 0.94rem;
+        }
+
+        .body-copy {
+            font-size: 0.88rem;
+        }
+
+        .bias-panel {
+            padding: 1rem;
+        }
+
+        .citation-card {
+            padding: 0.85rem;
+        }
+
+        .citation-card code {
+            font-size: 0.68rem;
+        }
+
+        .copy-status {
+            display: block;
+            margin: 0.5rem 0 0;
+        }
+
+        .page-footer {
+            font-size: 0.76rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .pub-btn,
+        .contribution-card,
+        .evidence-button img,
+        .lightbox-close,
+        .lightbox-nav {
+            transition: none;
+        }
+
+        .pub-btn-primary:hover,
+        .pub-btn-secondary:hover,
+        .contribution-card:hover,
+        .evidence-button:hover img,
+        .lightbox-close:hover,
+        .lightbox-nav:hover {
+            transform: none;
+        }
+
+        .lightbox-nav:hover {
+            transform: translateY(-50%);
+        }
+    }
+</style>
